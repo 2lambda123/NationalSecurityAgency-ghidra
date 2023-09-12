@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.app.util.bin.format.aout;
+package ghidra.app.util.opinion;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,13 +23,13 @@ import ghidra.app.util.Option;
 import ghidra.app.util.OptionException;
 import ghidra.app.util.bin.BinaryReader;
 import ghidra.app.util.bin.ByteProvider;
-import ghidra.app.util.bin.format.aout.UnixAoutHeader.ExecutableType;
+import ghidra.app.util.bin.format.unixaout.UnixAoutHeader;
+import ghidra.app.util.bin.format.unixaout.UnixAoutHeader.ExecutableType;
+import ghidra.app.util.bin.format.unixaout.UnixAoutRelocationTableEntry;
+import ghidra.app.util.bin.format.unixaout.UnixAoutSymbolTableEntry;
 import ghidra.app.util.importer.MessageLog;
-import ghidra.app.util.opinion.AbstractProgramWrapperLoader;
-import ghidra.app.util.opinion.Loader;
-import ghidra.app.util.opinion.LoadSpec;
-import ghidra.framework.store.LockException;
 import ghidra.framework.model.DomainObject;
+import ghidra.framework.store.LockException;
 import ghidra.program.flatapi.FlatProgramAPI;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressFactory;
@@ -214,7 +214,7 @@ public class UnixAoutLoader extends AbstractProgramWrapperLoader {
             try {
                 InputStream stream = provider.getInputStream(fileOffset);
                 this.textBlock = this.program.getMemory().createInitializedBlock(
-					this.filename + ".text", address, stream, size, monitor, this.isOverlay);
+                        ".text", address, stream, size, monitor, this.isOverlay);
                 this.textBlock.setRead(true);
                 this.textBlock.setWrite(false);
                 this.textBlock.setExecute(true);
@@ -243,7 +243,7 @@ public class UnixAoutLoader extends AbstractProgramWrapperLoader {
             try {
                 InputStream stream = provider.getInputStream(fileOffset);
                 this.dataBlock = program.getMemory().createInitializedBlock(
-                                     this.filename + ".data", address, stream, size, monitor, this.isOverlay);
+                        ".data", address, stream, size, monitor, this.isOverlay);
                 this.dataBlock.setRead(true);
                 this.dataBlock.setWrite(true);
                 this.dataBlock.setExecute(false);
@@ -291,7 +291,7 @@ public class UnixAoutLoader extends AbstractProgramWrapperLoader {
                 this.program.getAddressFactory().getDefaultAddressSpace().getAddress(bssAddrVal);
             try {
                 this.bssBlock = this.program.getMemory().createUninitializedBlock(
-                    this.filename + ".bss", bssAddr, totalBssSize, this.isOverlay);
+                        ".bss", bssAddr, totalBssSize, this.isOverlay);
                 this.bssAddrSpace = bssBlock.getStart().getAddressSpace();
                 this.bssBlock.setRead(true);
                 this.bssBlock.setWrite(true);
@@ -343,30 +343,30 @@ public class UnixAoutLoader extends AbstractProgramWrapperLoader {
         for (Integer i = 0; i < this.symTab.size(); i++) {
             UnixAoutSymbolTableEntry symTabEntry = this.symTab.elementAt(i);
             try {
-                if (symTabEntry.value != 0) {
-                    if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_TEXT) {
-                        if (symTabEntry.isExt) {
-                            // Save the entry point to this function in a list. Disassembly should
-							// wait until after we've processed the relocation tables.
-                            Address funcAddr = this.textAddrSpace.getAddress(symTabEntry.value);
-                            this.localFunctions.put(funcAddr, symTabEntry.name);
-                        }
-                    } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_DATA) {
-                        this.api.createLabel(this.dataAddrSpace.getAddress(symTabEntry.value),
-							symTabEntry.name, this.namespace, true, SourceType.IMPORTED);
+                if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_TEXT) {
+                    if (symTabEntry.isExt) {
+                        // Save the entry point to this function in a list. Disassembly should
+                        // wait until after we've processed the relocation tables.
+                        Address funcAddr = this.textAddrSpace.getAddress(symTabEntry.value);
+                        this.localFunctions.put(funcAddr, symTabEntry.name);
+                    }
+                } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_DATA) {
+                    this.api.createLabel(this.dataAddrSpace.getAddress(symTabEntry.value),
+                        symTabEntry.name, this.namespace, true, SourceType.IMPORTED);
 
-                    } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_BSS) {
-                        // Save the symbols that are explicitly identified as being in .bss
-                        // to a list so that they can be labeled later (after we actually
-                        // create the .bss block, which must wait until after we total all
-                        // the space used by N_UNDF symbols; see below.)
-                        this.bssSymbols.put(symTabEntry.name, symTabEntry.value);
+                } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_BSS) {
+                    // Save the symbols that are explicitly identified as being in .bss
+                    // to a list so that they can be labeled later (after we actually
+                    // create the .bss block, which must wait until after we total all
+                    // the space used by N_UNDF symbols; see below.)
+                    this.bssSymbols.put(symTabEntry.name, symTabEntry.value);
 
-                    } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_UNDF) {
-                        // This is a special case given by the A.out spec: if the linker cannot find
-                        // this symbol in any of the other binary files, then the fact that it is
-                        // marked as N_UNDF but has a non-zero value means that its value should be
-                        // interpreted as a size, and the linker should reserve space in .bss for it.
+                } else if (symTabEntry.type == UnixAoutSymbolTableEntry.SymbolType.N_UNDF) {
+                    // This is a special case given by the A.out spec: if the linker cannot find
+                    // this symbol in any of the other binary files, then the fact that it is
+                    // marked as N_UNDF but has a non-zero value means that its value should be
+                    // interpreted as a size, and the linker should reserve space in .bss for it.
+                    if (symTabEntry.value > 0) {
                         this.possibleBssSymbols.put(symTabEntry.name, symTabEntry.value);
                     }
                 }
@@ -554,7 +554,7 @@ public class UnixAoutLoader extends AbstractProgramWrapperLoader {
         this.log = log;
         this.api = new FlatProgramAPI(program, monitor);
         this.header = new UnixAoutHeader(provider, !this.bigEndian);
-        this.filename = provider.getFile().getName();
+        this.filename = provider.getFSRL().getName();
         this.isOverlay = (header.getExecutableType() == ExecutableType.OMAGIC);
 
         try {
