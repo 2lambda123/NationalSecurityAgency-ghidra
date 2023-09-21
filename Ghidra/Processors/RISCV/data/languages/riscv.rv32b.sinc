@@ -49,8 +49,12 @@
 
 :grev  rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x34 & rd & rs1 & rs2 unimpl
 
-#TODO  fix op2026
-:grevi rd, rs1, op2026 is op0006=0x13 & op1214=0x5 & op2731=0xd & op2026 & rd & rs1 unimpl
+#TODO  fix op2026 - the generic grevi is not fully approved, but two specific instances are.
+#                   rev8 hasdifferent encodings for 32 and 64 bit CPUs
+:brev8 rd, rs1         is op0006=0x13 & op1214=0x5 & op2731=0xd & op2026=0x7  & rd & rs1 unimpl
+:rev8  rd, rs1         is op0006=0x13 & op1214=0x5 & op2731=0xd & op2026=0x18 & rd & rs1 unimpl
+:rev8  rd, rs1         is op0006=0x13 & op1214=0x5 & op2731=0xd & op2026=0x38 & rd & rs1 unimpl
+:grevi rd, rs1, op2026 is op0006=0x13 & op1214=0x5 & op2731=0xd & op2026      & rd & rs1 unimpl
 
 :max  rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x5 & rd & rs1 & rs2 unimpl
 

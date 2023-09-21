@@ -1,0 +1,5 @@
+# xperm4 - Nibble-wise lookup of indicies into a vector
+:xperm4 rd, rs1, rs2 is op2531=0x14 & rs2 & rs1 & op1214=0x2 & rd & op0006=0x33 unimpl
+
+# xperm8 - Byte-wise lookup of indicies into a vector in registers
+:xperm8 rd, rs1, rs2 is op2531=0x14 & rs2 & rs1 & op1214=0x4 & rd & op0006=0x33 unimpl

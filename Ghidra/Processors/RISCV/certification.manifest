@@ -40,6 +40,12 @@ data/languages/riscv.rvc.sinc||GHIDRA||||END|
 data/languages/riscv.rvv.sinc||GHIDRA||||END|
 data/languages/riscv.table.sinc||GHIDRA||||END|
 data/languages/riscv.zi.sinc||GHIDRA||||END|
+data/languages/riscv.zbkx.sinc||GHIDRA||||END|
+data/languages/riscv.zknd.sinc||GHIDRA||||END|
+data/languages/riscv.zkne.sinc||GHIDRA||||END|
+data/languages/riscv.zknh.sinc||GHIDRA||||END|
+data/languages/riscv.zksed.sinc||GHIDRA||||END|
+data/languages/riscv.zksh.sinc||GHIDRA||||END|
 data/languages/riscv.zvbb.sinc||GHIDRA||||END|
 data/languages/riscv.zvkng.sinc||GHIDRA||||END|
 data/languages/riscv.zvksg.sinc||GHIDRA||||END|
