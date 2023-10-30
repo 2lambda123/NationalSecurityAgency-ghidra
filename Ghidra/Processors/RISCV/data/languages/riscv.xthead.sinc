@@ -3,6 +3,7 @@
 
 # Cache Management Operations (XTheadCmo)
 
+@ifdef xtheadcmo1p0
 #    Clean all D-cache
 define pcodeop th.dcache.call;
 :th.dcache.call is op2531=0x0 & op2024=0x1 & op1519=0 & op1214=0 & op0711=0 & op0006=0x0b {th.dcache.call();}
@@ -87,7 +88,11 @@ define pcodeop th.l2cache.ciall;
 define pcodeop th.l2cache.iall;
 :th.l2cache.iall is op2531=0x0 & op2024=0x16 & op1519=0 & op1214=0 & op0711=0 & op0006=0x0b {th.l2cache.iall();}
 
+@endif
+
 # Multi-core synchronization instructions (XTheadSync)
+
+@ifdef xtheadsync1p0
 
 #    Invalidate TLB (page table cache) on all harts via broadcasting.
 define pcodeop th.sfence.vmas;
@@ -114,7 +119,11 @@ define pcodeop th.sync.i;
 define pcodeop th.sync.is;
 :th.sync.is is op2531=0x0 & op2024=0x1b & op1519=0 & op1214=0 & op0711=0 & op0006=0x0b {th.sync.is();}
 
-# Address calculation instructions (XTheadBa)
+@endif
+
+# Address calculation instructions (XTheadBa) version 1.0
+
+@ifdef xtheadba1p0
 
 # we need locally defined immediate fields for several of these ops
 uimm2631: op2631 is op2631 {local tmp:$(XLEN) = op2631; export tmp;}
@@ -127,7 +136,11 @@ simm2024: sop2024 is sop2024 {local tmp:$(XLEN) = sop2024; export tmp;}
 define pcodeop th.addsl;
 :th.addsl rd, rs1, rs2, uimm2526 is op2731=0 & uimm2526 & rs2 & rs1 & op1214=0x1 & rd & op0006=0x0b {rd=th.addsl(rs1,rs2,uimm2526);}
 
-# Basic bit-manipulation (XTheadBb)
+@endif
+
+# Basic bit-manipulation (XTheadBb) version 1.0
+
+@ifdef xtheadbb1p0
 
 #    Perform a cyclic right shift
 define pcodeop th.srri;
@@ -171,7 +184,11 @@ define pcodeop th.tstnbz;
 define pcodeop th.tst;
 :th.tst rd, rs1, uimm2025 is op2631=0x22 & uimm2025 & rs1 & op1214=0x1 & rd & op0006=0x0b {rd=th.tst(rs1,uimm2025);}
 
-# Conditional move (XTheadCondMov)
+@endif
+
+# Conditional move (XTheadCondMov) Version 1.0
+
+@ifdef xtheadcondmov1p0
 
 #    Move if equal zero
 define pcodeop th.mveqz;
@@ -181,7 +198,11 @@ define pcodeop th.mveqz;
 define pcodeop th.mvneqz;
 :th.mvneqz rd, rs1, rs2 is op2731=0x08 & op2526=0x01 & rs2 & rs1 & op1214=0x1 & rd & op0006=0x0b {rd=th.mvneqz(rs1,rs2);}
 
-# Indexed memory operations (XTheadMemIdx)
+@endif
+
+# Indexed memory operations (XTheadMemIdx) Version 1.0
+
+@ifdef xtheadmemidx1p0
 
 #    Load indexed byte, increment address after loading
 :th.lbia rd, (rs1), simm2024, uimm2526 is op2731=0x3 & uimm2526 & simm2024 & rs1 & op1214=0x4 & rd & op0006=0xb
@@ -525,8 +546,11 @@ define pcodeop th.mvneqz;
     *[ram]:8 ea = rd;
 }
 @endif
+@endif
 
-# Two-GPR memory operations (XTheadMemPair)
+# Two-GPR memory operations (XTheadMemPair) Version 1
+
+@ifdef xtheadmempair1p0
 
 @if ADDRSIZE == "64"
 #    Load two 64-bit values from memory into two GPRs
@@ -571,8 +595,11 @@ define pcodeop th.mvneqz;
     *[ram]:4 ea = rd;
     *[ram]:4 (ea + 4) = rs2;
 }
+@endif
 
-# Indexed memory operations for floating-point registers (XTheadFMemIdx)
+# Indexed memory operations for floating-point registers (XTheadFMemIdx) Version 1.0
+
+@ifdef xtheadfmemidx1p0
 
 #    Load indexed double-precision floating point value
 :th.flrd frd, rs1, rs2, uimm2526 is op2731=0x0c & uimm2526 & rs2 & rs1 & op1214=0x6 & frd & op0006=0xb
@@ -630,7 +657,11 @@ define pcodeop th.mvneqz;
     *[ram]:4 ea = frd;
 }
 
-# Multiply-accumulate instructions (XTheadMac)
+@endif
+
+# Multiply-accumulate instructions (XTheadMac) Version 1.0
+
+@ifdef xtheadmac1p0
 
 #    Compute multiply-add result of double-word operands
 :th.mula rd, rs1, rs2 is op2731=0x04 & op2526=0 & rs2 & rs1 & op1214=0x1 & rd & op0006=0xb
@@ -671,3 +702,5 @@ define pcodeop th.mvneqz;
     # do we want a 32 bit sign extend here?
     rd = sext(rd - (sext(rs1) * sext(rs2)));
 }
+
+@endif

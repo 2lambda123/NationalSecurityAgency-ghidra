@@ -57,13 +57,6 @@
 @include "riscv.zvksg.sinc"
 @include "riscv.zi.sinc"
 
-# discard generic custom instructions in favor of documented custom instructions
-#@include "riscv.custom.sinc"
-
-# Thead semi's extensions currently recognized by binutils objdump
-#   and documented in https://github.com/T-head-Semi/thead-extension-spec/releases/download/2.0.0/xthead-2022-09-05-2.0.0.pdf
-@include "riscv.xthead.sinc"
-
 # todos that may be possible, mostly just artifacts from my
 # script to generate the initial SELIGH
 
