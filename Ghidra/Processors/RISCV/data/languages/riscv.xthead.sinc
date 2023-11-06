@@ -134,7 +134,7 @@ simm2024: sop2024 is sop2024 {local tmp:$(XLEN) = sop2024; export tmp;}
 
 #    Add a shifted operand to a second operand
 define pcodeop th.addsl;
-:th.addsl rd, rs1, rs2, uimm2526 is op2731=0 & uimm2526 & rs2 & rs1 & op1214=0x1 & rd & op0006=0x0b {rd=th.addsl(rs1,rs2,uimm2526);}
+:th.addsl rd, rs1, rs2, uimm2526 is op2731=0 & uimm2526 & rs2 & rs1 & op1214=0x1 & rd & op0006=0x0b {rd= rs1 + (rs2 << uimm2526);}
 
 @endif
 
@@ -152,11 +152,17 @@ define pcodeop th.srriw;
 
 #    Extract and sign-extend bits
 define pcodeop th.ext;
-:th.ext rd, rs1, uimm2631, uimm2025 is uimm2631 & uimm2025 & rs1 & op1214=0x2 & rd & op0006=0x0b {rd=th.ext(rs1,uimm2631,uimm2025);}
+:th.ext rd, rs1, uimm2631, uimm2025 is uimm2631 & uimm2025 & rs1 & op1214=0x2 & rd & op0006=0x0b {
+    local mask = ((1 << (uimm2631 - uimm2025 + 1))  - 1) << uimm2025 ;
+    rd = sext((rs1 & mask) >> uimm2025 );
+}
 
 #    Extract and zero-extend bits
 define pcodeop th.extu;
-:th.extu rd, rs1, uimm2631, uimm2025 is uimm2631 & uimm2025 & rs1 & op1214=0x3 & rd & op0006=0x0b {rd=th.extu(rs1,uimm2631,uimm2025);}
+:th.extu rd, rs1, uimm2631, uimm2025 is uimm2631 & uimm2025 & rs1 & op1214=0x3 & rd & op0006=0x0b {
+    local mask = ((1 << (uimm2631 - uimm2025 + 1))  - 1) << uimm2025 ;
+    rd = zext((rs1 & mask) >> uimm2025 );
+}
 
 #    Find first '0'-bit
 define pcodeop th.ff0;
