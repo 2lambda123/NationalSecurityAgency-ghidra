@@ -592,6 +592,15 @@ public class AutoVersionTrackingTask extends Task {
 				continue;
 			}
 
+			if (hasAcceptedRelatedAssociation(association, monitor)) {
+				Msg.warn(AutoVersionTrackingTask.class,
+					"This association has a related association with an accepted match so cannot " +
+						"make this association accepted which would try to block the already accepted " +
+						"related association " +
+						association);
+				continue;
+			}
+
 			if (!tryToSetAccepted(association)) {
 				continue;
 			}
@@ -633,6 +642,44 @@ public class AutoVersionTrackingTask extends Task {
 				"Could not set match accepted for " + association, e);
 			return false;
 		}
+	}
+
+	/**
+	 * Method to test whether any related associations (ie associations with either the same source 
+	 * or the same destination address) have already been accepted
+	 * @param association the given association (src/dest match pair)
+	 * @param taskMonitor the task monitor
+	 * @return true if any related associations have already been accepted, false otherwise
+	 * @throws CancelledException if cancelled
+	 */
+	private boolean hasAcceptedRelatedAssociation(VTAssociation association,
+			TaskMonitor taskMonitor) throws CancelledException {
+
+		VTAssociationManager vtAssocManager = session.getAssociationManager();
+
+		Set<VTAssociation> relatedAssociations =
+			new HashSet<VTAssociation>(
+				vtAssocManager.getRelatedAssociationsBySourceAndDestinationAddress(
+					association.getSourceAddress(), association.getDestinationAddress()));
+
+		for (VTAssociation relatedAssociation : relatedAssociations) {
+
+			taskMonitor.checkCancelled();
+
+			//skip self
+			if (relatedAssociation.equals(association)) {
+				continue;
+			}
+
+			VTAssociationStatus status = relatedAssociation.getStatus();
+
+			if (status.equals(VTAssociationStatus.ACCEPTED)) {
+				Msg.debug(this, relatedAssociation.toString() + " is already accepted match.");
+				return true;
+			}
+
+		}
+		return false;
 	}
 
 	/**
@@ -1177,10 +1224,14 @@ public class AutoVersionTrackingTask extends Task {
 			if (map.keySet().isEmpty()) {
 				continue;
 			}
-
+			
 			// get offset from top of function to use in function to operandMap map
-			Long offset =
-				inst.getAddress().subtract(function.getEntryPoint().getOffset()).getOffset();
+			// can be positive or negative offset (positive means instruction address is after 
+			// the entry address, negative means instruction address is before entry address)
+			Long entryOffset = function.getEntryPoint().getOffset();
+			Long instOffset = inst.getAddress().getOffset();
+			Long offset = instOffset - entryOffset;
+
 			offsetToOperandsMap.put(offset, map);
 		}
 
@@ -1237,13 +1288,24 @@ public class AutoVersionTrackingTask extends Task {
 	 * @param match The match to try and accept and apply markup to
 	 * @param monitor Allow user to cancel
 	 * @return true if there are any markup errors, false if no markup errors
+	 * @throws CancelledException if cancelled
 	 */
-	private boolean tryToAcceptMatchAndApplyMarkup(VTMatch match, TaskMonitor monitor) {
+	private boolean tryToAcceptMatchAndApplyMarkup(VTMatch match, TaskMonitor monitor)
+			throws CancelledException {
 
 		VTAssociation association = match.getAssociation();
 
 		// skip already accepted or blocked matches
 		if (association.getStatus() == VTAssociationStatus.AVAILABLE) {
+
+			if (hasAcceptedRelatedAssociation(association, monitor)) {
+				Msg.warn(AutoVersionTrackingTask.class,
+					"This association has a related association with an accepted match so cannot " +
+						"make this association accepted which would try to block the already accepted " +
+						"related association " +
+						association);
+				return false;
+			}
 
 			// Try to accept the match
 			if (tryToSetAccepted(association)) {
