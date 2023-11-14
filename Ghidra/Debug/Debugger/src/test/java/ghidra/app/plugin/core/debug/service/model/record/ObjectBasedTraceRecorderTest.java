@@ -25,16 +25,16 @@ import java.util.*;
 import org.junit.Test;
 
 import generic.Unique;
-import ghidra.app.plugin.core.debug.gui.AbstractGhidraHeadedDebuggerGUITest;
-import ghidra.app.plugin.core.debug.mapping.*;
-import ghidra.app.services.ActionSource;
-import ghidra.app.services.TraceRecorder;
+import ghidra.app.plugin.core.debug.gui.AbstractGhidraHeadedDebuggerTest;
+import ghidra.app.plugin.core.debug.mapping.ObjectBasedDebuggerMappingOpinion;
 import ghidra.dbg.error.DebuggerMemoryAccessException;
 import ghidra.dbg.model.*;
 import ghidra.dbg.target.*;
 import ghidra.dbg.target.TargetBreakpointSpec.TargetBreakpointKind;
 import ghidra.dbg.target.TargetEventScope.TargetEventType;
 import ghidra.dbg.target.TargetExecutionStateful.TargetExecutionState;
+import ghidra.debug.api.action.ActionSource;
+import ghidra.debug.api.model.*;
 import ghidra.program.model.address.Address;
 import ghidra.program.model.address.AddressRangeImpl;
 import ghidra.program.model.lang.Language;
@@ -49,7 +49,7 @@ import ghidra.trace.model.time.TraceSnapshot;
 import ghidra.trace.model.time.TraceTimeManager;
 import ghidra.util.task.TaskMonitor;
 
-public class ObjectBasedTraceRecorderTest extends AbstractGhidraHeadedDebuggerGUITest {
+public class ObjectBasedTraceRecorderTest extends AbstractGhidraHeadedDebuggerTest {
 	DebuggerMappingOpinion opinion = new ObjectBasedDebuggerMappingOpinion();
 	TraceRecorder recorder;
 
@@ -77,7 +77,7 @@ public class ObjectBasedTraceRecorderTest extends AbstractGhidraHeadedDebuggerGU
 
 	protected void dumpValues(TraceObject obj) {
 		System.err.println("Values of " + obj);
-		for (TraceObjectValue val : obj.getValues()) {
+		for (TraceObjectValue val : obj.getValues(Lifespan.ALL)) {
 			System.err.println("  " + val.getEntryKey() + " = " + val.getValue());
 		}
 	}

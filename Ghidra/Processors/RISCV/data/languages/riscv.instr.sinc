@@ -57,8 +57,6 @@
 @include "riscv.zvksg.sinc"
 @include "riscv.zi.sinc"
 
-@include "riscv.custom.sinc"
-
 # todos that may be possible, mostly just artifacts from my
 # script to generate the initial SELIGH
 
