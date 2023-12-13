@@ -1,5 +1,6 @@
 ##VERSION: 2.0
 Module.manifest||GHIDRA||||END|
+data/languages/Readme_isa_extensions.md||GHIDRA||||END|
 data/languages/RV32G.pspec||GHIDRA||||END|
 data/languages/RV32GC.pspec||GHIDRA||||END|
 data/languages/RV32I.pspec||GHIDRA||||END|
@@ -42,6 +43,7 @@ data/languages/riscv.rvc.sinc||GHIDRA||||END|
 data/languages/riscv.rvv.sinc||GHIDRA||||END|
 data/languages/riscv.table.sinc||GHIDRA||||END|
 data/languages/riscv.xthead.sinc||GHIDRA||||END|
+data/languages/riscv.zcb.sinc||GHIDRA||||END|
 data/languages/riscv.zi.sinc||GHIDRA||||END|
 data/languages/riscv.zbkx.sinc||GHIDRA||||END|
 data/languages/riscv.zknd.sinc||GHIDRA||||END|
