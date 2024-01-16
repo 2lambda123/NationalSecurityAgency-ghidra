@@ -3275,8 +3275,8 @@ define pcodeop vsseg8e512_v;
 define pcodeop vse64_v;
 # vse64.v        nf 28=0 27..26=0 vm 24..20=0 rs1 14..12=0x7 vs3 6..0=0x27
 # vse64.v   vs3, (rs1), vm  #   64-bit unit-stride store
-:vse64.v    vs3, (rs1)           is nf & op2931=0 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {*:64 rs1=vse64_v(vs3);}
-:vse64.v    vs3, (rs1), "v0.t"   is nf & op2931=0 & op2828=0x0 & op2627=0x0 & op2525=0 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {*:64 rs1=vse64_v(vs3,v0);}
+:vse64.v    vs3, (rs1)           is nf & op2931=0 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {vse64_v(vs3,rs1);}
+:vse64.v    vs3, (rs1), "v0.t"   is nf & op2931=0 & op2828=0x0 & op2627=0x0 & op2525=0 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {vse64_v(vs3,rs1,v0);}
 
 define pcodeop vsseg2e64_v;
 :vsseg2e64.v    vs3, (rs1)           is nf & op2931=1 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {vsseg2e64_v(vs3,rs1);}
@@ -3307,11 +3307,10 @@ define pcodeop vsseg8e64_v;
 :vsseg8e64.v    vs3, (rs1), "v0.t"   is nf & op2931=7 & op2828=0x0 & op2627=0x0 & op2525=0 & op2024=0x0 & rs1 & op1214=0x7 & vs3 & op0006=0x27 {vsseg8e64_v(vs3,rs1,v0);}
 
 define pcodeop vse8_v;
-# fake destination vector width as 64 bits for semantics
 # vse8.v         nf 28=0 27..26=0 vm 24..20=0 rs1 14..12=0x0 vs3 6..0=0x27
 # vse8.v    vs3, (rs1), vm  #    8-bit unit-stride store
-:vse8.v     vs3, (rs1)           is nf & op2931=0x0 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x0 & vs3 & op0006=0x27 {*:64 rs1=vse8_v(vs3);}
-:vse8.v     vs3, (rs1), "v0.t"   is nf & op2931=0x0 & op2828=0x0 & op2627=0x0 & op2525=0 & op2024=0x0 & rs1 & op1214=0x0 & vs3 & op0006=0x27 {*:64 rs1=vse8_v(vs3,v0);}
+:vse8.v     vs3, (rs1)           is nf & op2931=0x0 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x0 & vs3 & op0006=0x27 {vse8_v(vs3,rs1);}
+:vse8.v     vs3, (rs1), "v0.t"   is nf & op2931=0x0 & op2828=0x0 & op2627=0x0 & op2525=0 & op2024=0x0 & rs1 & op1214=0x0 & vs3 & op0006=0x27 {vse8_v(vs3,rs1,v0);}
 
 define pcodeop vsseg2e8_v;
 :vsseg2e8.v vs3, (rs1)           is nf & op2931=0x1 & op2828=0x0 & op2627=0x0 & op2525=1 & op2024=0x0 & rs1 & op1214=0x0 & vs3 & op0006=0x27 {vsseg2e8_v(vs3,rs1);}
