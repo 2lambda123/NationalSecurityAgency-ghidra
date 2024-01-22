@@ -16,8 +16,8 @@ define pcodeop andn;
 #:bdep rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x24 & rd & rs1 & rs2 {rd=bdep(rs1,rs2);}
 #
 
-#efine pcodeop bext;
-#bext rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x24 & rd & rs1 & rs2 {rd=bext(rs1,rs2);}
+define pcodeop bext;
+:bext rd, rs1, rs2 is op0006=0x33 & op1214=0x5 & op2531=0x24 & rd & rs1 & rs2 {rd=bext(rs1,rs2);}
 
 # TODO: unaproved
 #define pcodeop bfp;
