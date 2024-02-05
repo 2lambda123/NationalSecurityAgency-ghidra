@@ -39,6 +39,9 @@
 # sumop=16 unit-stride fault-only-first
 # nfields imm is nf [ imm = nf + 1; ] { export *[const]:1 imm; }
 
+# this pcodeop simply conveys hints through the decompiler
+define pcodeop comment;
+
 # Many instructions support two modes - masked via v0 or unmasked.  The reference
 # disassembler objdump renders these explicitly, so we do too.
 
@@ -2523,8 +2526,14 @@ define pcodeop vmsgt_vx;
 define pcodeop vmsgtu_vi;
 # vmsgtu.vi      31..26=0x1e vm vs2 simm5 14..12=0x3 vd 6..0=0x57
 # vmsgtu.vi vd, vs2, simm5, vm   # Vector-immediate
-:vmsgtu.vi  vd, vs2, simm5         is op2631=0x1e & op2525=1 & vs2 & simm5 & op1214=0x3 & vd & op0006=0x57 {vd=vmsgtu_vi(vs2,simm5);}
-:vmsgtu.vi  vd, vs2, simm5, "v0.t" is op2631=0x1e & op2525=0 & vs2 & simm5 & op1214=0x3 & vd & op0006=0x57 {vd=vmsgtu_vi(vs2,simm5,v0);}
+:vmsgtu.vi  vd, vs2, simm5         is op2631=0x1e & op2525=1 & vs2 & simm5 & op1214=0x3 & vd & op0006=0x57 {
+    # Set if greater than, unsigned, vector-immediate
+    vd=vmsgtu_vi(vs2,simm5);
+}
+:vmsgtu.vi  vd, vs2, simm5, "v0.t" is op2631=0x1e & op2525=0 & vs2 & simm5 & op1214=0x3 & vd & op0006=0x57 {
+    # Set if greater than, unsigned, vector-immediate, masked
+    vd=vmsgtu_vi(vs2,simm5,v0);
+}
 
 define pcodeop vmsgtu_vx;
 # vmsgtu.vx      31..26=0x1e vm vs2 rs1 14..12=0x4 vd 6..0=0x57
@@ -2673,48 +2682,48 @@ define pcodeop vmulhu_vx;
 define pcodeop vmv_sx;
 # vmv.s.x        31..26=0x10 25=1 24..20=0 rs1 14..12=0x6 vd 6..0=0x57
 # vmv.s.x vd, rs1  # vd[0] = x[rs1] (vs2=0)
-:vmv.s.x  vd, rs1   is op2631=0x10 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x6 & vd & op0006=0x57  {vd=vmv_sx(rs1);}
+:vmv.s.x  vd, rs1   is op2631=0x10 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x6 & vd & op0006=0x57  {vmv_sx(vd, rs1);}
 
 define pcodeop vmv_v_i;
 # vmv.v.i        31..26=0x17 25=1 24..20=0 simm5 14..12=0x3 vd 6..0=0x57
 # vmv.v.i vd, simm5 # vd[i] = imm
-:vmv.v.i  vd, simm5  is op2631=0x17 & op2525=0x1 & op2024=0x0 & simm5 & op1214=0x3 & vd & op0006=0x57 {vd=vmv_v_i(simm5);}
+:vmv.v.i  vd, simm5  is op2631=0x17 & op2525=0x1 & op2024=0x0 & simm5 & op1214=0x3 & vd & op0006=0x57 {vmv_v_i(vd, simm5);}
 
 define pcodeop vmv_v_v;
 # vmv.v.v        31..26=0x17 25=1 24..20=0 vs1 14..12=0x0 vd 6..0=0x57
 # vmv.v.v vd, vs1 # vd[i] = vs1[i]
-:vmv.v.v  vd, vs1  is op2631=0x17 & op2525=0x1 & op2024=0x0 & vs1 & op1214=0x0 & vd & op0006=0x57 {vd=vmv_v_v(vs1);}
+:vmv.v.v  vd, vs1  is op2631=0x17 & op2525=0x1 & op2024=0x0 & vs1 & op1214=0x0 & vd & op0006=0x57 {vmv_v_v(vd, vs1);}
 
 define pcodeop vmv_v_x;
 # vmv.v.x        31..26=0x17 25=1 24..20=0 rs1 14..12=0x4 vd 6..0=0x57
 # vmv.v.x vd, rs1 # vd[i] = rs1
-:vmv.v.x  vd, rs1  is op2631=0x17 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x4 & vd & op0006=0x57 {vd=vmv_v_x(rs1);}
+:vmv.v.x  vd, rs1  is op2631=0x17 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x4 & vd & op0006=0x57 {vmv_v_x(vd, rs1);}
 
 #TODO  this is broken
 define pcodeop vmv_x_s;
 # vmv.x.s        31..26=0x10 25=1 vs2 19..15=0 14..12=0x2 vd 6..0=0x57
 # vmv.x.s rd, vs2  # x[rd] = vs2[0] (rs1=0)
-:vmv.x.s  rd, vs2   is op2631=0x10 & op2525=0x1 & vs2 & op1519=0x0 & op1214=0x2 & rd & vd & op0006=0x57 {vd=vmv_x_s(vs2);}
+:vmv.x.s  rd, vs2   is op2631=0x10 & op2525=0x1 & vs2 & op1519=0x0 & op1214=0x2 & rd & vd & op0006=0x57 {vmv_x_s(vd, vs2);}
 
 define pcodeop vmv1r_v;
 # vmv1r.v        31..26=0x27 25=1 vs2 19..15=0 14..12=0x3 vd 6..0=0x57
 # vmv1r.v  vd, vs2
-:vmv1r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x0 & op1214=0x3 & vd & op0006=0x57 {vd=vmv1r_v(vs2);}
+:vmv1r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x0 & op1214=0x3 & vd & op0006=0x57 {vmv1r_v(vd,vs2);}
 
 define pcodeop vmv2r_v;
 # vmv2r.v        31..26=0x27 25=1 vs2 19..15=1 14..12=0x3 vd 6..0=0x57
 # vmv2r.v  vd, vs2
-:vmv2r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x1 & op1214=0x3 & vd & op0006=0x57 {vd=vmv2r_v(vs2);}
+:vmv2r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x1 & op1214=0x3 & vd & op0006=0x57 {vmv2r_v(vd,vs2);}
 
 define pcodeop vmv4r_v;
 # vmv4r.v        31..26=0x27 25=1 vs2 19..15=3 14..12=0x3 vd 6..0=0x57
 # vmv4r.v  vd, vs2
-:vmv4r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x3 & op1214=0x3 & vd & op0006=0x57 {vd=vmv4r_v(vs2);}
+:vmv4r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x3 & op1214=0x3 & vd & op0006=0x57 {vmv4r_v(vd,vs2);}
 
 define pcodeop vmv8r_v;
 # vmv8r.v        31..26=0x27 25=1 vs2 19..15=7 14..12=0x3 vd 6..0=0x57
 # vmv8r.v  vd, vs2
-:vmv8r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x7 & op1214=0x3 & vd & op0006=0x57 {vd=vmv8r_v(vs2);}
+:vmv8r.v   vd, vs2 is op2631=0x27 & op2525=0x1 & vs2 & op1519=0x7 & op1214=0x3 & vd & op0006=0x57 {vmv8r_v(vd,vs2);}
 
 define pcodeop vmxnor_mm;
 # vmxnor.mm      31..26=0x1f vm vs2 vs1 14..12=0x2 vd 6..0=0x57
@@ -3348,18 +3357,32 @@ define pcodeop vsetvl;
 # vsetvl  rd, rs1, rs2    # rd = new vl, rs1 = AVL, rs2 = new vtype value
 :vsetvl   rd, rs1, rs2     is op3131=0x1 & op2530=0x0 & rs2 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvl(rs1,rs2);}
 
+# The vset instructions set the vector context.  We can make that context more visible to the GHidra user by adding specific
+# encodings found in exemplar binaries
+
 define pcodeop vsetvli;
 define pcodeop vsetvli_e8m1tumu;
 define pcodeop vsetvli_e8m1tama;
 define pcodeop vsetvli_e8m2tumu;
 define pcodeop vsetvli_e16m4tamu;
+define pcodeop vsetvli_e32mf2tuma;
 define pcodeop vsetvli_e32mf4tumu;
 define pcodeop vsetvli_e64mf8tuma;
 define pcodeop vsetvli_e64m1tama;
+define pcodeop vsetvli_e64m1tuma;
 define pcodeop vsetvli_e8m8tama;
 define pcodeop vsetvli_e8mf8tama;
+define pcodeop vsetvli_e8mf4tama;
+define pcodeop vsetvli_e8mf2tama;
+define pcodeop vsetvli_e16m1tama;
+define pcodeop vsetvli_e16m2tama;
+define pcodeop vsetvli_e16mf4tama;
+define pcodeop vsetvli_e16mf2tama;
 define pcodeop vsetvli_e8m2tama;
 define pcodeop vsetvli_e32m1tama;
+define pcodeop vsetvli_e32mf2tama;
+define pcodeop vsetvli_e32m1tuma;
+define pcodeop vsetvli_e32m1tumu;
 define pcodeop vsetvli_e64m2tama;
 define pcodeop vsetvli_e64m1tumu;
 
@@ -3367,13 +3390,25 @@ define pcodeop vsetvli_e64m1tumu;
 # vsetvli rd, rs1, vtypei # rd = new vl, rs1 = AVL, vtypei = new vtype setting
 :vsetvli   rd, rs1, "e8,m1,tu,mu"     is op2030=0x000 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tumu(rs1);}
 :vsetvli   rd, rs1, "e8,m2,tu,mu"     is op2030=0x001 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tumu(rs1);}
-:vsetvli   rd, rs1, "e16,m4,ta,mu"    is op2030=0x04a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m1,tu,mu"    is op2030=0x010 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tumu(rs1);}
 :vsetvli   rd, rs1, "e32,mf4,tu,mu"   is op2030=0x016 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tumu(rs1);}
+:vsetvli   rd, rs1, "e16,m4,ta,mu"    is op2030=0x04a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m1,tu,ma"    is op2030=0x090 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tuma(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,tu,ma"   is op2030=0x097 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tuma(rs1);}
+:vsetvli   rd, rs1, "e64,m1,tu,ma"    is op2030=0x098 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tuma(rs1);}
 :vsetvli   rd, rs1, "e32,mf8,tu,ma"   is op2030=0x09d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf8tuma(rs1);}
 :vsetvli   rd, rs1, "e8,m1,ta,ma"     is op2030=0x0c0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tama(rs1);}
-:vsetvli   rd, rs1, "e8,m8,ta,ma"     is op2030=0x0c3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tama(rs1);}
 :vsetvli   rd, rs1, "e8,m2,ta,ma"     is op2030=0x0c1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tama(rs1);}
+:vsetvli   rd, rs1, "e8,m8,ta,ma"     is op2030=0x0c3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf8,ta,ma"    is op2030=0x0c5 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf4,ta,ma"    is op2030=0x0c6 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf2,ta,ma"    is op2030=0x0c7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tama(rs1);}
+:vsetvli   rd, rs1, "e16,m1,ta,ma"    is op2030=0x0c8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tama(rs1);}
+:vsetvli   rd, rs1, "e16,m2,ta,ma"    is op2030=0x0c9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tama(rs1);}
+:vsetvli   rd, rs1, "e16,mf4,ta,ma"   is op2030=0x0ce & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tama(rs1);}
+:vsetvli   rd, rs1, "e16,mf2,ta,ma"   is op2030=0x0cf & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tama(rs1);}
 :vsetvli   rd, rs1, "e32,m1,ta,ma"    is op2030=0x0d0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tama(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,ta,ma"   is op2030=0x0d7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tama(rs1);}
 :vsetvli   rd, rs1, "e64,m1,ta,ma"    is op2030=0x0d8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tama(rs1);}
 :vsetvli   rd, rs1, "e64,m2,ta,ma"    is op2030=0x0d9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tama(rs1);}
 :vsetvli   rd, rs1, vtypei            is op3131=0x0 & vtypei & rs1 & op1214=0x7 & rd & op0006=0x57       {rd=vsetvli(rs1,vtypei);}
@@ -3383,18 +3418,44 @@ define pcodeop vsetivli_e8m1tumu;
 define pcodeop vsetivli_e8m2tumu;
 define pcodeop vsetivli_e16m4tamu;
 define pcodeop vsetivli_e32mf4tumu;
+define pcodeop vsetivli_e64m1tamu;
 define pcodeop vsetivli_e64mf8tuma;
-define pcodeop vsetivli_e8m8tama;
+define pcodeop vsetivli_e8m1tama;
 define pcodeop vsetivli_e8m2tama;
+define pcodeop vsetivli_e8m8tama;
+define pcodeop vsetivli_e8mf8tama;
+define pcodeop vsetivli_e8mf4tama;
+define pcodeop vsetivli_e8mf2tama;
+define pcodeop vsetivli_e16m1tama;
+define pcodeop vsetivli_e16mf4tama;
+define pcodeop vsetivli_e16mf2tama;
+define pcodeop vsetivli_e32m1tama;
+define pcodeop vsetivli_e32m8tama;
+define pcodeop vsetivli_e32mf2tama;
+define pcodeop vsetivli_e64m1tama;
+define pcodeop vsetivli_e64m8tama;
 
 # vsetivli      31=1 vtypei         rs1 14..12=0x7 rd 6..0=0x57
 :vsetivli  rd, op1519, "e8,m1,tu,mu"    is op3031=0x3 & op2029=0x000 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tumu(op1519:5);}
 :vsetivli  rd, op1519, "e8,m2,tu,mu"    is op3031=0x3 & op2029=0x001 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tumu(op1519:5);}
 :vsetivli  rd, op1519, "e16,m4,ta,mu"   is op3031=0x3 & op2029=0x04a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tamu(op1519:5);}
 :vsetivli  rd, op1519, "e32,mf4,tu,mu"  is op3031=0x3 & op2029=0x016 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,ta,mu"   is op3031=0x3 & op2029=0x058 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tamu(op1519:5);}
 :vsetivli  rd, op1519, "e64,mf8,tu,ma"  is op3031=0x3 & op2029=0x09d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tuma(op1519:5);}
-:vsetivli  rd, op1519, "e8,m8,ta,ma"    is op3031=0x3 & op2029=0x0c3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,m1,ta,ma"    is op3031=0x3 & op2029=0x0c0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tama(op1519:5);}
 :vsetivli  rd, op1519, "e8,m2,ta,ma"    is op3031=0x3 & op2029=0x0c1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,m8,ta,ma"    is op3031=0x3 & op2029=0x0c3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf8,ta,ma"   is op3031=0x3 & op2029=0x0c5 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf4,ta,ma"   is op3031=0x3 & op2029=0x0c6 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf2,ta,ma"   is op3031=0x3 & op2029=0x0c7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,m1,ta,ma"   is op3031=0x3 & op2029=0x0c8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf4,ta,ma"  is op3031=0x3 & op2029=0x0ce & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf2,ta,ma"  is op3031=0x3 & op2029=0x0cf & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m1,ta,ma"   is op3031=0x3 & op2029=0x0d0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m8,ta,ma"   is op3031=0x3 & op2029=0x0d3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf2,ta,ma"  is op3031=0x3 & op2029=0x0d7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,ta,ma"   is op3031=0x3 & op2029=0x0d8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m8,ta,ma"   is op3031=0x3 & op2029=0x0db & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tama(op1519:5);}
 :vsetivli  rd, op1519, op2029           is op3031=0x3 & op2029 &       op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli(op1519:5,op2029:10);}
 
 define pcodeop vsext_vf2;

@@ -192,14 +192,12 @@ define pcodeop sh1add;
 define pcodeop sh1add_uw;
 :sh1add.uw rd, rs1, rs2 is op0006=0x3b & op1214=0x2 & op2531=0x10 & rd & rs1 & rs2 {rd=sh1add_uw(rs1,rs2);}
 
-define pcodeop sh2add;
-:sh2add rd, rs1, rs2 is op0006=0x33 & op1214=0x4 & op2531=0x10 & rd & rs1 & rs2 {rd=sh2add(rs1,rs2);}
+:sh2add rd, rs1, rs2 is op0006=0x33 & op1214=0x4 & op2531=0x10 & rd & rs1 & rs2 {rd=(rs1<<2)+rs2;}
 
 define pcodeop sh2add_uw;
 :sh2add.uw rd, rs1, rs2 is op0006=0x3b & op1214=0x4 & op2531=0x10 & rd & rs1 & rs2 {rd=sh2add_uw(rs1,rs2);}
 
-define pcodeop sh3add;
-:sh3add rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x10 & rd & rs1 & rs2 {rd=sh3add(rs1,rs2);}
+:sh3add rd, rs1, rs2 is op0006=0x33 & op1214=0x6 & op2531=0x10 & rd & rs1 & rs2 {rd=(rs1<<3)+rs2;}
 
 define pcodeop sh3add_uw;
 :sh3add.uw rd, rs1, rs2 is op0006=0x3b & op1214=0x6 & op2531=0x10 & rd & rs1 & rs2 {rd=sh3add_uw(rs1,rs2);}
