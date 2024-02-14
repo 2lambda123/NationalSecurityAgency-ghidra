@@ -39,9 +39,6 @@
 # sumop=16 unit-stride fault-only-first
 # nfields imm is nf [ imm = nf + 1; ] { export *[const]:1 imm; }
 
-# this pcodeop simply conveys hints through the decompiler
-define pcodeop comment;
-
 # Many instructions support two modes - masked via v0 or unmasked.  The reference
 # disassembler objdump renders these explicitly, so we do too.
 
