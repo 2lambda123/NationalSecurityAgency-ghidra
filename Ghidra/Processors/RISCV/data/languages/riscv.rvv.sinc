@@ -3364,6 +3364,7 @@ define pcodeop vsetvli_e8m2tumu;
 define pcodeop vsetvli_e16m4tamu;
 define pcodeop vsetvli_e32mf2tuma;
 define pcodeop vsetvli_e32mf4tumu;
+define pcodeop vsetvli_e32mf8tuma;
 define pcodeop vsetvli_e64mf8tuma;
 define pcodeop vsetvli_e64m1tama;
 define pcodeop vsetvli_e64m1tuma;
