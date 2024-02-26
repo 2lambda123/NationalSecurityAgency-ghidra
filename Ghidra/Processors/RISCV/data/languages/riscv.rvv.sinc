@@ -1651,274 +1651,274 @@ define pcodeop vlm8_v;
 # vloxei8.v Vector indexed-ordered load instructions
 
 define pcodeop vloxei8_v;
-:vloxei8.v  vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxei8_v(rs1);}
-:vloxei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxei8_v(rs1,v0);}
+:vloxei8.v  vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxei8_v(rs1,vs2);}
+:vloxei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg2ei8_v;
-:vloxseg2ei8.v  vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg2ei8_v(rs1);}
-:vloxseg2ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg2ei8_v(rs1,v0);}
+:vloxseg2ei8.v  vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg2ei8_v(rs1,vs2);}
+:vloxseg2ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg2ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg3ei8_v;
-:vloxseg3ei8.v  vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg3ei8_v(rs1);}
-:vloxseg3ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg3ei8_v(rs1,v0);}
+:vloxseg3ei8.v  vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg3ei8_v(rs1,vs2);}
+:vloxseg3ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg3ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg4ei8_v;
-:vloxseg4ei8.v  vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg4ei8_v(rs1);}
-:vloxseg4ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg4ei8_v(rs1,v0);}
+:vloxseg4ei8.v  vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg4ei8_v(rs1,vs2);}
+:vloxseg4ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg4ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg5ei8_v;
-:vloxseg5ei8.v  vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg5ei8_v(rs1);}
-:vloxseg5ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg5ei8_v(rs1,v0);}
+:vloxseg5ei8.v  vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg5ei8_v(rs1,vs2);}
+:vloxseg5ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg5ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg6ei8_v;
-:vloxseg6ei8.v  vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg6ei8_v(rs1);}
-:vloxseg6ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg6ei8_v(rs1,v0);}
+:vloxseg6ei8.v  vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg6ei8_v(rs1,vs2);}
+:vloxseg6ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg6ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg7ei8_v;
-:vloxseg7ei8.v  vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg7ei8_v(rs1);}
-:vloxseg7ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg7ei8_v(rs1,v0);}
+:vloxseg7ei8.v  vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg7ei8_v(rs1,vs2);}
+:vloxseg7ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg7ei8_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg8ei8_v;
-:vloxseg8ei8.v  vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg8ei8_v(rs1);}
-:vloxseg8ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg8ei8_v(rs1,v0);}
+:vloxseg8ei8.v  vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg8ei8_v(rs1,vs2);}
+:vloxseg8ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vloxseg8ei8_v(rs1,vs2,v0);}
 
 # vloxei16.v Vector indexed-ordered load instructions
 
 define pcodeop vloxei16_v;
-:vloxei16.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxei16_v(rs1);}
-:vloxei16.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxei16_v(rs1,v0);}
+:vloxei16.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxei16_v(rs1,vs2);}
+:vloxei16.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg2ei16_v;
-:vloxseg2ei16.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg2ei16_v(rs1);}
-:vloxseg2ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg2ei16_v(rs1,v0);}
+:vloxseg2ei16.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg2ei16_v(rs1,vs2);}
+:vloxseg2ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg2ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg3ei16_v;
-:vloxseg3ei16.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg3ei16_v(rs1);}
-:vloxseg3ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg3ei16_v(rs1,v0);}
+:vloxseg3ei16.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg3ei16_v(rs1,vs2);}
+:vloxseg3ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg3ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg4ei16_v;
-:vloxseg4ei16.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg4ei16_v(rs1);}
-:vloxseg4ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg4ei16_v(rs1,v0);}
+:vloxseg4ei16.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg4ei16_v(rs1,vs2);}
+:vloxseg4ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg4ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg5ei16_v;
-:vloxseg5ei16.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg5ei16_v(rs1);}
-:vloxseg5ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg5ei16_v(rs1,v0);}
+:vloxseg5ei16.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg5ei16_v(rs1,vs2);}
+:vloxseg5ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg5ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg6ei16_v;
-:vloxseg6ei16.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg6ei16_v(rs1);}
-:vloxseg6ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg6ei16_v(rs1,v0);}
+:vloxseg6ei16.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg6ei16_v(rs1,vs2);}
+:vloxseg6ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg6ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg7ei16_v;
-:vloxseg7ei16.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg7ei16_v(rs1);}
-:vloxseg7ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg7ei16_v(rs1,v0);}
+:vloxseg7ei16.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg7ei16_v(rs1,vs2);}
+:vloxseg7ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg7ei16_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg8ei16_v;
-:vloxseg8ei16.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg8ei16_v(rs1);}
-:vloxseg8ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg8ei16_v(rs1,v0);}
+:vloxseg8ei16.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg8ei16_v(rs1,vs2);}
+:vloxseg8ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vloxseg8ei16_v(rs1,vs2,v0);}
 
 # vloxei32.v Vector indexed-ordered load instructions
 
 define pcodeop vloxei32_v;
-:vloxei32.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxei32_v(rs1);}
-:vloxei32.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxei32_v(rs1,v0);}
+:vloxei32.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxei32_v(rs1,vs2);}
+:vloxei32.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg2ei32_v;
-:vloxseg2ei32.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg2ei32_v(rs1);}
-:vloxseg2ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg2ei32_v(rs1,v0);}
+:vloxseg2ei32.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg2ei32_v(rs1,vs2);}
+:vloxseg2ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg2ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg3ei32_v;
-:vloxseg3ei32.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg3ei32_v(rs1);}
-:vloxseg3ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg3ei32_v(rs1,v0);}
+:vloxseg3ei32.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg3ei32_v(rs1,vs2);}
+:vloxseg3ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg3ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg4ei32_v;
-:vloxseg4ei32.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg4ei32_v(rs1);}
-:vloxseg4ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg4ei32_v(rs1,v0);}
+:vloxseg4ei32.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg4ei32_v(rs1,vs2);}
+:vloxseg4ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg4ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg5ei32_v;
-:vloxseg5ei32.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg5ei32_v(rs1);}
-:vloxseg5ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg5ei32_v(rs1,v0);}
+:vloxseg5ei32.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg5ei32_v(rs1,vs2);}
+:vloxseg5ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg5ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg6ei32_v;
-:vloxseg6ei32.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg6ei32_v(rs1);}
-:vloxseg6ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg6ei32_v(rs1,v0);}
+:vloxseg6ei32.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg6ei32_v(rs1,vs2);}
+:vloxseg6ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg6ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg7ei32_v;
-:vloxseg7ei32.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg7ei32_v(rs1);}
-:vloxseg7ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg7ei32_v(rs1,v0);}
+:vloxseg7ei32.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg7ei32_v(rs1,vs2);}
+:vloxseg7ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg7ei32_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg8ei32_v;
-:vloxseg8ei32.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg8ei32_v(rs1);}
-:vloxseg8ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg8ei32_v(rs1,v0);}
+:vloxseg8ei32.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg8ei32_v(rs1,vs2);}
+:vloxseg8ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vloxseg8ei32_v(rs1,vs2,v0);}
 
 # vloxei64.v Vector indexed-ordered load instructions
 
 define pcodeop vloxei64_v;
-:vloxei64.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxei64_v(rs1);}
-:vloxei64.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxei64_v(rs1,v0);}
+:vloxei64.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxei64_v(rs1,vs2);}
+:vloxei64.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg2ei64_v;
-:vloxseg2ei64.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg2ei64_v(rs1);}
-:vloxseg2ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg2ei64_v(rs1,v0);}
+:vloxseg2ei64.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg2ei64_v(rs1,vs2);}
+:vloxseg2ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg2ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg3ei64_v;
-:vloxseg3ei64.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg3ei64_v(rs1);}
-:vloxseg3ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg3ei64_v(rs1,v0);}
+:vloxseg3ei64.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg3ei64_v(rs1,vs2);}
+:vloxseg3ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg3ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg4ei64_v;
-:vloxseg4ei64.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg4ei64_v(rs1);}
-:vloxseg4ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg4ei64_v(rs1,v0);}
+:vloxseg4ei64.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg4ei64_v(rs1,vs2);}
+:vloxseg4ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg4ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg5ei64_v;
-:vloxseg5ei64.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg5ei64_v(rs1);}
-:vloxseg5ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg5ei64_v(rs1,v0);}
+:vloxseg5ei64.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg5ei64_v(rs1,vs2);}
+:vloxseg5ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg5ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg6ei64_v;
-:vloxseg6ei64.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg6ei64_v(rs1);}
-:vloxseg6ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg6ei64_v(rs1,v0);}
+:vloxseg6ei64.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg6ei64_v(rs1,vs2);}
+:vloxseg6ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg6ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg7ei64_v;
-:vloxseg7ei64.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg7ei64_v(rs1);}
-:vloxseg7ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg7ei64_v(rs1,v0);}
+:vloxseg7ei64.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg7ei64_v(rs1,vs2);}
+:vloxseg7ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg7ei64_v(rs1,vs2,v0);}
 
 define pcodeop vloxseg8ei64_v;
-:vloxseg8ei64.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg8ei64_v(rs1);}
-:vloxseg8ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg8ei64_v(rs1,v0);}
+:vloxseg8ei64.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg8ei64_v(rs1,vs2);}
+:vloxseg8ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x3 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vloxseg8ei64_v(rs1,vs2,v0);}
 
 # vluxei8.v Vector indexed-ordered load instructions
 
 define pcodeop vluxei8_v;
-:vluxei8.v      vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxei8_v(rs1);}
+:vluxei8.v      vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxei8_v(rs1,vs2);}
 :vluxei8.v      vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxei8_v(rs1,v0);}
 
 define pcodeop vluxseg2ei8_v;
-:vluxseg2ei8.v  vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg2ei8_v(rs1);}
-:vluxseg2ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg2ei8_v(rs1,v0);}
+:vluxseg2ei8.v  vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg2ei8_v(rs1,vs2);}
+:vluxseg2ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg2ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg3ei8_v;
-:vluxseg3ei8.v  vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg3ei8_v(rs1);}
-:vluxseg3ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg3ei8_v(rs1,v0);}
+:vluxseg3ei8.v  vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg3ei8_v(rs1,vs2);}
+:vluxseg3ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg3ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg4ei8_v;
-:vluxseg4ei8.v  vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg4ei8_v(rs1);}
-:vluxseg4ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg4ei8_v(rs1,v0);}
+:vluxseg4ei8.v  vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg4ei8_v(rs1,vs2);}
+:vluxseg4ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg4ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg5ei8_v;
-:vluxseg5ei8.v  vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg5ei8_v(rs1);}
-:vluxseg5ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg5ei8_v(rs1,v0);}
+:vluxseg5ei8.v  vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg5ei8_v(rs1,vs2);}
+:vluxseg5ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg5ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg6ei8_v;
-:vluxseg6ei8.v  vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg6ei8_v(rs1);}
-:vluxseg6ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg6ei8_v(rs1,v0);}
+:vluxseg6ei8.v  vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg6ei8_v(rs1,vs2);}
+:vluxseg6ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg6ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg7ei8_v;
-:vluxseg7ei8.v  vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg7ei8_v(rs1);}
-:vluxseg7ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg7ei8_v(rs1,v0);}
+:vluxseg7ei8.v  vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg7ei8_v(rs1,vs2);}
+:vluxseg7ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg7ei8_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg8ei8_v;
-:vluxseg8ei8.v  vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg8ei8_v(rs1);}
-:vluxseg8ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg8ei8_v(rs1,v0);}
+:vluxseg8ei8.v  vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg8ei8_v(rs1,vs2);}
+:vluxseg8ei8.v  vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vluxseg8ei8_v(rs1,vs2,v0);}
 
 # vluxei16.v Vector indexed-ordered load instructions
 
 define pcodeop vluxei16_v;
-:vluxei16.v  vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxei16_v(rs1);}
-:vluxei16.v  vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxei16_v(rs1,v0);}
+:vluxei16.v  vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxei16_v(rs1,vs2);}
+:vluxei16.v  vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg2ei16_v;
-:vluxseg2ei16.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg2ei16_v(rs1);}
-:vluxseg2ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg2ei16_v(rs1,v0);}
+:vluxseg2ei16.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg2ei16_v(rs1,vs2);}
+:vluxseg2ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg2ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg3ei16_v;
-:vluxseg3ei16.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg3ei16_v(rs1);}
-:vluxseg3ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg3ei16_v(rs1,v0);}
+:vluxseg3ei16.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg3ei16_v(rs1,vs2);}
+:vluxseg3ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg3ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg4ei16_v;
-:vluxseg4ei16.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg4ei16_v(rs1);}
-:vluxseg4ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg4ei16_v(rs1,v0);}
+:vluxseg4ei16.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg4ei16_v(rs1,vs2);}
+:vluxseg4ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg4ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg5ei16_v;
-:vluxseg5ei16.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg5ei16_v(rs1);}
-:vluxseg5ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg5ei16_v(rs1,v0);}
+:vluxseg5ei16.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg5ei16_v(rs1,vs2);}
+:vluxseg5ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg5ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg6ei16_v;
-:vluxseg6ei16.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg6ei16_v(rs1);}
-:vluxseg6ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg6ei16_v(rs1,v0);}
+:vluxseg6ei16.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg6ei16_v(rs1,vs2);}
+:vluxseg6ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg6ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg7ei16_v;
-:vluxseg7ei16.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg7ei16_v(rs1);}
-:vluxseg7ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg7ei16_v(rs1,v0);}
+:vluxseg7ei16.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg7ei16_v(rs1,vs2);}
+:vluxseg7ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg7ei16_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg8ei16_v;
-:vluxseg8ei16.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg8ei16_v(rs1);}
-:vluxseg8ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg8ei16_v(rs1,v0);}
+:vluxseg8ei16.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg8ei16_v(rs1,vs2);}
+:vluxseg8ei16.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vluxseg8ei16_v(rs1,vs2,v0);}
 
 # vluxei32.v Vector indexed-ordered load instructions
 
 define pcodeop vluxei32_v;
-:vluxei32.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxei32_v(rs1);}
-:vluxei32.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxei32_v(rs1,v0);}
+:vluxei32.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxei32_v(rs1,vs2);}
+:vluxei32.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg2ei32_v;
-:vluxseg2ei32.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg2ei32_v(rs1);}
-:vluxseg2ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg2ei32_v(rs1,v0);}
+:vluxseg2ei32.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg2ei32_v(rs1,vs2);}
+:vluxseg2ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg2ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg3ei32_v;
-:vluxseg3ei32.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg3ei32_v(rs1);}
-:vluxseg3ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg3ei32_v(rs1,v0);}
+:vluxseg3ei32.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg3ei32_v(rs1,vs2);}
+:vluxseg3ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg3ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg4ei32_v;
-:vluxseg4ei32.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg4ei32_v(rs1);}
-:vluxseg4ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg4ei32_v(rs1,v0);}
+:vluxseg4ei32.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg4ei32_v(rs1,vs2);}
+:vluxseg4ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg4ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg5ei32_v;
-:vluxseg5ei32.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg5ei32_v(rs1);}
-:vluxseg5ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg5ei32_v(rs1,v0);}
+:vluxseg5ei32.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg5ei32_v(rs1,vs2);}
+:vluxseg5ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg5ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg6ei32_v;
-:vluxseg6ei32.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg6ei32_v(rs1);}
-:vluxseg6ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg6ei32_v(rs1,v0);}
+:vluxseg6ei32.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg6ei32_v(rs1,vs2);}
+:vluxseg6ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg6ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg7ei32_v;
-:vluxseg7ei32.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg7ei32_v(rs1);}
-:vluxseg7ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg7ei32_v(rs1,v0);}
+:vluxseg7ei32.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg7ei32_v(rs1,vs2);}
+:vluxseg7ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg7ei32_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg8ei32_v;
-:vluxseg8ei32.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg8ei32_v(rs1);}
-:vluxseg8ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg8ei32_v(rs1,v0);}
+:vluxseg8ei32.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg8ei32_v(rs1,vs2);}
+:vluxseg8ei32.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vluxseg8ei32_v(rs1,vs2,v0);}
 
 # vluxei64.v Vector indexed-ordered load instructions
 
 define pcodeop vluxei64_v;
-:vluxei64.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxei64_v(rs1);}
-:vluxei64.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxei64_v(rs1,v0);}
+:vluxei64.v     vd, (rs1),vs2         is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxei64_v(rs1,vs2);}
+:vluxei64.v     vd, (rs1),vs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg2ei64_v;
-:vluxseg2ei64.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg2ei64_v(rs1);}
-:vluxseg2ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg2ei64_v(rs1,v0);}
+:vluxseg2ei64.v vd, (rs1),vs2         is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg2ei64_v(rs1,vs2);}
+:vluxseg2ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg2ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg3ei64_v;
-:vluxseg3ei64.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg3ei64_v(rs1);}
-:vluxseg3ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg3ei64_v(rs1,v0);}
+:vluxseg3ei64.v vd, (rs1),vs2         is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg3ei64_v(rs1,vs2);}
+:vluxseg3ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg3ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg4ei64_v;
-:vluxseg4ei64.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg4ei64_v(rs1);}
-:vluxseg4ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg4ei64_v(rs1,v0);}
+:vluxseg4ei64.v vd, (rs1),vs2         is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg4ei64_v(rs1,vs2);}
+:vluxseg4ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg4ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg5ei64_v;
-:vluxseg5ei64.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg5ei64_v(rs1);}
-:vluxseg5ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg5ei64_v(rs1,v0);}
+:vluxseg5ei64.v vd, (rs1),vs2         is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg5ei64_v(rs1,vs2);}
+:vluxseg5ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg5ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg6ei64_v;
-:vluxseg6ei64.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg6ei64_v(rs1);}
-:vluxseg6ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg6ei64_v(rs1,v0);}
+:vluxseg6ei64.v vd, (rs1),vs2         is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg6ei64_v(rs1,vs2);}
+:vluxseg6ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg6ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg7ei64_v;
-:vluxseg7ei64.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg7ei64_v(rs1);}
-:vluxseg7ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg7ei64_v(rs1,v0);}
+:vluxseg7ei64.v vd, (rs1),vs2         is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg7ei64_v(rs1,vs2);}
+:vluxseg7ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg7ei64_v(rs1,vs2,v0);}
 
 define pcodeop vluxseg8ei64_v;
-:vluxseg8ei64.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg8ei64_v(rs1);}
-:vluxseg8ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg8ei64_v(rs1,v0);}
+:vluxseg8ei64.v vd, (rs1),vs2         is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=1 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg8ei64_v(rs1,vs2);}
+:vluxseg8ei64.v vd, (rs1),vs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x1 & op2525=0 & vs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vluxseg8ei64_v(rs1,vs2,v0);}
 
 define pcodeop vle8ff_v;
 # vle8ff.v         nf 28=0 27..26=0 vm 24..20=0x10 rs1 14..12=0x0  vd 6..0=0x07
@@ -1957,273 +1957,273 @@ define pcodeop vlseg8e8ff_v;
 define pcodeop vlse1024_v;
 # vlse1024.v      nf 28=1 27..26=2 vm rs2 rs1 14..12=0x7  vd 6..0=0x07
 # vlse1024.v vd, (rs1), rs2, vm  # 1024-bit strided load
-:vlse1024.v      vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse1024_v(rs1);}
-:vlse1024.v      vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse1024_v(rs1,v0);}
+:vlse1024.v      vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse1024_v(rs1,rs2);}
+:vlse1024.v      vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e1024_v;
-:vlsseg2e1024.v  vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e1024_v(rs1);}
-:vlsseg2e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e1024_v(rs1,v0);}
+:vlsseg2e1024.v  vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e1024_v(rs1,rs2);}
+:vlsseg2e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e1024_v;
-:vlsseg3e1024.v  vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e1024_v(rs1);}
-:vlsseg3e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e1024_v(rs1,v0);}
+:vlsseg3e1024.v  vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e1024_v(rs1,rs2);}
+:vlsseg3e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e1024_v;
-:vlsseg4e1024.v  vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e1024_v(rs1);}
-:vlsseg4e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e1024_v(rs1,v0);}
+:vlsseg4e1024.v  vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e1024_v(rs1,rs2);}
+:vlsseg4e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e1024_v;
-:vlsseg5e1024.v  vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e1024_v(rs1);}
-:vlsseg5e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e1024_v(rs1,v0);}
+:vlsseg5e1024.v  vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e1024_v(rs1,rs2);}
+:vlsseg5e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e1024_v;
-:vlsseg6e1024.v  vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e1024_v(rs1);}
-:vlsseg6e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e1024_v(rs1,v0);}
+:vlsseg6e1024.v  vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e1024_v(rs1,rs2);}
+:vlsseg6e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e1024_v;
-:vlsseg7e1024.v  vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e1024_v(rs1);}
-:vlsseg7e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e1024_v(rs1,v0);}
+:vlsseg7e1024.v  vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e1024_v(rs1,rs2);}
+:vlsseg7e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e1024_v;
-:vlsseg8e1024.v  vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e1024_v(rs1);}
-:vlsseg8e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e1024_v(rs1,v0);}
+:vlsseg8e1024.v  vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e1024_v(rs1,rs2);}
+:vlsseg8e1024.v  vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e1024_v(rs1,rs2,v0);}
 
 define pcodeop vlse128_v;
 # vlse128.v       nf 28=1 27..26=2 vm rs2 rs1 14..12=0x0  vd 6..0=0x07
 # vlse128.v  vd, (rs1), rs2, vm  #  128-bit strided load
-:vlse128.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse128_v(rs1);}
-:vlse128.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse128_v(rs1,v0);}
+:vlse128.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse128_v(rs1,rs2);}
+:vlse128.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e128_v;
-:vlsseg2e128.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg2e128_v(rs1);}
-:vlsseg2e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg2e128_v(rs1,v0);}
+:vlsseg2e128.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg2e128_v(rs1,rs2);}
+:vlsseg2e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg2e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e128_v;
-:vlsseg3e128.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg3e128_v(rs1);}
-:vlsseg3e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg3e128_v(rs1,v0);}
+:vlsseg3e128.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg3e128_v(rs1,rs2);}
+:vlsseg3e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg3e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e128_v;
-:vlsseg4e128.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg4e128_v(rs1);}
-:vlsseg4e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg4e128_v(rs1,v0);}
+:vlsseg4e128.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg4e128_v(rs1,rs2);}
+:vlsseg4e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg4e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e128_v;
-:vlsseg5e128.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg5e128_v(rs1);}
-:vlsseg5e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg5e128_v(rs1,v0);}
+:vlsseg5e128.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg5e128_v(rs1,rs2);}
+:vlsseg5e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg5e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e128_v;
-:vlsseg6e128.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg6e128_v(rs1);}
-:vlsseg6e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg6e128_v(rs1,v0);}
+:vlsseg6e128.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg6e128_v(rs1,rs2);}
+:vlsseg6e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg6e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e128_v;
-:vlsseg7e128.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg7e128_v(rs1);}
-:vlsseg7e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg7e128_v(rs1,v0);}
+:vlsseg7e128.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg7e128_v(rs1,rs2);}
+:vlsseg7e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg7e128_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e128_v;
-:vlsseg8e128.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg8e128_v(rs1);}
-:vlsseg8e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg8e128_v(rs1,v0);}
+:vlsseg8e128.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg8e128_v(rs1,rs2);}
+:vlsseg8e128.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlsseg8e128_v(rs1,rs2,v0);}
 
 define pcodeop vlse16_v;
 # vlse16.v        nf 28=0 27..26=2 vm rs2 rs1 14..12=0x5  vd 6..0=0x07
 # vlse16.v    vd, (rs1), rs2, vm  #   16-bit strided load
-:vlse16.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse16_v(rs1);}
-:vlse16.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse16_v(rs1,v0);}
+:vlse16.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse16_v(rs1,rs2);}
+:vlse16.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e16_v;
-:vlsseg2e16.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e16_v(rs1);}
-:vlsseg2e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e16_v(rs1,v0);}
+:vlsseg2e16.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e16_v(rs1,rs2);}
+:vlsseg2e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e16_v;
-:vlsseg3e16.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e16_v(rs1);}
-:vlsseg3e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e16_v(rs1,v0);}
+:vlsseg3e16.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e16_v(rs1,rs2);}
+:vlsseg3e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e16_v;
-:vlsseg4e16.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e16_v(rs1);}
-:vlsseg4e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e16_v(rs1,v0);}
+:vlsseg4e16.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e16_v(rs1,rs2);}
+:vlsseg4e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e16_v;
-:vlsseg5e16.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e16_v(rs1);}
-:vlsseg5e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e16_v(rs1,v0);}
+:vlsseg5e16.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e16_v(rs1,rs2);}
+:vlsseg5e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e16_v;
-:vlsseg6e16.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e16_v(rs1);}
-:vlsseg6e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e16_v(rs1,v0);}
+:vlsseg6e16.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e16_v(rs1,rs2);}
+:vlsseg6e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e16_v;
-:vlsseg7e16.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e16_v(rs1);}
-:vlsseg7e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e16_v(rs1,v0);}
+:vlsseg7e16.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e16_v(rs1,rs2);}
+:vlsseg7e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e16_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e16_v;
-:vlsseg8e16.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e16_v(rs1);}
-:vlsseg8e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e16_v(rs1,v0);}
+:vlsseg8e16.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e16_v(rs1,rs2);}
+:vlsseg8e16.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e16_v(rs1,rs2,v0);}
 
 define pcodeop vlse256_v;
 # vlse256.v       nf 28=1 27..26=2 vm rs2 rs1 14..12=0x5  vd 6..0=0x07
 # vlse256.v  vd, (rs1), rs2, vm  #  256-bit strided load
-:vlse256.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse256_v(rs1);}
-:vlse256.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse256_v(rs1,v0);}
+:vlse256.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse256_v(rs1,rs2);}
+:vlse256.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlse256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e256_v;
-:vlsseg2e256.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e256_v(rs1);}
-:vlsseg2e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e256_v(rs1,v0);}
+:vlsseg2e256.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e256_v(rs1,rs2);}
+:vlsseg2e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg2e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e256_v;
-:vlsseg3e256.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e256_v(rs1);}
-:vlsseg3e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e256_v(rs1,v0);}
+:vlsseg3e256.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e256_v(rs1,rs2);}
+:vlsseg3e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg3e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e256_v;
-:vlsseg4e256.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e256_v(rs1);}
-:vlsseg4e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e256_v(rs1,v0);}
+:vlsseg4e256.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e256_v(rs1,rs2);}
+:vlsseg4e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg4e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e256_v;
-:vlsseg5e256.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e256_v(rs1);}
-:vlsseg5e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e256_v(rs1,v0);}
+:vlsseg5e256.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e256_v(rs1,rs2);}
+:vlsseg5e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg5e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e256_v;
-:vlsseg6e256.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e256_v(rs1);}
-:vlsseg6e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e256_v(rs1,v0);}
+:vlsseg6e256.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e256_v(rs1,rs2);}
+:vlsseg6e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg6e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e256_v;
-:vlsseg7e256.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e256_v(rs1);}
-:vlsseg7e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e256_v(rs1,v0);}
+:vlsseg7e256.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e256_v(rs1,rs2);}
+:vlsseg7e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg7e256_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e256_v;
-:vlsseg8e256.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e256_v(rs1);}
-:vlsseg8e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e256_v(rs1,v0);}
+:vlsseg8e256.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e256_v(rs1,rs2);}
+:vlsseg8e256.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x5 & vd & op0006=0x7 {vd=vlsseg8e256_v(rs1,rs2,v0);}
 
 define pcodeop vlse32_v;
 # vlse32.v        nf 28=0 27..26=2 vm rs2 rs1 14..12=0x6  vd 6..0=0x07
 # vlse32.v   vd, (rs1), rs2, vm  #   32-bit strided load
-:vlse32.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse32_v(rs1);}
-:vlse32.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse32_v(rs1,v0);}
+:vlse32.v     vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse32_v(rs1,rs2);}
+:vlse32.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e32_v;
-:vlsseg2e32.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e32_v(rs1);}
-:vlsseg2e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e32_v(rs1,v0);}
+:vlsseg2e32.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e32_v(rs1,rs2);}
+:vlsseg2e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e32_v;
-:vlsseg3e32.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e32_v(rs1);}
-:vlsseg3e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e32_v(rs1,v0);}
+:vlsseg3e32.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e32_v(rs1,rs2);}
+:vlsseg3e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e32_v;
-:vlsseg4e32.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e32_v(rs1);}
-:vlsseg4e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e32_v(rs1,v0);}
+:vlsseg4e32.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e32_v(rs1,rs2);}
+:vlsseg4e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e32_v;
-:vlsseg5e32.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e32_v(rs1);}
-:vlsseg5e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e32_v(rs1,v0);}
+:vlsseg5e32.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e32_v(rs1,rs2);}
+:vlsseg5e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e32_v;
-:vlsseg6e32.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e32_v(rs1);}
-:vlsseg6e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e32_v(rs1,v0);}
+:vlsseg6e32.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e32_v(rs1,rs2);}
+:vlsseg6e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e32_v;
-:vlsseg7e32.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e32_v(rs1);}
-:vlsseg7e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e32_v(rs1,v0);}
+:vlsseg7e32.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e32_v(rs1,rs2);}
+:vlsseg7e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e32_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e32_v;
-:vlsseg8e32.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e32_v(rs1);}
-:vlsseg8e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e32_v(rs1,v0);}
+:vlsseg8e32.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e32_v(rs1,rs2);}
+:vlsseg8e32.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e32_v(rs1,rs2,v0);}
 
 define pcodeop vlse512_v;
 # vlse512.v       nf 28=1 27..26=2 vm rs2 rs1 14..12=0x6  vd 6..0=0x07
 # vlse512.v  vd, (rs1), rs2, vm  #  512-bit strided load
-:vlse512.v     vd, (rs1), rs2,        is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse512_v(rs1);}
-:vlse512.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse512_v(rs1,v0);}
+:vlse512.v     vd, (rs1), rs2,        is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse512_v(rs1,rs2);}
+:vlse512.v     vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlse512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e512_v;
-:vlsseg2e512.v vd, (rs1), rs2,        is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e512_v(rs1);}
-:vlsseg2e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e512_v(rs1,v0);}
+:vlsseg2e512.v vd, (rs1), rs2,        is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e512_v(rs1,rs2);}
+:vlsseg2e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg2e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e512_v;
-:vlsseg3e512.v vd, (rs1), rs2,        is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e512_v(rs1);}
-:vlsseg3e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e512_v(rs1,v0);}
+:vlsseg3e512.v vd, (rs1), rs2,        is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e512_v(rs1,rs2);}
+:vlsseg3e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg3e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e512_v;
-:vlsseg4e512.v vd, (rs1), rs2,        is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e512_v(rs1);}
-:vlsseg4e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e512_v(rs1,v0);}
+:vlsseg4e512.v vd, (rs1), rs2,        is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e512_v(rs1,rs2);}
+:vlsseg4e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg4e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e512_v;
-:vlsseg5e512.v vd, (rs1), rs2,        is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e512_v(rs1);}
-:vlsseg5e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e512_v(rs1,v0);}
+:vlsseg5e512.v vd, (rs1), rs2,        is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e512_v(rs1,rs2);}
+:vlsseg5e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg5e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e512_v;
-:vlsseg6e512.v vd, (rs1), rs2,        is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e512_v(rs1);}
-:vlsseg6e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e512_v(rs1,v0);}
+:vlsseg6e512.v vd, (rs1), rs2,        is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e512_v(rs1,rs2);}
+:vlsseg6e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg6e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e512_v;
-:vlsseg7e512.v vd, (rs1), rs2,        is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e512_v(rs1);}
-:vlsseg7e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e512_v(rs1,v0);}
+:vlsseg7e512.v vd, (rs1), rs2,        is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e512_v(rs1,rs2);}
+:vlsseg7e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg7e512_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e512_v;
-:vlsseg8e512.v vd, (rs1), rs2,        is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e512_v(rs1);}
-:vlsseg8e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e512_v(rs1,v0);}
+:vlsseg8e512.v vd, (rs1), rs2,        is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e512_v(rs1,rs2);}
+:vlsseg8e512.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x1 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x6 & vd & op0006=0x7 {vd=vlsseg8e512_v(rs1,rs2,v0);}
 
 define pcodeop vlse64_v;
 # vlse64.v        nf 28=0 27..26=2 vm rs2 rs1 14..12=0x7  vd 6..0=0x07
 # vlse64.v   vd, (rs1), rs2, vm  #   64-bit strided load
-:vlse64.v    vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse64_v(rs1);}
-:vlse64.v    vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse64_v(rs1,v0);}
+:vlse64.v    vd, (rs1), rs2         is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse64_v(rs1,rs2);}
+:vlse64.v    vd, (rs1), rs2, "v0.t" is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlse64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg2e64_v;
-:vlsseg2e64.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e64_v(rs1);}
-:vlsseg2e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e64_v(rs1,v0);}
+:vlsseg2e64.v vd, (rs1), rs2         is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e64_v(rs1,rs2);}
+:vlsseg2e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg2e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg3e64_v;
-:vlsseg3e64.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e64_v(rs1);}
-:vlsseg3e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e64_v(rs1,v0);}
+:vlsseg3e64.v vd, (rs1), rs2         is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e64_v(rs1,rs2);}
+:vlsseg3e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg3e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg4e64_v;
-:vlsseg4e64.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e64_v(rs1);}
-:vlsseg4e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e64_v(rs1,v0);}
+:vlsseg4e64.v vd, (rs1), rs2         is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e64_v(rs1,rs2);}
+:vlsseg4e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg4e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg5e64_v;
-:vlsseg5e64.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e64_v(rs1);}
-:vlsseg5e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e64_v(rs1,v0);}
+:vlsseg5e64.v vd, (rs1), rs2         is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e64_v(rs1,rs2);}
+:vlsseg5e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg5e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg6e64_v;
-:vlsseg6e64.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e64_v(rs1);}
-:vlsseg6e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e64_v(rs1,v0);}
+:vlsseg6e64.v vd, (rs1), rs2         is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e64_v(rs1,rs2);}
+:vlsseg6e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg6e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg7e64_v;
-:vlsseg7e64.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e64_v(rs1);}
-:vlsseg7e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e64_v(rs1,v0);}
+:vlsseg7e64.v vd, (rs1), rs2         is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e64_v(rs1,rs2);}
+:vlsseg7e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg7e64_v(rs1,rs2,v0);}
 
 define pcodeop vlsseg8e64_v;
-:vlsseg8e64.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e64_v(rs1);}
-:vlsseg8e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e64_v(rs1,v0);}
+:vlsseg8e64.v vd, (rs1), rs2         is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e64_v(rs1,rs2);}
+:vlsseg8e64.v vd, (rs1), rs2, "v0.t" is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x7 & vd & op0006=0x7 {vd=vlsseg8e64_v(rs1,rs2,v0);}
 
 define pcodeop vlse8_v;
 # vlse8.v         nf 28=0 27..26=2 vm rs2 rs1 14..12=0x0  vd 6..0=0x07
 # vlse8.v    vd, (rs1), rs2, vm  #   8-bit strided load
-:vlse8.v     vd, (rs1), rs2          is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse8_v(rs1);}
-:vlse8.v     vd, (rs1), rs2, "v0.t"  is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse8_v(rs1,v0);}
+:vlse8.v     vd, (rs1), rs2          is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse8_v(rs1,rs2);}
+:vlse8.v     vd, (rs1), rs2, "v0.t"  is nf & op2931=0 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlse8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg2se8_v;
-:vlsseg2e8.v vd, (rs1), rs2          is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg2se8_v(rs1);}
-:vlsseg2e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg2se8_v(rs1,v0);}
+:vlsseg2e8.v vd, (rs1), rs2          is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg2se8_v(rs1,rs2);}
+:vlsseg2e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=1 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg2se8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg3se8_v;
-:vlsseg3e8.v vd, (rs1), rs2          is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg3se8_v(rs1);}
-:vlsseg3e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg3se8_v(rs1,v0);}
+:vlsseg3e8.v vd, (rs1), rs2          is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg3se8_v(rs1,rs2);}
+:vlsseg3e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=2 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg3se8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg4se8_v;
-:vlsseg4e8.v vd, (rs1), rs2          is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg4se8_v(rs1);}
-:vlsseg4e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg4se8_v(rs1,v0);}
+:vlsseg4e8.v vd, (rs1), rs2          is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg4se8_v(rs1,rs2);}
+:vlsseg4e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=3 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg4se8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg5se8_v;
-:vlsseg5e8.v vd, (rs1), rs2          is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg5se8_v(rs1);}
-:vlsseg5e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg5se8_v(rs1,v0);}
+:vlsseg5e8.v vd, (rs1), rs2          is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg5se8_v(rs1,rs2);}
+:vlsseg5e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=4 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg5se8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg6se8_v;
-:vlsseg6e8.v vd, (rs1), rs2          is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg6se8_v(rs1);}
-:vlsseg6e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg6se8_v(rs1,v0);}
+:vlsseg6e8.v vd, (rs1), rs2          is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg6se8_v(rs1,rs2);}
+:vlsseg6e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=5 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg6se8_v(rs1,rs2,v0);}
 
 define pcodeop vlseg7se8_v;
-:vlsseg7e8.v vd, (rs1), rs2          is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg7se8_v(rs1);}
+:vlsseg7e8.v vd, (rs1), rs2          is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg7se8_v(rs1,rs2);}
 :vlsseg7e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=6 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg7se8_v(rs1,v0);}
 
 define pcodeop vlseg8se8_v;
-:vlsseg8e8.v vd, (rs1), rs2          is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg8se8_v(rs1);}
+:vlsseg8e8.v vd, (rs1), rs2          is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=1 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg8se8_v(rs1,rs2);}
 :vlsseg8e8.v vd, (rs1), rs2, "v0.t"  is nf & op2931=7 & op2828=0x0 & op2627=0x2 & op2525=0 & rs2 & rs1 & op1214=0x0 & vd & op0006=0x7 {vd=vlseg8se8_v(rs1,v0);}
 
 define pcodeop vlxei1024_v;
@@ -2676,10 +2676,10 @@ define pcodeop vmulhu_vx;
 :vmulhu.vx  vd, vs2, rs1         is op2631=0x24 & op2525=1 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x57 {vd=vmulhu_vx(vs2,rs1);}
 :vmulhu.vx  vd, vs2, rs1, "v0.t" is op2631=0x24 & op2525=0 & vs2 & rs1 & op1214=0x6 & vd & op0006=0x57 {vd=vmulhu_vx(vs2,rs1,v0);}
 
-define pcodeop vmv_sx;
+define pcodeop vmv_s_x;
 # vmv.s.x        31..26=0x10 25=1 24..20=0 rs1 14..12=0x6 vd 6..0=0x57
 # vmv.s.x vd, rs1  # vd[0] = x[rs1] (vs2=0)
-:vmv.s.x  vd, rs1   is op2631=0x10 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x6 & vd & op0006=0x57  {vmv_sx(vd, rs1);}
+:vmv.s.x  vd, rs1   is op2631=0x10 & op2525=0x1 & op2024=0x0 & rs1 & op1214=0x6 & vd & op0006=0x57  {vmv_s_x(vd, rs1);}
 
 define pcodeop vmv_v_i;
 # vmv.v.i        31..26=0x17 25=1 24..20=0 simm5 14..12=0x3 vd 6..0=0x57
@@ -3885,7 +3885,7 @@ define pcodeop vssrl_vv;
 define pcodeop vssrl_vx;
 # vssrl.vx       31..26=0x2a vm vs2 rs1 14..12=0x4 vd 6..0=0x57
 # vssrl.vx vd, vs2, rs1, vm   # vd[i] = roundoff_unsigned(vs2[i], x[rs1])
-:vssrl.vx  vd, vs2, rs1         is op2631=0x2a & op2525=1 & vs2 & rs1 & op1214=0x4 & vd & op0006=0x57 {vd=vssra_vx(vs2,rs1);}
+:vssrl.vx  vd, vs2, rs1         is op2631=0x2a & op2525=1 & vs2 & rs1 & op1214=0x4 & vd & op0006=0x57 {vd=vssrl_vx(vs2,rs1);}
 :vssrl.vx  vd, vs2, rs1, "v0.t" is op2631=0x2a & op2525=0 & vs2 & rs1 & op1214=0x4 & vd & op0006=0x57 {vd=vssrl_vx(vs2,rs1,v0);}
 
 define pcodeop vssub_vv;
@@ -4527,8 +4527,8 @@ define pcodeop vwaddu_wx;
 define pcodeop vwmacc_vv;
 # vwmacc.vv      31..26=0x3d vm vs2 vs1 14..12=0x2 vd 6..0=0x57
 # vwmacc.vv vd, vs1, vs2, vm    # vd[i] = +(vs1[i] * vs2[i]) + vd[i]
-:vwmacc.vv  vd, vs1, vs2         is op2631=0x3d & op2525=1 & vs2 & vs1 & op1214=0x2 & vd & op0006=0x57 {vd=vwmacc_vv(vs2,vs1);}
-:vwmacc.vv  vd, vs1, vs2, "v0.t" is op2631=0x3d & op2525=0 & vs2 & vs1 & op1214=0x2 & vd & op0006=0x57 {vd=vwmacc_vv(vs2,vs1,v0);}
+:vwmacc.vv  vd, vs1, vs2         is op2631=0x3d & op2525=1 & vs2 & vs1 & op1214=0x2 & vd & op0006=0x57 {vd=vwmacc_vv(vs1,vs2);}
+:vwmacc.vv  vd, vs1, vs2, "v0.t" is op2631=0x3d & op2525=0 & vs2 & vs1 & op1214=0x2 & vd & op0006=0x57 {vd=vwmacc_vv(vs1,vs2,v0);}
 
 define pcodeop vwmacc_vx;
 # vwmacc.vx      31..26=0x3d vm vs2 rs1 14..12=0x6 vd 6..0=0x57
