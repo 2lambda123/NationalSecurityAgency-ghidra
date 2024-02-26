@@ -13,25 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package docking.action;
+package ghidra.trace.database.target;
 
-import javax.swing.KeyStroke;
+import ghidra.trace.model.Lifespan;
 
-import docking.*;
+interface TraceObjectValueStorage {
+	DBTraceObjectManager getManager();
 
-class ReservedKeyBindingAction extends DockingKeyBindingAction {
+	DBTraceObjectValue getWrapper();
 
-	ReservedKeyBindingAction(Tool tool, DockingActionIf action, KeyStroke keyStroke) {
-		super(tool, action, keyStroke);
-	}
+	DBTraceObject getParent();
 
-	@Override
-	public boolean isReservedKeybindingPrecedence() {
-		return true;
-	}
+	String getEntryKey();
 
-	@Override
-	public KeyBindingPrecedence getKeyBindingPrecedence() {
-		return KeyBindingPrecedence.ReservedActionsLevel;
-	}
+	/**
+	 * Just set the lifespan, no notifications
+	 * 
+	 * <p>
+	 * The wrapper will notify the parent and child, if necessary.
+	 * 
+	 * @param lifespan the new lifespan
+	 */
+	void doSetLifespan(Lifespan lifespan);
+
+	Lifespan getLifespan();
+
+	DBTraceObject getChildOrNull();
+
+	Object getValue();
+
+	boolean isDeleted();
+
+	void doDelete();
 }
