@@ -52,6 +52,7 @@ data/languages/riscv.zknh.sinc||GHIDRA||||END|
 data/languages/riscv.zksed.sinc||GHIDRA||||END|
 data/languages/riscv.zksh.sinc||GHIDRA||||END|
 data/languages/riscv.zvbb.sinc||GHIDRA||||END|
+data/languages/riscv.zvbc.sinc||GHIDRA||||END|
 data/languages/riscv.zvkng.sinc||GHIDRA||||END|
 data/languages/riscv.zvksg.sinc||GHIDRA||||END|
 data/languages/riscv32-fp.cspec||GHIDRA||||END|

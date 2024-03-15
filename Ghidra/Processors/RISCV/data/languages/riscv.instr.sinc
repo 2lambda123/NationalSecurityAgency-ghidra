@@ -52,6 +52,7 @@
 @include "riscv.zksed.sinc"
 @include "riscv.zksh.sinc"
 @include "riscv.zvbb.sinc"
+@include "riscv.zvbc.sinc"
 @include "riscv.zvkng.sinc"
 @include "riscv.zvksg.sinc"
 @include "riscv.zi.sinc"
