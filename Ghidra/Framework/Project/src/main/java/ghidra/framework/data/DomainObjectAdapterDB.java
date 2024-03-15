@@ -65,7 +65,7 @@ import ghidra.util.task.TaskMonitor;
  * </pre>
  */
 public abstract class DomainObjectAdapterDB extends DomainObjectAdapter
-		implements UndoableDomainObject, ErrorHandler, DBConstants {
+		implements ErrorHandler, DBConstants {
 
 	protected static final int NUM_UNDOS = 50;
 
@@ -554,7 +554,7 @@ public abstract class DomainObjectAdapterDB extends DomainObjectAdapter
 		}
 		try {
 
-			ContentHandler ch = DomainObjectAdapter.getContentHandler(this);
+			ContentHandler<?> ch = DomainObjectAdapter.getContentHandler(this);
 			PackedDatabase.packDatabase(dbh, name, ch.getContentType(), outputFile, monitor);
 
 			// TODO :( output method will cause Redo-able transactions to be cleared
