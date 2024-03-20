@@ -154,7 +154,7 @@ define pcodeop rorw;
 :rorw  rd, rs1, rs2 is op0006=0x3b & op1214=0x5 & op2531=0x30 & rd & rs1 & rs2 {rd=rorw(rs1,rs2);}
 
 define pcodeop rori;
-:rori rd, rs1, imm2024 is op0006=0x13 & op1214=0x5 & op2531=0x30 & imm2024 & rd & rs1 {rd=rori(rs1,imm2024);}
+:rori rd, rs1, imm2026 is op0006=0x13 & op1214=0x5 & op2731=0x0c & imm2026 & rd & rs1 {rd=rori(rs1,imm2026);}
 
 define pcodeop roriw;
 :roriw rd, rs1, imm2024 is op0006=0x1b & op1214=0x5 & op2531=0x30 & imm2024 & rd & rs1 {rd=roriw(rs1,imm2024);}
