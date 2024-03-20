@@ -13,13 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.app.util.bin.format.macho.dyld;
+package ghidra.app.util.pdb.pdbapplicator;
+
+import ghidra.program.model.address.Address;
 
 /**
- * Stores information needed to perform a slide pointer fixup
- * 
- * @param offset The offset of where to perform the fixup (from some base address/index)
- * @param value The fixed up value
- * @param size The size of the fixup in bytes
+ * Interface class for MsSymbolApplier that has deferrable function work.
  */
-public record DyldCacheSlideFixup(long offset, long value, int size) {}
+interface DisassembleableAddressSymbolApplier {
+
+	/**
+	 * Returns the address for disassembly.  Does not increment the iterator
+	 * @return the address
+	 */
+	public Address getAddressForDisassembly();
+
+}
