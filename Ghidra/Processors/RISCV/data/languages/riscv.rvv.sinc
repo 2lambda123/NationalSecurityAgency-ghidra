@@ -3359,136 +3359,465 @@ define pcodeop vsetvl;
 define pcodeop vsetvli;
 define pcodeop vsetvli_e8m1tumu;
 define pcodeop vsetvli_e8m2tumu;
+define pcodeop vsetvli_e8m4tumu;
+define pcodeop vsetvli_e8m8tumu;
+define pcodeop vsetvli_e8mf8tumu;
+define pcodeop vsetvli_e8mf4tumu;
+define pcodeop vsetvli_e8mf2tumu;
+define pcodeop vsetvli_e16m1tumu;
+define pcodeop vsetvli_e16m2tumu;
+define pcodeop vsetvli_e16m4tumu;
+define pcodeop vsetvli_e16m8tumu;
+define pcodeop vsetvli_e16mf8tumu;
+define pcodeop vsetvli_e16mf4tumu;
+define pcodeop vsetvli_e16mf2tumu;
 define pcodeop vsetvli_e32m1tumu;
+define pcodeop vsetvli_e32m2tumu;
 define pcodeop vsetvli_e32m4tumu;
+define pcodeop vsetvli_e32m8tumu;
+define pcodeop vsetvli_e32mf8tumu;
 define pcodeop vsetvli_e32mf4tumu;
+define pcodeop vsetvli_e32mf2tumu;
 define pcodeop vsetvli_e64m1tumu;
-define pcodeop vsetvli_e8m1tama;
+define pcodeop vsetvli_e64m2tumu;
+define pcodeop vsetvli_e64m4tumu;
+define pcodeop vsetvli_e64m8tumu;
+define pcodeop vsetvli_e64mf8tumu;
+define pcodeop vsetvli_e64mf4tumu;
+define pcodeop vsetvli_e64mf2tumu;
+define pcodeop vsetvli_e8m1tamu;
+define pcodeop vsetvli_e8m2tamu;
+define pcodeop vsetvli_e8m4tamu;
+define pcodeop vsetvli_e8m8tamu;
+define pcodeop vsetvli_e8mf8tamu;
+define pcodeop vsetvli_e8mf4tamu;
+define pcodeop vsetvli_e8mf2tamu;
+define pcodeop vsetvli_e16m1tamu;
+define pcodeop vsetvli_e16m2tamu;
 define pcodeop vsetvli_e16m4tamu;
+define pcodeop vsetvli_e16m8tamu;
+define pcodeop vsetvli_e16mf8tamu;
+define pcodeop vsetvli_e16mf4tamu;
+define pcodeop vsetvli_e16mf2tamu;
+define pcodeop vsetvli_e32m1tamu;
+define pcodeop vsetvli_e32m2tamu;
 define pcodeop vsetvli_e32m4tamu;
+define pcodeop vsetvli_e32m8tamu;
+define pcodeop vsetvli_e32mf8tamu;
+define pcodeop vsetvli_e32mf4tamu;
+define pcodeop vsetvli_e32mf2tamu;
 define pcodeop vsetvli_e64m1tamu;
+define pcodeop vsetvli_e64m2tamu;
+define pcodeop vsetvli_e64m4tamu;
+define pcodeop vsetvli_e64m8tamu;
+define pcodeop vsetvli_e64mf8tamu;
+define pcodeop vsetvli_e64mf4tamu;
+define pcodeop vsetvli_e64mf2tamu;
 define pcodeop vsetvli_e8m1tuma;
+define pcodeop vsetvli_e8m2tuma;
+define pcodeop vsetvli_e8m4tuma;
+define pcodeop vsetvli_e8m8tuma;
+define pcodeop vsetvli_e8mf8tuma;
+define pcodeop vsetvli_e8mf4tuma;
+define pcodeop vsetvli_e8mf2tuma;
+define pcodeop vsetvli_e16m1tuma;
+define pcodeop vsetvli_e16m2tuma;
+define pcodeop vsetvli_e16m4tuma;
+define pcodeop vsetvli_e16m8tuma;
+define pcodeop vsetvli_e16mf8tuma;
+define pcodeop vsetvli_e16mf4tuma;
+define pcodeop vsetvli_e16mf2tuma;
 define pcodeop vsetvli_e32m1tuma;
+define pcodeop vsetvli_e32m2tuma;
 define pcodeop vsetvli_e32m4tuma;
-define pcodeop vsetvli_e32mf2tuma;
+define pcodeop vsetvli_e32m8tuma;
 define pcodeop vsetvli_e32mf8tuma;
-define pcodeop vsetvli_e64mf8tuma;
+define pcodeop vsetvli_e32mf4tuma;
+define pcodeop vsetvli_e32mf2tuma;
 define pcodeop vsetvli_e64m1tuma;
+define pcodeop vsetvli_e64m2tuma;
+define pcodeop vsetvli_e64m4tuma;
+define pcodeop vsetvli_e64m8tuma;
+define pcodeop vsetvli_e64mf8tuma;
+define pcodeop vsetvli_e64mf4tuma;
+define pcodeop vsetvli_e64mf2tuma;
+define pcodeop vsetvli_e8m1tama;
 define pcodeop vsetvli_e8m2tama;
+define pcodeop vsetvli_e8m4tama;
 define pcodeop vsetvli_e8m8tama;
 define pcodeop vsetvli_e8mf8tama;
 define pcodeop vsetvli_e8mf4tama;
 define pcodeop vsetvli_e8mf2tama;
 define pcodeop vsetvli_e16m1tama;
 define pcodeop vsetvli_e16m2tama;
+define pcodeop vsetvli_e16m4tama;
+define pcodeop vsetvli_e16m8tama;
+define pcodeop vsetvli_e16mf8tama;
 define pcodeop vsetvli_e16mf4tama;
 define pcodeop vsetvli_e16mf2tama;
 define pcodeop vsetvli_e32m1tama;
 define pcodeop vsetvli_e32m2tama;
 define pcodeop vsetvli_e32m4tama;
+define pcodeop vsetvli_e32m8tama;
+define pcodeop vsetvli_e32mf8tama;
+define pcodeop vsetvli_e32mf4tama;
 define pcodeop vsetvli_e32mf2tama;
 define pcodeop vsetvli_e64m1tama;
 define pcodeop vsetvli_e64m2tama;
+define pcodeop vsetvli_e64m4tama;
+define pcodeop vsetvli_e64m8tama;
+define pcodeop vsetvli_e64mf8tama;
+define pcodeop vsetvli_e64mf4tama;
+define pcodeop vsetvli_e64mf2tama;
+
 
 # vsetvli      31=0 vtypei         rs1 14..12=0x7 rd 6..0=0x57
 # vsetvli rd, rs1, vtypei # rd = new vl, rs1 = AVL, vtypei = new vtype setting
-:vsetvli   rd, rs1, "e8,m1,tu,mu"     is op2030=0x000 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tumu(rs1);}
-:vsetvli   rd, rs1, "e8,m2,tu,mu"     is op2030=0x001 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tumu(rs1);}
-:vsetvli   rd, rs1, "e32,m1,tu,mu"    is op2030=0x010 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tumu(rs1);}
-:vsetvli   rd, rs1, "e32,m4,tu,mu"    is op2030=0x012 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tumu(rs1);}
-:vsetvli   rd, rs1, "e32,mf4,tu,mu"   is op2030=0x016 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tumu(rs1);}
-:vsetvli   rd, rs1, "e64,m1,tu,mu"    is op2030=0x018 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tumu(rs1);}
-:vsetvli   rd, rs1, "e16,m4,ta,mu"    is op2030=0x04a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tamu(rs1);}
-:vsetvli   rd, rs1, "e32,m4,ta,mu"    is op2030=0x052 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tamu(rs1);}
-:vsetvli   rd, rs1, "e64,m1,ta,mu"    is op2030=0x058 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tamu(rs1);}
-:vsetvli   rd, rs1, "e8,m1,tu,ma"     is op2030=0x080 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tuma(rs1);}
-:vsetvli   rd, rs1, "e32,m1,tu,ma"    is op2030=0x090 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tuma(rs1);}
-:vsetvli   rd, rs1, "e32,m4,tu,ma"    is op2030=0x092 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tuma(rs1);}
-:vsetvli   rd, rs1, "e32,mf2,tu,ma"   is op2030=0x097 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tuma(rs1);}
-:vsetvli   rd, rs1, "e64,m1,tu,ma"    is op2030=0x098 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tuma(rs1);}
-:vsetvli   rd, rs1, "e32,mf8,tu,ma"   is op2030=0x09d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf8tuma(rs1);}
-:vsetvli   rd, rs1, "e8,m1,ta,ma"     is op2030=0x0c0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tama(rs1);}
-:vsetvli   rd, rs1, "e8,m2,ta,ma"     is op2030=0x0c1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tama(rs1);}
-:vsetvli   rd, rs1, "e8,m8,ta,ma"     is op2030=0x0c3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tama(rs1);}
-:vsetvli   rd, rs1, "e8,mf8,ta,ma"    is op2030=0x0c5 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tama(rs1);}
-:vsetvli   rd, rs1, "e8,mf4,ta,ma"    is op2030=0x0c6 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tama(rs1);}
-:vsetvli   rd, rs1, "e8,mf2,ta,ma"    is op2030=0x0c7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tama(rs1);}
-:vsetvli   rd, rs1, "e16,m1,ta,ma"    is op2030=0x0c8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tama(rs1);}
-:vsetvli   rd, rs1, "e16,m2,ta,ma"    is op2030=0x0c9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tama(rs1);}
-:vsetvli   rd, rs1, "e16,mf4,ta,ma"   is op2030=0x0ce & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tama(rs1);}
-:vsetvli   rd, rs1, "e16,mf2,ta,ma"   is op2030=0x0cf & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tama(rs1);}
-:vsetvli   rd, rs1, "e32,m1,ta,ma"    is op2030=0x0d0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tama(rs1);}
-:vsetvli   rd, rs1, "e32,m2,ta,ma"    is op2030=0x0d1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m2tama(rs1);}
-:vsetvli   rd, rs1, "e32,m4,ta,ma"    is op2030=0x0d2 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tama(rs1);}
-:vsetvli   rd, rs1, "e32,mf2,ta,ma"   is op2030=0x0d7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tama(rs1);}
-:vsetvli   rd, rs1, "e64,m1,ta,ma"    is op2030=0x0d8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tama(rs1);}
-:vsetvli   rd, rs1, "e64,m2,ta,ma"    is op2030=0x0d9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tama(rs1);}
-:vsetvli   rd, rs1, vtypei            is op3131=0x0 & vtypei & rs1 & op1214=0x7 & rd & op0006=0x57       {rd=vsetvli(rs1,vtypei);}
+
+:vsetvli   rd, rs1, "e8,m1,tu,mu  " is op2030=0x0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tumu(rs1);}
+:vsetvli   rd, rs1, "e8,m2,tu,mu  " is op2030=0x1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tumu(rs1);}
+:vsetvli   rd, rs1, "e8,m4,tu,mu  " is op2030=0x2 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m4tumu(rs1);}
+:vsetvli   rd, rs1, "e8,m8,tu,mu  " is op2030=0x3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tumu(rs1);}
+:vsetvli   rd, rs1, "e8,mf8,tu,mu " is op2030=0x5 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tumu(rs1);}
+:vsetvli   rd, rs1, "e8,mf4,tu,mu " is op2030=0x6 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tumu(rs1);}
+:vsetvli   rd, rs1, "e8,mf2,tu,mu " is op2030=0x7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tumu(rs1);}
+:vsetvli   rd, rs1, "e16,m1,tu,mu " is op2030=0x8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tumu(rs1);}
+:vsetvli   rd, rs1, "e16,m2,tu,mu " is op2030=0x9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tumu(rs1);}
+:vsetvli   rd, rs1, "e16,m4,tu,mu " is op2030=0xa & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tumu(rs1);}
+:vsetvli   rd, rs1, "e16,m8,tu,mu " is op2030=0xb & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m8tumu(rs1);}
+:vsetvli   rd, rs1, "e16,mf8,tu,mu" is op2030=0xd & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf8tumu(rs1);}
+:vsetvli   rd, rs1, "e16,mf4,tu,mu" is op2030=0xe & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tumu(rs1);}
+:vsetvli   rd, rs1, "e16,mf2,tu,mu" is op2030=0xf & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tumu(rs1);}
+:vsetvli   rd, rs1, "e32,m1,tu,mu " is op2030=0x10 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tumu(rs1);}
+:vsetvli   rd, rs1, "e32,m2,tu,mu " is op2030=0x11 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m2tumu(rs1);}
+:vsetvli   rd, rs1, "e32,m4,tu,mu " is op2030=0x12 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tumu(rs1);}
+:vsetvli   rd, rs1, "e32,m8,tu,mu " is op2030=0x13 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m8tumu(rs1);}
+:vsetvli   rd, rs1, "e32,mf8,tu,mu" is op2030=0x15 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf8tumu(rs1);}
+:vsetvli   rd, rs1, "e32,mf4,tu,mu" is op2030=0x16 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tumu(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,tu,mu" is op2030=0x17 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tumu(rs1);}
+:vsetvli   rd, rs1, "e64,m1,tu,mu " is op2030=0x18 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tumu(rs1);}
+:vsetvli   rd, rs1, "e64,m2,tu,mu " is op2030=0x19 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tumu(rs1);}
+:vsetvli   rd, rs1, "e64,m4,tu,mu " is op2030=0x1a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m4tumu(rs1);}
+:vsetvli   rd, rs1, "e64,m8,tu,mu " is op2030=0x1b & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m8tumu(rs1);}
+:vsetvli   rd, rs1, "e64,mf8,tu,mu" is op2030=0x1d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf8tumu(rs1);}
+:vsetvli   rd, rs1, "e64,mf4,tu,mu" is op2030=0x1e & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf4tumu(rs1);}
+:vsetvli   rd, rs1, "e64,mf2,tu,mu" is op2030=0x1f & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf2tumu(rs1);}
+:vsetvli   rd, rs1, "e8,m1,ta,mu  " is op2030=0x40 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tamu(rs1);}
+:vsetvli   rd, rs1, "e8,m2,ta,mu  " is op2030=0x41 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tamu(rs1);}
+:vsetvli   rd, rs1, "e8,m4,ta,mu  " is op2030=0x42 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m4tamu(rs1);}
+:vsetvli   rd, rs1, "e8,m8,ta,mu  " is op2030=0x43 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tamu(rs1);}
+:vsetvli   rd, rs1, "e8,mf8,ta,mu " is op2030=0x45 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tamu(rs1);}
+:vsetvli   rd, rs1, "e8,mf4,ta,mu " is op2030=0x46 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tamu(rs1);}
+:vsetvli   rd, rs1, "e8,mf2,ta,mu " is op2030=0x47 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tamu(rs1);}
+:vsetvli   rd, rs1, "e16,m1,ta,mu " is op2030=0x48 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tamu(rs1);}
+:vsetvli   rd, rs1, "e16,m2,ta,mu " is op2030=0x49 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tamu(rs1);}
+:vsetvli   rd, rs1, "e16,m4,ta,mu " is op2030=0x4a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tamu(rs1);}
+:vsetvli   rd, rs1, "e16,m8,ta,mu " is op2030=0x4b & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m8tamu(rs1);}
+:vsetvli   rd, rs1, "e16,mf8,ta,mu" is op2030=0x4d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf8tamu(rs1);}
+:vsetvli   rd, rs1, "e16,mf4,ta,mu" is op2030=0x4e & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tamu(rs1);}
+:vsetvli   rd, rs1, "e16,mf2,ta,mu" is op2030=0x4f & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m1,ta,mu " is op2030=0x50 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m2,ta,mu " is op2030=0x51 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m2tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m4,ta,mu " is op2030=0x52 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tamu(rs1);}
+:vsetvli   rd, rs1, "e32,m8,ta,mu " is op2030=0x53 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m8tamu(rs1);}
+:vsetvli   rd, rs1, "e32,mf8,ta,mu" is op2030=0x55 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf8tamu(rs1);}
+:vsetvli   rd, rs1, "e32,mf4,ta,mu" is op2030=0x56 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tamu(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,ta,mu" is op2030=0x57 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tamu(rs1);}
+:vsetvli   rd, rs1, "e64,m1,ta,mu " is op2030=0x58 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tamu(rs1);}
+:vsetvli   rd, rs1, "e64,m2,ta,mu " is op2030=0x59 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tamu(rs1);}
+:vsetvli   rd, rs1, "e64,m4,ta,mu " is op2030=0x5a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m4tamu(rs1);}
+:vsetvli   rd, rs1, "e64,m8,ta,mu " is op2030=0x5b & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m8tamu(rs1);}
+:vsetvli   rd, rs1, "e64,mf8,ta,mu" is op2030=0x5d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf8tamu(rs1);}
+:vsetvli   rd, rs1, "e64,mf4,ta,mu" is op2030=0x5e & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf4tamu(rs1);}
+:vsetvli   rd, rs1, "e64,mf2,ta,mu" is op2030=0x5f & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf2tamu(rs1);}
+:vsetvli   rd, rs1, "e8,m1,tu,ma  " is op2030=0x80 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tuma(rs1);}
+:vsetvli   rd, rs1, "e8,m2,tu,ma  " is op2030=0x81 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tuma(rs1);}
+:vsetvli   rd, rs1, "e8,m4,tu,ma  " is op2030=0x82 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m4tuma(rs1);}
+:vsetvli   rd, rs1, "e8,m8,tu,ma  " is op2030=0x83 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tuma(rs1);}
+:vsetvli   rd, rs1, "e8,mf8,tu,ma " is op2030=0x85 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tuma(rs1);}
+:vsetvli   rd, rs1, "e8,mf4,tu,ma " is op2030=0x86 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tuma(rs1);}
+:vsetvli   rd, rs1, "e8,mf2,tu,ma " is op2030=0x87 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tuma(rs1);}
+:vsetvli   rd, rs1, "e16,m1,tu,ma " is op2030=0x88 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tuma(rs1);}
+:vsetvli   rd, rs1, "e16,m2,tu,ma " is op2030=0x89 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tuma(rs1);}
+:vsetvli   rd, rs1, "e16,m4,tu,ma " is op2030=0x8a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tuma(rs1);}
+:vsetvli   rd, rs1, "e16,m8,tu,ma " is op2030=0x8b & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m8tuma(rs1);}
+:vsetvli   rd, rs1, "e16,mf8,tu,ma" is op2030=0x8d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf8tuma(rs1);}
+:vsetvli   rd, rs1, "e16,mf4,tu,ma" is op2030=0x8e & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tuma(rs1);}
+:vsetvli   rd, rs1, "e16,mf2,tu,ma" is op2030=0x8f & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tuma(rs1);}
+:vsetvli   rd, rs1, "e32,m1,tu,ma " is op2030=0x90 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tuma(rs1);}
+:vsetvli   rd, rs1, "e32,m2,tu,ma " is op2030=0x91 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m2tuma(rs1);}
+:vsetvli   rd, rs1, "e32,m4,tu,ma " is op2030=0x92 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tuma(rs1);}
+:vsetvli   rd, rs1, "e32,m8,tu,ma " is op2030=0x93 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m8tuma(rs1);}
+:vsetvli   rd, rs1, "e32,mf8,tu,ma" is op2030=0x95 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf8tuma(rs1);}
+:vsetvli   rd, rs1, "e32,mf4,tu,ma" is op2030=0x96 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tuma(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,tu,ma" is op2030=0x97 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tuma(rs1);}
+:vsetvli   rd, rs1, "e64,m1,tu,ma " is op2030=0x98 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tuma(rs1);}
+:vsetvli   rd, rs1, "e64,m2,tu,ma " is op2030=0x99 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tuma(rs1);}
+:vsetvli   rd, rs1, "e64,m4,tu,ma " is op2030=0x9a & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m4tuma(rs1);}
+:vsetvli   rd, rs1, "e64,m8,tu,ma " is op2030=0x9b & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m8tuma(rs1);}
+:vsetvli   rd, rs1, "e64,mf8,tu,ma" is op2030=0x9d & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf8tuma(rs1);}
+:vsetvli   rd, rs1, "e64,mf4,tu,ma" is op2030=0x9e & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf4tuma(rs1);}
+:vsetvli   rd, rs1, "e64,mf2,tu,ma" is op2030=0x9f & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf2tuma(rs1);}
+:vsetvli   rd, rs1, "e8,m1,ta,ma  " is op2030=0xc0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m1tama(rs1);}
+:vsetvli   rd, rs1, "e8,m2,ta,ma  " is op2030=0xc1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m2tama(rs1);}
+:vsetvli   rd, rs1, "e8,m4,ta,ma  " is op2030=0xc2 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m4tama(rs1);}
+:vsetvli   rd, rs1, "e8,m8,ta,ma  " is op2030=0xc3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8m8tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf8,ta,ma " is op2030=0xc5 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf8tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf4,ta,ma " is op2030=0xc6 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf4tama(rs1);}
+:vsetvli   rd, rs1, "e8,mf2,ta,ma " is op2030=0xc7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e8mf2tama(rs1);}
+:vsetvli   rd, rs1, "e16,m1,ta,ma " is op2030=0xc8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m1tama(rs1);}
+:vsetvli   rd, rs1, "e16,m2,ta,ma " is op2030=0xc9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m2tama(rs1);}
+:vsetvli   rd, rs1, "e16,m4,ta,ma " is op2030=0xca & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m4tama(rs1);}
+:vsetvli   rd, rs1, "e16,m8,ta,ma " is op2030=0xcb & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16m8tama(rs1);}
+:vsetvli   rd, rs1, "e16,mf8,ta,ma" is op2030=0xcd & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf8tama(rs1);}
+:vsetvli   rd, rs1, "e16,mf4,ta,ma" is op2030=0xce & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf4tama(rs1);}
+:vsetvli   rd, rs1, "e16,mf2,ta,ma" is op2030=0xcf & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e16mf2tama(rs1);}
+:vsetvli   rd, rs1, "e32,m1,ta,ma " is op2030=0xd0 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m1tama(rs1);}
+:vsetvli   rd, rs1, "e32,m2,ta,ma " is op2030=0xd1 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m2tama(rs1);}
+:vsetvli   rd, rs1, "e32,m4,ta,ma " is op2030=0xd2 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m4tama(rs1);}
+:vsetvli   rd, rs1, "e32,m8,ta,ma " is op2030=0xd3 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32m8tama(rs1);}
+:vsetvli   rd, rs1, "e32,mf8,ta,ma" is op2030=0xd5 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf8tama(rs1);}
+:vsetvli   rd, rs1, "e32,mf4,ta,ma" is op2030=0xd6 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf4tama(rs1);}
+:vsetvli   rd, rs1, "e32,mf2,ta,ma" is op2030=0xd7 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e32mf2tama(rs1);}
+:vsetvli   rd, rs1, "e64,m1,ta,ma " is op2030=0xd8 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m1tama(rs1);}
+:vsetvli   rd, rs1, "e64,m2,ta,ma " is op2030=0xd9 & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m2tama(rs1);}
+:vsetvli   rd, rs1, "e64,m4,ta,ma " is op2030=0xda & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m4tama(rs1);}
+:vsetvli   rd, rs1, "e64,m8,ta,ma " is op2030=0xdb & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64m8tama(rs1);}
+:vsetvli   rd, rs1, "e64,mf8,ta,ma" is op2030=0xdd & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf8tama(rs1);}
+:vsetvli   rd, rs1, "e64,mf4,ta,ma" is op2030=0xde & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf4tama(rs1);}
+:vsetvli   rd, rs1, "e64,mf2,ta,ma" is op2030=0xdf & op3131=0x0 & rs1 & op1214=0x7 & rd & op0006=0x57 {rd=vsetvli_e64mf2tama(rs1);}
+
+:vsetvli   rd, rs1, vtypei        is op3131=0x0 & vtypei & rs1 & op1214=0x7 & rd & op0006=0x57      {rd=vsetvli(rs1,vtypei);}
 
 define pcodeop vsetivli;
 define pcodeop vsetivli_e8m1tumu;
 define pcodeop vsetivli_e8m2tumu;
+define pcodeop vsetivli_e8m4tumu;
+define pcodeop vsetivli_e8m8tumu;
+define pcodeop vsetivli_e8mf8tumu;
+define pcodeop vsetivli_e8mf4tumu;
+define pcodeop vsetivli_e8mf2tumu;
+define pcodeop vsetivli_e16m1tumu;
+define pcodeop vsetivli_e16m2tumu;
+define pcodeop vsetivli_e16m4tumu;
+define pcodeop vsetivli_e16m8tumu;
+define pcodeop vsetivli_e16mf8tumu;
+define pcodeop vsetivli_e16mf4tumu;
+define pcodeop vsetivli_e16mf2tumu;
 define pcodeop vsetivli_e32m1tumu;
+define pcodeop vsetivli_e32m2tumu;
+define pcodeop vsetivli_e32m4tumu;
+define pcodeop vsetivli_e32m8tumu;
+define pcodeop vsetivli_e32mf8tumu;
 define pcodeop vsetivli_e32mf4tumu;
+define pcodeop vsetivli_e32mf2tumu;
 define pcodeop vsetivli_e64m1tumu;
-define pcodeop vsetivli_e8m1tuma;
-define pcodeop vsetivli_e64m1tuma;
-define pcodeop vsetivli_e64mf8tuma;
-define pcodeop vsetivli_e32m1tuma;
+define pcodeop vsetivli_e64m2tumu;
+define pcodeop vsetivli_e64m4tumu;
+define pcodeop vsetivli_e64m8tumu;
+define pcodeop vsetivli_e64mf8tumu;
+define pcodeop vsetivli_e64mf4tumu;
+define pcodeop vsetivli_e64mf2tumu;
 define pcodeop vsetivli_e8m1tamu;
+define pcodeop vsetivli_e8m2tamu;
+define pcodeop vsetivli_e8m4tamu;
+define pcodeop vsetivli_e8m8tamu;
+define pcodeop vsetivli_e8mf8tamu;
+define pcodeop vsetivli_e8mf4tamu;
+define pcodeop vsetivli_e8mf2tamu;
+define pcodeop vsetivli_e16m1tamu;
+define pcodeop vsetivli_e16m2tamu;
 define pcodeop vsetivli_e16m4tamu;
+define pcodeop vsetivli_e16m8tamu;
+define pcodeop vsetivli_e16mf8tamu;
+define pcodeop vsetivli_e16mf4tamu;
+define pcodeop vsetivli_e16mf2tamu;
 define pcodeop vsetivli_e32m1tamu;
+define pcodeop vsetivli_e32m2tamu;
+define pcodeop vsetivli_e32m4tamu;
+define pcodeop vsetivli_e32m8tamu;
+define pcodeop vsetivli_e32mf8tamu;
+define pcodeop vsetivli_e32mf4tamu;
+define pcodeop vsetivli_e32mf2tamu;
 define pcodeop vsetivli_e64m1tamu;
+define pcodeop vsetivli_e64m2tamu;
+define pcodeop vsetivli_e64m4tamu;
+define pcodeop vsetivli_e64m8tamu;
+define pcodeop vsetivli_e64mf8tamu;
+define pcodeop vsetivli_e64mf4tamu;
+define pcodeop vsetivli_e64mf2tamu;
+define pcodeop vsetivli_e8m1tuma;
+define pcodeop vsetivli_e8m2tuma;
+define pcodeop vsetivli_e8m4tuma;
+define pcodeop vsetivli_e8m8tuma;
+define pcodeop vsetivli_e8mf8tuma;
+define pcodeop vsetivli_e8mf4tuma;
+define pcodeop vsetivli_e8mf2tuma;
+define pcodeop vsetivli_e16m1tuma;
+define pcodeop vsetivli_e16m2tuma;
+define pcodeop vsetivli_e16m4tuma;
+define pcodeop vsetivli_e16m8tuma;
+define pcodeop vsetivli_e16mf8tuma;
+define pcodeop vsetivli_e16mf4tuma;
+define pcodeop vsetivli_e16mf2tuma;
+define pcodeop vsetivli_e32m1tuma;
+define pcodeop vsetivli_e32m2tuma;
+define pcodeop vsetivli_e32m4tuma;
+define pcodeop vsetivli_e32m8tuma;
+define pcodeop vsetivli_e32mf8tuma;
+define pcodeop vsetivli_e32mf4tuma;
+define pcodeop vsetivli_e32mf2tuma;
+define pcodeop vsetivli_e64m1tuma;
+define pcodeop vsetivli_e64m2tuma;
+define pcodeop vsetivli_e64m4tuma;
+define pcodeop vsetivli_e64m8tuma;
+define pcodeop vsetivli_e64mf8tuma;
+define pcodeop vsetivli_e64mf4tuma;
+define pcodeop vsetivli_e64mf2tuma;
 define pcodeop vsetivli_e8m1tama;
 define pcodeop vsetivli_e8m2tama;
+define pcodeop vsetivli_e8m4tama;
 define pcodeop vsetivli_e8m8tama;
 define pcodeop vsetivli_e8mf8tama;
 define pcodeop vsetivli_e8mf4tama;
 define pcodeop vsetivli_e8mf2tama;
 define pcodeop vsetivli_e16m1tama;
+define pcodeop vsetivli_e16m2tama;
+define pcodeop vsetivli_e16m4tama;
+define pcodeop vsetivli_e16m8tama;
+define pcodeop vsetivli_e16mf8tama;
 define pcodeop vsetivli_e16mf4tama;
 define pcodeop vsetivli_e16mf2tama;
 define pcodeop vsetivli_e32m1tama;
 define pcodeop vsetivli_e32m2tama;
 define pcodeop vsetivli_e32m4tama;
 define pcodeop vsetivli_e32m8tama;
+define pcodeop vsetivli_e32mf8tama;
+define pcodeop vsetivli_e32mf4tama;
 define pcodeop vsetivli_e32mf2tama;
 define pcodeop vsetivli_e64m1tama;
 define pcodeop vsetivli_e64m2tama;
+define pcodeop vsetivli_e64m4tama;
 define pcodeop vsetivli_e64m8tama;
+define pcodeop vsetivli_e64mf8tama;
+define pcodeop vsetivli_e64mf4tama;
+define pcodeop vsetivli_e64mf2tama;
 
 # vsetivli      31=1 vtypei         rs1 14..12=0x7 rd 6..0=0x57
-:vsetivli  rd, op1519, "e8,m1,tu,mu"    is op3031=0x3 & op2029=0x000 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tumu(op1519:5);}
-:vsetivli  rd, op1519, "e8,m2,tu,mu"    is op3031=0x3 & op2029=0x001 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tumu(op1519:5);}
-:vsetivli  rd, op1519, "e32,m1,tu,mu"   is op3031=0x3 & op2029=0x010 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tumu(op1519:5);}
-:vsetivli  rd, op1519, "e32,mf4,tu,mu"  is op3031=0x3 & op2029=0x016 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tumu(op1519:5);}
-:vsetivli  rd, op1519, "e64,m1,tu,mu"   is op3031=0x3 & op2029=0x018 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tumu(op1519:5);}
-:vsetivli  rd, op1519, "e8,m1,ta,mu"    is op3031=0x3 & op2029=0x040 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tamu(op1519:5);}
-:vsetivli  rd, op1519, "e16,m4,ta,mu"   is op3031=0x3 & op2029=0x04a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tamu(op1519:5);}
-:vsetivli  rd, op1519, "e32,m1,ta,mu"   is op3031=0x3 & op2029=0x050 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tamu(op1519:5);}
-:vsetivli  rd, op1519, "e64,m1,ta,mu"   is op3031=0x3 & op2029=0x058 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tamu(op1519:5);}
-:vsetivli  rd, op1519, "e8,m1,tu,ma"    is op3031=0x3 & op2029=0x080 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tuma(op1519:5);}
-:vsetivli  rd, op1519, "e32,m1,tu,ma"   is op3031=0x3 & op2029=0x090 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tuma(op1519:5);}
-:vsetivli  rd, op1519, "e64,m1,tu,ma"   is op3031=0x3 & op2029=0x098 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tuma(op1519:5);}
-:vsetivli  rd, op1519, "e64,mf8,tu,ma"  is op3031=0x3 & op2029=0x09d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tuma(op1519:5);}
-:vsetivli  rd, op1519, "e8,m1,ta,ma"    is op3031=0x3 & op2029=0x0c0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tama(op1519:5);}
-:vsetivli  rd, op1519, "e8,m2,ta,ma"    is op3031=0x3 & op2029=0x0c1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tama(op1519:5);}
-:vsetivli  rd, op1519, "e8,m8,ta,ma"    is op3031=0x3 & op2029=0x0c3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tama(op1519:5);}
-:vsetivli  rd, op1519, "e8,mf8,ta,ma"   is op3031=0x3 & op2029=0x0c5 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tama(op1519:5);}
-:vsetivli  rd, op1519, "e8,mf4,ta,ma"   is op3031=0x3 & op2029=0x0c6 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tama(op1519:5);}
-:vsetivli  rd, op1519, "e8,mf2,ta,ma"   is op3031=0x3 & op2029=0x0c7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tama(op1519:5);}
-:vsetivli  rd, op1519, "e16,m1,ta,ma"   is op3031=0x3 & op2029=0x0c8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tama(op1519:5);}
-:vsetivli  rd, op1519, "e16,mf4,ta,ma"  is op3031=0x3 & op2029=0x0ce & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tama(op1519:5);}
-:vsetivli  rd, op1519, "e16,mf2,ta,ma"  is op3031=0x3 & op2029=0x0cf & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tama(op1519:5);}
-:vsetivli  rd, op1519, "e32,m1,ta,ma"   is op3031=0x3 & op2029=0x0d0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tama(op1519:5);}
-:vsetivli  rd, op1519, "e32,m2,ta,ma"   is op3031=0x3 & op2029=0x0d1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m2tama(op1519:5);}
-:vsetivli  rd, op1519, "e32,m4,ta,ma"   is op3031=0x3 & op2029=0x0d2 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m4tama(op1519:5);}
-:vsetivli  rd, op1519, "e32,m8,ta,ma"   is op3031=0x3 & op2029=0x0d3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tama(op1519:5);}
-:vsetivli  rd, op1519, "e32,mf2,ta,ma"  is op3031=0x3 & op2029=0x0d7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tama(op1519:5);}
-:vsetivli  rd, op1519, "e64,m1,ta,ma"   is op3031=0x3 & op2029=0x0d8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tama(op1519:5);}
-:vsetivli  rd, op1519, "e64,m2,ta,ma"   is op3031=0x3 & op2029=0x0d9 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m2tama(op1519:5);}
-:vsetivli  rd, op1519, "e64,m8,ta,ma"   is op3031=0x3 & op2029=0x0db & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tama(op1519:5);}
-:vsetivli  rd, op1519, op2029           is op3031=0x3 & op2029 &       op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli(op1519:5,op2029:10);}
+:vsetivli  rd, op1519, "e8,m1,tu,mu  " is op3031=0x3 & op2029=0x0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m2,tu,mu  " is op3031=0x3 & op2029=0x1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m4,tu,mu  " is op3031=0x3 & op2029=0x2 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m8,tu,mu  " is op3031=0x3 & op2029=0x3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf8,tu,mu " is op3031=0x3 & op2029=0x5 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf4,tu,mu " is op3031=0x3 & op2029=0x6 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf2,tu,mu " is op3031=0x3 & op2029=0x7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m1,tu,mu " is op3031=0x3 & op2029=0x8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m2,tu,mu " is op3031=0x3 & op2029=0x9 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m4,tu,mu " is op3031=0x3 & op2029=0xa & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m8,tu,mu " is op3031=0x3 & op2029=0xb & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf8,tu,mu" is op3031=0x3 & op2029=0xd & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf4,tu,mu" is op3031=0x3 & op2029=0xe & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf2,tu,mu" is op3031=0x3 & op2029=0xf & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m1,tu,mu " is op3031=0x3 & op2029=0x10 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m2,tu,mu " is op3031=0x3 & op2029=0x11 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m4,tu,mu " is op3031=0x3 & op2029=0x12 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m8,tu,mu " is op3031=0x3 & op2029=0x13 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf8,tu,mu" is op3031=0x3 & op2029=0x15 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf4,tu,mu" is op3031=0x3 & op2029=0x16 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf2,tu,mu" is op3031=0x3 & op2029=0x17 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,tu,mu " is op3031=0x3 & op2029=0x18 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m2,tu,mu " is op3031=0x3 & op2029=0x19 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m4,tu,mu " is op3031=0x3 & op2029=0x1a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m8,tu,mu " is op3031=0x3 & op2029=0x1b & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf8,tu,mu" is op3031=0x3 & op2029=0x1d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf4,tu,mu" is op3031=0x3 & op2029=0x1e & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf4tumu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf2,tu,mu" is op3031=0x3 & op2029=0x1f & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf2tumu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m1,ta,mu  " is op3031=0x3 & op2029=0x40 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m2,ta,mu  " is op3031=0x3 & op2029=0x41 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m4,ta,mu  " is op3031=0x3 & op2029=0x42 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m8,ta,mu  " is op3031=0x3 & op2029=0x43 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf8,ta,mu " is op3031=0x3 & op2029=0x45 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf4,ta,mu " is op3031=0x3 & op2029=0x46 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf2,ta,mu " is op3031=0x3 & op2029=0x47 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m1,ta,mu " is op3031=0x3 & op2029=0x48 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m2,ta,mu " is op3031=0x3 & op2029=0x49 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m4,ta,mu " is op3031=0x3 & op2029=0x4a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,m8,ta,mu " is op3031=0x3 & op2029=0x4b & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf8,ta,mu" is op3031=0x3 & op2029=0x4d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf4,ta,mu" is op3031=0x3 & op2029=0x4e & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf2,ta,mu" is op3031=0x3 & op2029=0x4f & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m1,ta,mu " is op3031=0x3 & op2029=0x50 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m2,ta,mu " is op3031=0x3 & op2029=0x51 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m4,ta,mu " is op3031=0x3 & op2029=0x52 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,m8,ta,mu " is op3031=0x3 & op2029=0x53 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf8,ta,mu" is op3031=0x3 & op2029=0x55 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf4,ta,mu" is op3031=0x3 & op2029=0x56 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf2,ta,mu" is op3031=0x3 & op2029=0x57 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,ta,mu " is op3031=0x3 & op2029=0x58 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m2,ta,mu " is op3031=0x3 & op2029=0x59 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m4,ta,mu " is op3031=0x3 & op2029=0x5a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,m8,ta,mu " is op3031=0x3 & op2029=0x5b & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf8,ta,mu" is op3031=0x3 & op2029=0x5d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf4,ta,mu" is op3031=0x3 & op2029=0x5e & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf4tamu(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf2,ta,mu" is op3031=0x3 & op2029=0x5f & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf2tamu(op1519:5);}
+:vsetivli  rd, op1519, "e8,m1,tu,ma  " is op3031=0x3 & op2029=0x80 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,m2,tu,ma  " is op3031=0x3 & op2029=0x81 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,m4,tu,ma  " is op3031=0x3 & op2029=0x82 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,m8,tu,ma  " is op3031=0x3 & op2029=0x83 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf8,tu,ma " is op3031=0x3 & op2029=0x85 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf4,tu,ma " is op3031=0x3 & op2029=0x86 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf2,tu,ma " is op3031=0x3 & op2029=0x87 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,m1,tu,ma " is op3031=0x3 & op2029=0x88 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,m2,tu,ma " is op3031=0x3 & op2029=0x89 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,m4,tu,ma " is op3031=0x3 & op2029=0x8a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,m8,tu,ma " is op3031=0x3 & op2029=0x8b & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf8,tu,ma" is op3031=0x3 & op2029=0x8d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf4,tu,ma" is op3031=0x3 & op2029=0x8e & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf2,tu,ma" is op3031=0x3 & op2029=0x8f & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,m1,tu,ma " is op3031=0x3 & op2029=0x90 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,m2,tu,ma " is op3031=0x3 & op2029=0x91 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,m4,tu,ma " is op3031=0x3 & op2029=0x92 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,m8,tu,ma " is op3031=0x3 & op2029=0x93 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf8,tu,ma" is op3031=0x3 & op2029=0x95 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf4,tu,ma" is op3031=0x3 & op2029=0x96 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf2,tu,ma" is op3031=0x3 & op2029=0x97 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,tu,ma " is op3031=0x3 & op2029=0x98 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,m2,tu,ma " is op3031=0x3 & op2029=0x99 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,m4,tu,ma " is op3031=0x3 & op2029=0x9a & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,m8,tu,ma " is op3031=0x3 & op2029=0x9b & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf8,tu,ma" is op3031=0x3 & op2029=0x9d & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf4,tu,ma" is op3031=0x3 & op2029=0x9e & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf4tuma(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf2,tu,ma" is op3031=0x3 & op2029=0x9f & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf2tuma(op1519:5);}
+:vsetivli  rd, op1519, "e8,m1,ta,ma  " is op3031=0x3 & op2029=0xc0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,m2,ta,ma  " is op3031=0x3 & op2029=0xc1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m2tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,m4,ta,ma  " is op3031=0x3 & op2029=0xc2 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m4tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,m8,ta,ma  " is op3031=0x3 & op2029=0xc3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf8,ta,ma " is op3031=0x3 & op2029=0xc5 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf8tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf4,ta,ma " is op3031=0x3 & op2029=0xc6 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e8,mf2,ta,ma " is op3031=0x3 & op2029=0xc7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e8mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,m1,ta,ma " is op3031=0x3 & op2029=0xc8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,m2,ta,ma " is op3031=0x3 & op2029=0xc9 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m2tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,m4,ta,ma " is op3031=0x3 & op2029=0xca & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m4tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,m8,ta,ma " is op3031=0x3 & op2029=0xcb & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf8,ta,ma" is op3031=0x3 & op2029=0xcd & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf8tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf4,ta,ma" is op3031=0x3 & op2029=0xce & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e16,mf2,ta,ma" is op3031=0x3 & op2029=0xcf & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e16mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m1,ta,ma " is op3031=0x3 & op2029=0xd0 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m2,ta,ma " is op3031=0x3 & op2029=0xd1 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m2tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m4,ta,ma " is op3031=0x3 & op2029=0xd2 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m4tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,m8,ta,ma " is op3031=0x3 & op2029=0xd3 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf8,ta,ma" is op3031=0x3 & op2029=0xd5 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf8tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf4,ta,ma" is op3031=0x3 & op2029=0xd6 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e32,mf2,ta,ma" is op3031=0x3 & op2029=0xd7 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e32mf2tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m1,ta,ma " is op3031=0x3 & op2029=0xd8 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m1tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m2,ta,ma " is op3031=0x3 & op2029=0xd9 & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m2tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m4,ta,ma " is op3031=0x3 & op2029=0xda & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m4tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,m8,ta,ma " is op3031=0x3 & op2029=0xdb & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64m8tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf8,ta,ma" is op3031=0x3 & op2029=0xdd & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf8tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf4,ta,ma" is op3031=0x3 & op2029=0xde & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf4tama(op1519:5);}
+:vsetivli  rd, op1519, "e64,mf2,ta,ma" is op3031=0x3 & op2029=0xdf & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli_e64mf2tama(op1519:5);}
+
+:vsetivli  rd, op1519, op2029        is op3031=0x3 & op2029      & op1519 & op1214=0x7 & rd & op0006=0x57 {rd=vsetivli(op1519:5,op2029:10);}
 
 define pcodeop vsext_vf2;
 # vsext.vf2      31..26=0x12 vm vs2 19..15=7 14..12=0x2 vd 6..0=0x57
