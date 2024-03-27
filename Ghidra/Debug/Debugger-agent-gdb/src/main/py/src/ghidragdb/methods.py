@@ -17,10 +17,9 @@ from concurrent.futures import Future, Executor
 from contextlib import contextmanager
 import re
 
+import gdb
 from ghidratrace import sch
 from ghidratrace.client import MethodRegistry, ParamDesc, Address, AddressRange
-
-import gdb
 
 from . import commands, hooks, util
 
@@ -75,7 +74,7 @@ THREADS_PATTERN = extre(INFERIOR_PATTERN, '\.Threads')
 THREAD_PATTERN = extre(THREADS_PATTERN, '\[(?P<tnum>\\d*)\]')
 STACK_PATTERN = extre(THREAD_PATTERN, '\.Stack')
 FRAME_PATTERN = extre(STACK_PATTERN, '\[(?P<level>\\d*)\]')
-REGS_PATTERN = extre(FRAME_PATTERN, '.Registers')
+REGS_PATTERN = extre(FRAME_PATTERN, '\.Registers')
 MEMORY_PATTERN = extre(INFERIOR_PATTERN, '\.Memory')
 MODULES_PATTERN = extre(INFERIOR_PATTERN, '\.Modules')
 MODULE_PATTERN = extre(MODULES_PATTERN, '\[(?P<modname>.*)\]')
@@ -689,8 +688,8 @@ def read_mem(inferior: sch.Schema('Inferior'), range: AddressRange):
             gdb.execute(
                 f'ghidra trace putmem 0x{offset_start:x} {range.length()}')
         except:
-            commands.putmem_state(
-                offset_start, offset_start+range.length() - 1, 'error')
+            gdb.execute(
+                f'ghidra trace putmem-state 0x{offset_start:x} {range.length()} error')
 
 
 @REGISTRY.method

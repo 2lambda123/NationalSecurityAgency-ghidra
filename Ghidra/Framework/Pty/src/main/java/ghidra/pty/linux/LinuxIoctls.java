@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.util.database;
+package ghidra.pty.linux;
 
-import db.DBConstants;
+import ghidra.pty.unix.PosixC.Ioctls;
+import ghidra.pty.unix.UnixPtySessionLeader;
 
-/**
- * An enum, providing a type-safe version of {@link DBConstants}.
- */
-public enum DBOpenMode {
-	CREATE(DBConstants.CREATE),
-	UPDATE(DBConstants.UPDATE),
-	READ_ONLY(DBConstants.READ_ONLY),
-	UPGRADE(DBConstants.UPGRADE);
+public enum LinuxIoctls implements Ioctls {
+	INSTANCE;
 
-	private final int openMode;
-
-	private DBOpenMode(int openMode) {
-		this.openMode = openMode;
+	@Override
+	public Class<? extends UnixPtySessionLeader> leaderClass() {
+		return LinuxPtySessionLeader.class;
 	}
 
-	public int toInteger() {
-		return openMode;
+	@Override
+	public long TIOCSCTTY() {
+		return 0x540eL;
+	}
+
+	@Override
+	public long TIOCSWINSZ() {
+		return 0x5414L;
 	}
 }

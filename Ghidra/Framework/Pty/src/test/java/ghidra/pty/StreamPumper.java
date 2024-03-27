@@ -13,19 +13,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.pty.linux;
+package ghidra.pty;
 
-import com.sun.jna.LastErrorException;
-import com.sun.jna.Native;
+import java.io.*;
 
-public interface Err {
-	PosixC BARE_POSIX = PosixC.BARE;
+public class StreamPumper extends Thread {
+	private final InputStream in;
+	private final OutputStream out;
 
-	static int checkLt0(int result) {
-		if (result < 0) {
-			int errno = Native.getLastError();
-			throw new LastErrorException("[" + errno + "] " + BARE_POSIX.strerror(errno));
+	public StreamPumper(InputStream in, OutputStream out) {
+		setDaemon(true);
+		this.in = in;
+		this.out = out;
+	}
+
+	@Override
+	public void run() {
+		byte[] buf = new byte[1024];
+		try {
+			while (true) {
+				int len = in.read(buf);
+				if (len <= 0) {
+					break;
+				}
+				out.write(buf, 0, len);
+			}
 		}
-		return result;
+		catch (IOException e) {
+		}
 	}
 }

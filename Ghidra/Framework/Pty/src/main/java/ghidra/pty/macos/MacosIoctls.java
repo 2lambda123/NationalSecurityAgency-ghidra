@@ -13,31 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.pty.linux;
+package ghidra.pty.macos;
 
-import java.io.InputStream;
-import java.io.OutputStream;
+import ghidra.pty.unix.PosixC.Ioctls;
+import ghidra.pty.unix.UnixPtySessionLeader;
 
-import ghidra.pty.PtyEndpoint;
+public enum MacosIoctls implements Ioctls {
+	INSTANCE;
 
-public class LinuxPtyEndpoint implements PtyEndpoint {
-	protected final int fd;
-	private final FdOutputStream outputStream;
-	private final FdInputStream inputStream;
-
-	LinuxPtyEndpoint(int fd) {
-		this.fd = fd;
-		this.outputStream = new FdOutputStream(fd);
-		this.inputStream = new FdInputStream(fd);
+	@Override
+	public Class<? extends UnixPtySessionLeader> leaderClass() {
+		return MacosPtySessionLeader.class;
 	}
 
 	@Override
-	public OutputStream getOutputStream() {
-		return outputStream;
+	public long TIOCSCTTY() {
+		return 0x20007461L;
 	}
 
 	@Override
-	public InputStream getInputStream() {
-		return inputStream;
+	public long TIOCSWINSZ() {
+		return 0x80087467L;
 	}
 }

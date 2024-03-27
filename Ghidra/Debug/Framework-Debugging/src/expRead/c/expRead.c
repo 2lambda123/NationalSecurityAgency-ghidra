@@ -13,22 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.pty.linux;
+#include <unistd.h>
 
-import ghidra.pty.PtyParent;
-import ghidra.pty.linux.PosixC.Winsize;
-
-public class LinuxPtyParent extends LinuxPtyEndpoint implements PtyParent {
-	LinuxPtyParent(int fd) {
-		super(fd);
-	}
-
-	@Override
-	public void setWindowSize(short cols, short rows) {
-		Winsize.ByReference ws = new Winsize.ByReference();
-		ws.ws_col = cols;
-		ws.ws_row = rows;
-		ws.write();
-		PosixC.INSTANCE.ioctl(fd, Winsize.TIOCSWINSZ, ws.getPointer());
-	}
+int main(int argc, char** argv) {
+	char c;
+	read(0, &c, sizeof(c));
 }

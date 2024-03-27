@@ -552,7 +552,7 @@ def putmem_state(address, length, state, pages=True):
     inf = gdb.selected_inferior()
     base, addr = STATE.trace.memory_mapper.map(inf, start)
     if base != addr.space:
-        trace.create_overlay_space(base, addr.space)
+        STATE.trace.create_overlay_space(base, addr.space)
     STATE.trace.set_memory_state(addr.extend(end - start), state)
 
 
@@ -1506,7 +1506,7 @@ def ghidra_trace_sync_disable(*, is_mi, **kwargs):
     """
     Cease synchronizing the current inferior with the Ghidra trace.
 
-    This is the opposite of 'ghidra trace sync-disable', except it will not
+    This is the opposite of 'ghidra trace sync-enable', except it will not
     automatically remove hooks.
     """
 
@@ -1524,7 +1524,7 @@ def ghidra_trace_sync_synth_stopped(*, is_mi, **kwargs):
     """
 
     hooks.on_stop(object())  # Pass a fake event
-
+    
 
 @cmd('ghidra util wait-stopped', '-ghidra-util-wait-stopped', gdb.COMMAND_NONE, False)
 def ghidra_util_wait_stopped(timeout='1', *, is_mi, **kwargs):

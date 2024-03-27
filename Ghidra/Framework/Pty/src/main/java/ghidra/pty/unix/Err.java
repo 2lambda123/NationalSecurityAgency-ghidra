@@ -1,6 +1,5 @@
 /* ###
  * IP: GHIDRA
- * REVIEWED: YES
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package db;
+package ghidra.pty.unix;
 
-public interface DBConstants {
-	public int CREATE = 0;
-	public int UPDATE = 1;
-	public int READ_ONLY = 2;
-	public int UPGRADE = 3;
+import com.sun.jna.LastErrorException;
+import com.sun.jna.Native;
 
+public interface Err {
+	PosixC BARE_POSIX = PosixC.BARE;
+
+	static int checkLt0(int result) {
+		if (result < 0) {
+			int errno = Native.getLastError();
+			throw new LastErrorException("[" + errno + "] " + BARE_POSIX.strerror(errno));
+		}
+		return result;
+	}
 }
