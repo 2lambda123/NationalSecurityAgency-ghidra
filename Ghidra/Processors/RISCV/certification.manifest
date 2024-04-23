@@ -46,6 +46,7 @@ data/languages/riscv.xthead.sinc||GHIDRA||||END|
 data/languages/riscv.zcb.sinc||GHIDRA||||END|
 data/languages/riscv.zi.sinc||GHIDRA||||END|
 data/languages/riscv.zbkx.sinc||GHIDRA||||END|
+data/languages/riscv.zfh.sinc||GHIDRA||||END|
 data/languages/riscv.zknd.sinc||GHIDRA||||END|
 data/languages/riscv.zkne.sinc||GHIDRA||||END|
 data/languages/riscv.zknh.sinc||GHIDRA||||END|

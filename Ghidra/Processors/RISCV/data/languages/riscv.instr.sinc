@@ -47,6 +47,7 @@
 @include "riscv.rvv.sinc"
 @include "riscv.zcb.sinc"
 @include "riscv.zknd.sinc"
+@include "riscv.zfh.sinc"
 @include "riscv.zkne.sinc"
 @include "riscv.zknh.sinc"
 @include "riscv.zksed.sinc"
