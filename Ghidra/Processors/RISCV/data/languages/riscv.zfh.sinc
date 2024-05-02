@@ -10,7 +10,7 @@
 :flh frd,immI(rs1) is immI & frd & rs1 & op0001=0x3 & op0204=0x1 & op0506=0x0 & funct3=0x1
 {
     local ea:$(XLEN) = immI + rs1;
-    fassignS(frd, *[ram]:2 ea);
+    fassignS(frd, *[ram]:4 ea);
 }
 
 # Half-Precision Store Instruction
