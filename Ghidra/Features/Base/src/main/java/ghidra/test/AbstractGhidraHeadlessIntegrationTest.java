@@ -21,7 +21,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-import org.apache.commons.collections4.BidiMap;
 import org.junit.BeforeClass;
 
 import docking.test.AbstractDockingTest;
@@ -180,7 +179,7 @@ public abstract class AbstractGhidraHeadlessIntegrationTest extends AbstractDock
 	 * @return result of command applyTo method
 	 * @throws RollbackException thrown if thrown by command applyTo method
 	 */
-	public static boolean applyCmd(Program program, Command cmd) throws RollbackException {
+	public static boolean applyCmd(Program program, Command<Program> cmd) throws RollbackException {
 		int txId = program.startTransaction(cmd.getName());
 		boolean commit = true;
 		try {
@@ -498,6 +497,11 @@ public abstract class AbstractGhidraHeadlessIntegrationTest extends AbstractDock
 		waitForSwing();
 	}
 
+	public void clearSelection(PluginTool tool, Program p) {
+		AddressSet set = new AddressSet();
+		makeSelection(tool, p, set);
+	}
+
 	/**
 	 * Returns the global symbol with the given name if and only if it is the only global symbol
 	 * with that name.
@@ -613,8 +617,8 @@ public abstract class AbstractGhidraHeadlessIntegrationTest extends AbstractDock
 		Map<String, Set<ClassFileInfo>> extensionPointSuffixToInfoMap =
 			(Map<String, Set<ClassFileInfo>>) getInstanceField("extensionPointSuffixToInfoMap",
 				ClassSearcher.class);
-		BidiMap<ClassFileInfo, Class<?>> loadedCache =
-			(BidiMap<ClassFileInfo, Class<?>>) getInstanceField("loadedCache", ClassSearcher.class);
+		HashMap<ClassFileInfo, Class<?>> loadedCache =
+			(HashMap<ClassFileInfo, Class<?>>) getInstanceField("loadedCache", ClassSearcher.class);
 		String suffix = ClassSearcher.getExtensionPointSuffix(service.getSimpleName());
 
 		if (suffix != null) {
