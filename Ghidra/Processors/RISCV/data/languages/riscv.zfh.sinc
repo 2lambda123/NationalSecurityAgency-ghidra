@@ -178,7 +178,7 @@ define pcodeop copybitsH;
 :fcvt.wu.h rd,frs1H,FRM is frs1H & FRM & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct7=0x62 & op2024=0x1
 {
 	local tmp:$(WXLEN) = trunc(frs1H);
-	rd = sext(frs1H);
+	rd = sext(tmp);
 }
 
 define pcodeop trunc_h;
@@ -196,25 +196,25 @@ define pcodeop trunc_hu;
 :fcvt.l.h rd,frs1H,FRM is frs1H & FRM & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct7=0x62 & op2024=0x02
 {
 	local tmp:$(WXLEN) = trunc(frs1H);
-	rd = sext(frs1H);
+	rd = sext(tmp);
 }
 
 :fcvt.lu.h rd,frs1H,FRM is frs1H & FRM & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct7=0x62 & op2024=0x03
 {
 	local tmp:$(WXLEN) = trunc(frs1H);
-	rd = sext(frs1H);
+	rd = sext(tmp);
 }
 
 :fcvt.h.l rd,frs1H,FRM is frs1H & FRM & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct7=0x6a & op2024=0x02
 {
 	local tmp:$(WXLEN) = trunc(frs1H);
-	rd = sext(frs1H);
+	rd = sext(tmp);
 }
 
 :fcvt.h.lu rd,frs1H,FRM is frs1H & FRM & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct7=0x6a & op2024=0x03
 {
 	local tmp:$(WXLEN) = trunc(frs1H);
-	rd = sext(frs1H);
+	rd = sext(tmp);
 }
 
 # the fmv instructions copy bits unchanged, without integer to float conversion
@@ -255,6 +255,7 @@ define pcodeop fmv_h_x;
 
 # TODO: fcvt.q.h and fcvt.h.q
 
+define pcodeop fclass_h;
 :fclass.h rd,frs1H is frs1H & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct3=0x1 & funct7=0x72 & op2024=0x0
 {
 	#TODO
@@ -269,6 +270,7 @@ define pcodeop fmv_h_x;
 	# rd[7, 1] = 0; #TODO  + inf
 	# rd[8, 1] = 0; #TODO  snan
 	# rd[9, 1] = 0; #TODO  qnan
+	rd = fclass_h(frs1H);
 }
 
 :feq.h rd,frs1H,frs2H is frs2H & frs1H & rd & op0001=0x3 & op0204=0x4 & op0506=0x2 & funct3=0x2 & funct7=0x52
