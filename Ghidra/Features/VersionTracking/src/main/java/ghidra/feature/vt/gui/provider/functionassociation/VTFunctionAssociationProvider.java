@@ -39,8 +39,6 @@ import docking.widgets.label.GDLabel;
 import docking.widgets.table.threaded.ThreadedTableModel;
 import generic.theme.GIcon;
 import generic.theme.GThemeDefaults.Colors;
-import ghidra.app.plugin.core.functioncompare.FunctionComparisonPanel;
-import ghidra.app.util.viewer.listingpanel.ListingCodeComparisonPanel;
 import ghidra.app.util.viewer.listingpanel.ListingPanel;
 import ghidra.feature.vt.api.db.DeletedMatch;
 import ghidra.feature.vt.api.impl.VTEvent;
@@ -50,6 +48,8 @@ import ghidra.feature.vt.gui.actions.*;
 import ghidra.feature.vt.gui.duallisting.VTListingNavigator;
 import ghidra.feature.vt.gui.plugin.*;
 import ghidra.feature.vt.gui.util.MatchInfo;
+import ghidra.features.base.codecompare.listing.ListingCodeComparisonPanel;
+import ghidra.features.base.codecompare.panel.FunctionComparisonPanel;
 import ghidra.framework.model.*;
 import ghidra.framework.options.Options;
 import ghidra.framework.options.SaveState;
@@ -368,7 +368,7 @@ public class VTFunctionAssociationProvider extends ComponentProviderAdapter
 		statusPanel.add(statusLabel, BorderLayout.CENTER);
 		dualTablePanel.add(statusPanel, BorderLayout.SOUTH);
 
-		functionComparisonPanel = new FunctionComparisonPanel(this, tool);
+		functionComparisonPanel = new FunctionComparisonPanel(tool, getName());
 		addSpecificCodeComparisonActions();
 		functionComparisonPanel.setCurrentTabbedComponent(ListingCodeComparisonPanel.NAME);
 		functionComparisonPanel.setTitlePrefixes("Source:", "Destination:");
