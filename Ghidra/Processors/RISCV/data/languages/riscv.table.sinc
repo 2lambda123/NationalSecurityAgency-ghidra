@@ -94,7 +94,7 @@ frs3D: fr2731 is fr2731 { local tmp = fr2731:$(DFLEN); export tmp; }
 
 macro fassignS(dest, src) {
 @if FPSIZE == "32"
-	dest = src;
+	dest = zext(src);
 @else
 	dest = zext(src);
 @endif
