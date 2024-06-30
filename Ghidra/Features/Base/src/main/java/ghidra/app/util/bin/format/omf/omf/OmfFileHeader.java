@@ -13,37 +13,49 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.app.util.bin.format.omf;
+package ghidra.app.util.bin.format.omf.omf;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import ghidra.app.util.bin.BinaryReader;
 import ghidra.app.util.bin.ByteProvider;
+import ghidra.app.util.bin.format.omf.*;
 import ghidra.app.util.importer.MessageLog;
+import ghidra.program.model.data.*;
+import ghidra.util.exception.DuplicateNameException;
 import ghidra.util.task.TaskMonitor;
 
 public class OmfFileHeader extends OmfRecord {
 
-	private String objectName;		// Name of the object module
-	private String libModuleName = null;	// Name of the module (within a library)
-	private String translator = null;		// Usually the compiler/linker used to produce this object
+	private OmfString objectName;           // Name of the object module
+	private String libModuleName = null; // Name of the module (within a library)
+	private String translator = null;    // Usually the compiler/linker used to produce this object
 	private boolean isLittleEndian;
-	private ArrayList<String> nameList = new ArrayList<String>();	// Indexable List of segment, group, ... names
-	private ArrayList<OmfSegmentHeader> segments = new ArrayList<OmfSegmentHeader>();
-	private ArrayList<OmfGroupRecord> groups = new ArrayList<OmfGroupRecord>();
-	private ArrayList<OmfExternalSymbol> externsymbols = new ArrayList<OmfExternalSymbol>();
-	private ArrayList<OmfSymbolRecord> symbols = new ArrayList<OmfSymbolRecord>();
-	private ArrayList<OmfFixupRecord> fixup = new ArrayList<OmfFixupRecord>();
-	private ArrayList<OmfSegmentHeader> extraSeg = null;		// Holds implied segments that don't have official header record
+	private List<OmfRecord> records = new ArrayList<>();
+	private List<String> nameList = new ArrayList<>(); // Indexable List of segment, group, ... names
+	private List<OmfSegmentHeader> segments = new ArrayList<>();
+	private List<OmfGroupRecord> groups = new ArrayList<>();
+	private List<OmfExternalSymbol> externsymbols = new ArrayList<>();
+	private List<OmfSymbolRecord> symbols = new ArrayList<>();
+	private List<OmfFixupRecord> fixup = new ArrayList<>();
+	private List<OmfSegmentHeader> extraSeg = null;    // Holds implied segments that don't have official header record
 	//	private OmfModuleEnd endModule = null;
 	private boolean format16bit;
 
 	public OmfFileHeader(BinaryReader reader) throws IOException {
 		readRecordHeader(reader);
-		objectName = readString(reader);			// This is usually the source code filename
+		objectName = OmfUtils.readString(reader);   // This is usually the source code filename
 		readCheckSumByte(reader);
 		isLittleEndian = reader.isLittleEndian();
+	}
+
+	/**
+	 * {@return the list of records}
+	 */
+	public List<OmfRecord> getRecords() {
+		return records;
 	}
 
 	/**
@@ -51,7 +63,7 @@ public class OmfFileHeader extends OmfRecord {
 	 * @return the name
 	 */
 	public String getName() {
-		return objectName;
+		return objectName.str();
 	}
 
 	/**
@@ -88,42 +100,42 @@ public class OmfFileHeader extends OmfRecord {
 	/**
 	 * @return the list of segments in this file
 	 */
-	public ArrayList<OmfSegmentHeader> getSegments() {
+	public List<OmfSegmentHeader> getSegments() {
 		return segments;
 	}
 
 	/**
 	 * @return the list of segments which are Borland extensions
 	 */
-	public ArrayList<OmfSegmentHeader> getExtraSegments() {
+	public List<OmfSegmentHeader> getExtraSegments() {
 		return extraSeg;
 	}
 
 	/**
 	 * @return the list of group records for this file
 	 */
-	public ArrayList<OmfGroupRecord> getGroups() {
+	public List<OmfGroupRecord> getGroups() {
 		return groups;
 	}
 
 	/**
 	 * @return the list of symbols that are external to this file
 	 */
-	public ArrayList<OmfExternalSymbol> getExternalSymbols() {
+	public List<OmfExternalSymbol> getExternalSymbols() {
 		return externsymbols;
 	}
 
 	/**
 	 * @return the list of symbols exported by this file
 	 */
-	public ArrayList<OmfSymbolRecord> getPublicSymbols() {
+	public List<OmfSymbolRecord> getPublicSymbols() {
 		return symbols;
 	}
 
 	/**
 	 * @return the list of relocation records for this file
 	 */
-	public ArrayList<OmfFixupRecord> getFixups() {
+	public List<OmfFixupRecord> getFixups() {
 		return fixup;
 	}
 
@@ -258,14 +270,14 @@ public class OmfFileHeader extends OmfRecord {
 	 */
 	public static OmfFileHeader scan(BinaryReader reader, TaskMonitor monitor, boolean fastscan)
 			throws IOException, OmfException {
-		OmfRecord record = OmfRecord.readRecord(reader);
+		OmfRecord record = OmfRecordFactory.readRecord(reader);
 		if (!(record instanceof OmfFileHeader)) {
 			throw new OmfException("Object file does not start with proper header");
 		}
 		OmfFileHeader header = (OmfFileHeader) record;
 
 		while (true) {
-			record = OmfRecord.readRecord(reader);
+			record = OmfRecordFactory.readRecord(reader);
 
 			if (monitor.isCancelled()) {
 				break;
@@ -312,15 +324,16 @@ public class OmfFileHeader extends OmfRecord {
 	 */
 	public static OmfFileHeader parse(BinaryReader reader, TaskMonitor monitor, MessageLog log)
 			throws IOException, OmfException {
-		OmfRecord record = OmfRecord.readRecord(reader);
-		if (!(record instanceof OmfFileHeader)) {
+		OmfRecord record = OmfRecordFactory.readRecord(reader);
+		if (!(record instanceof OmfFileHeader header)) {
 			throw new OmfException("Object file does not start with proper header");
 		}
-		OmfFileHeader header = (OmfFileHeader) record;
+		header.records.add(header);
 		OmfData lastDataBlock = null;
 
 		while (true) {
-			record = OmfRecord.readRecord(reader);
+			record = OmfRecordFactory.readRecord(reader);
+			header.records.add(record);
 
 			if (monitor.isCancelled()) {
 				break;
@@ -380,7 +393,7 @@ public class OmfFileHeader extends OmfRecord {
 			}
 			else if (record instanceof OmfUnsupportedRecord) {
 				// TODO: Should we always set lastDataBlock to null?
-				if (record.getRecordType() == COMDAT) {
+				if (record.getRecordType() == OmfRecordTypes.COMDAT) {
 					lastDataBlock = null;
 				}
 				logRecord("Unsupported OMF record", record, log);
@@ -403,8 +416,8 @@ public class OmfFileHeader extends OmfRecord {
 	 * @param groups is the list of specific segments that are grouped together in memory
 	 * @throws OmfException for malformed index/alignment/combining fields
 	 */
-	public static void doLinking(long startAddress, ArrayList<OmfSegmentHeader> segments,
-			ArrayList<OmfGroupRecord> groups) throws OmfException {
+	public static void doLinking(long startAddress, List<OmfSegmentHeader> segments,
+			List<OmfGroupRecord> groups) throws OmfException {
 		// Link anything in groups first
 		for (int i = 0; i < groups.size(); ++i) {
 			OmfGroupRecord group = groups.get(i);
@@ -465,16 +478,14 @@ public class OmfFileHeader extends OmfRecord {
 	 * @throws IOException for problems reading bytes
 	 */
 	public static boolean checkMagicNumber(BinaryReader reader) throws IOException {
-		byte first = reader.readNextByte();
-		if ((first & 0xfc) != 0x80) {
+		int type = reader.readNextUnsignedByte();
+		type &= 0xfffffffe; // mask off the least significant bit (16/32 bit flag)
+		if (type != OmfRecordTypes.THEADR && type != OmfRecordTypes.LHEADR) {
 			return false;
 		}
-		int len = reader.readNextShort() & 0xffff;
-		int stringlen = reader.readNextByte() & 0xff;
-		if (len != stringlen + 2) {
-			return false;
-		}
-		return true;
+		int len = reader.readNextUnsignedShort();
+		int stringlen = reader.readNextUnsignedByte();
+		return len == stringlen + 2;
 	}
 
 	/**
@@ -488,5 +499,17 @@ public class OmfFileHeader extends OmfRecord {
 
 	private static void logRecord(String description, OmfRecord record, MessageLog log) {
 		log.appendMsg(description + " (" + record + ")");
+	}
+
+	@Override
+	public DataType toDataType() throws DuplicateNameException, IOException {
+		StructureDataType struct = new StructureDataType(OmfRecordTypes.getName(recordType), 0);
+		struct.add(BYTE, "type", null);
+		struct.add(WORD, "length", null);
+		struct.add(objectName.toDataType(), "name", null);
+		struct.add(BYTE, "checksum", null);
+
+		struct.setCategoryPath(new CategoryPath(OmfUtils.CATEGORY_PATH));
+		return struct;
 	}
 }

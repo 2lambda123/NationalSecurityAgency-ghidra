@@ -13,28 +13,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ghidra.app.util.bin.format.omf;
+package ghidra.app.util.bin.format.omf.omf;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import ghidra.app.util.bin.BinaryReader;
+import ghidra.app.util.bin.format.omf.*;
+import ghidra.program.model.data.*;
+import ghidra.util.exception.DuplicateNameException;
 
 public class OmfNamesRecord extends OmfRecord {
-	private ArrayList<String> name;
+	private List<OmfString> names = new ArrayList<>();
 
 	public OmfNamesRecord(BinaryReader reader) throws IOException {
 		readRecordHeader(reader);
 		long max = reader.getPointerIndex() + getRecordLength() - 1;
-		name = new ArrayList<String>();
 		while (reader.getPointerIndex() < max) {
-			String nm = OmfRecord.readString(reader);
-			name.add(nm);
+			names.add(OmfUtils.readString(reader));
 		}
 		readCheckSumByte(reader);
 	}
 
-	public void appendNames(ArrayList<String> namelist) {
-		namelist.addAll(name);
+	public void appendNames(List<String> namelist) {
+		namelist.addAll(names.stream().map(name -> name.str()).toList());
+	}
+
+	@Override
+	public DataType toDataType() throws DuplicateNameException, IOException {
+		StructureDataType struct = new StructureDataType(OmfRecordTypes.getName(recordType), 0);
+		struct.add(BYTE, "type", null);
+		struct.add(WORD, "length", null);
+		for (OmfString name : names) {
+			struct.add(name.toDataType(), -1, "name", null);
+		}
+		struct.add(BYTE, "checksum", null);
+
+		struct.setCategoryPath(new CategoryPath(OmfUtils.CATEGORY_PATH));
+		return struct;
 	}
 }

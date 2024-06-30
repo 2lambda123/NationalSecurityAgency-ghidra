@@ -1249,8 +1249,9 @@ abstract public class DataTypeManagerDB implements DataTypeManager {
 					resolvedDataType = resolveDataTypeNoSource(dataType);
 				}
 				else if (!sourceArchive.getSourceArchiveID().equals(getUniversalID()) &&
-					sourceArchive.getArchiveType() == ArchiveType.PROGRAM) {
-					// dataTypes from a different program don't carry over their identity.
+					(sourceArchive.getArchiveType() == ArchiveType.PROGRAM ||
+						sourceArchive.getArchiveType() == ArchiveType.TEMPORARY)) {
+					// dataTypes from a program or temporary archive don't carry over their identity
 					resolvedDataType = resolveDataTypeNoSource(dataType);
 				}
 				else {
