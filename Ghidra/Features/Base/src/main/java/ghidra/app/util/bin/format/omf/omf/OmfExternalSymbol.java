@@ -33,23 +33,19 @@ public class OmfExternalSymbol extends OmfRecord {
 
 	private List<Reference> refs = new ArrayList<>();
 
-	protected OmfExternalSymbol(boolean isStatic) {
+	public OmfExternalSymbol(BinaryReader reader, boolean isStatic) throws IOException {
+		super(reader);
 		this.isStatic = isStatic;
 	}
 
-	public OmfExternalSymbol(BinaryReader reader, boolean isStatic) throws IOException {
-		this.isStatic = isStatic;
-		readRecordHeader(reader);
-
-		long max = reader.getPointerIndex() + getRecordLength() - 1;
-		while (reader.getPointerIndex() < max) {
-			OmfString name = OmfUtils.readString(reader);
-			OmfIndex type = OmfUtils.readIndex(reader);
+	@Override
+	public void parseData() throws IOException, OmfException {
+		while (dataReader.getPointerIndex() < dataEnd) {
+			OmfString name = OmfUtils.readString(dataReader);
+			OmfIndex type = OmfUtils.readIndex(dataReader);
 			refs.add(new Reference(name, type));
 			symbols.add(new OmfSymbol(name.str(), type.value(), 0, 0, 0));
 		}
-
-		readCheckSumByte(reader);
 	}
 
 	public List<OmfSymbol> getSymbols() {
