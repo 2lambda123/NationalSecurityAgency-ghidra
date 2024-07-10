@@ -10434,4 +10434,115 @@ int4 RuleLzcountShiftBool::applyOp(PcodeOp *op,Funcdata &data)
   return 0;
 }
 
+void RulePropagateEnums::getOpList(vector<uint4>& oplist) const
+
+{
+  oplist.push_back(CPUI_STORE);
+  oplist.push_back(CPUI_INT_AND);
+  oplist.push_back(CPUI_INT_OR);
+  oplist.push_back(CPUI_INT_EQUAL);    // for enums that are downcast to smaller types
+  oplist.push_back(CPUI_INT_NOTEQUAL); // for enums that are downcast to smaller types
+}
+
+int4 RulePropagateEnums::applyOp(PcodeOp* op, Funcdata& data)
+
+{
+  
+  if (!data.hasTypeRecoveryStarted()) return 0;
+
+  Varnode* constant = op->getIn(1);
+  if (!constant->isConstant() || constant->getType()->isEnumType()) {
+    return 0;
+  }
+  PcodeOp* def = op->getIn(0)->getDef();
+  if (!def) {
+    Varnode* opOut = op->getOut();
+    if (opOut) {
+      def = opOut->loneDescend();
+    }
+  }
+  if (!def) return 0;
+
+  struct VarnodeToScan {
+    Varnode* varnode = nullptr;
+    int operationSize = 0;
+    bool subpieceUpper4Bytes = false;
+  };
+
+  vector<VarnodeToScan> varnodes;
+
+  const OpCode code = def->code();
+
+  if (code == CPUI_LOAD) {
+    varnodes.emplace_back();
+    VarnodeToScan& newVnToScan = varnodes.back();
+    newVnToScan.varnode = def->getIn(1);
+    newVnToScan.operationSize = def->getOut()->getSize();
+
+  } else if (code == CPUI_SUBPIECE) {
+    varnodes.emplace_back();
+    VarnodeToScan& newVnToScan = varnodes.back();
+    newVnToScan.varnode = def->getIn(0);
+    Varnode* subpiece = def->getIn(1);
+    uintb subpieceOffset = subpiece->getOffset();
+    if (subpieceOffset != 0 && subpieceOffset != 4) {
+      return 0;
+    }
+    newVnToScan.subpieceUpper4Bytes = (subpieceOffset == 4);
+    newVnToScan.operationSize = subpiece->getSize();
+
+  } else if (code == CPUI_STORE) {
+    varnodes.emplace_back();
+    VarnodeToScan& newVnToScan = varnodes.back();
+    newVnToScan.varnode = def->getIn(1);
+    newVnToScan.operationSize = def->getIn(2)->getSize();
+
+  } else if (code == CPUI_INT_AND || code == CPUI_INT_OR) {
+    int operationSize = def->getOut()->getSize();
+    for (int i = 0; i < def->numInput(); ++i) {
+      varnodes.emplace_back();
+      VarnodeToScan& newVnToScan = varnodes.back();
+      newVnToScan.varnode = def->getIn(i);
+      newVnToScan.operationSize = operationSize;
+    }
+
+  }
+
+  for (VarnodeToScan& vn : varnodes) {
+    Datatype* ct = vn.varnode->getTypeReadFacing(def);
+    bool ctIsPtr = ct && ct->getMetatype() == TYPE_PTR;
+    if (ctIsPtr) {
+      ct = ((TypePointer *)ct)->getPtrTo();
+    }
+    if (ct && ct->isEnumType() && vn.operationSize != ct->getSize() && constant->getType() != ct) {
+      constant->updateType(ct, false, false);
+      if (vn.subpieceUpper4Bytes) {
+	constant->setEnumBitshift32();
+      }
+      return 1;
+    }
+    if (ctIsPtr) {
+      PcodeOp* inDef = vn.varnode->getDef();
+      if (inDef && inDef->code() == CPUI_INT_ADD) {
+	Varnode* rightOperand = inDef->getIn(1);
+	if (rightOperand->isConstant() && rightOperand->getOffset() == 4) {
+	  Varnode* leftOperand = inDef->getIn(0);
+	  Datatype* leftOperandType = leftOperand->getType();
+	  if (leftOperandType->getMetatype() == TYPE_PTR) {
+	    Datatype* leftOperandPointedToType = ((TypePointer*)leftOperandType)->getPtrTo();
+	    if (leftOperandPointedToType->isEnumType()
+		&& leftOperandPointedToType->getSize() == 8) {
+	      constant->updateType(leftOperandPointedToType, false, false);
+	      constant->setEnumBitshift32();
+	      return 1;
+	    }
+	  }
+	}
+      }
+    }
+  }
+
+  return 0;
+}
+
 } // End namespace ghidra

@@ -2664,9 +2664,12 @@ int4 ActionSetCasts::castInput(PcodeOp *op,int4 slot,Funcdata &data,CastStrategy
     }
   }
   else if (vn->isConstant()) {
-    vn->updateType(ct,false,false);
-    if (vn->getType() == ct)
-      return 1;
+    Datatype* currentType = vn->getTypeReadFacing(op);
+    if (currentType == nullptr || !currentType->isEnumType()) {  // this protects enums set by RulePropagateEnums from getting replaced
+      vn->updateType(ct,false,false);
+      if (vn->getType() == ct)
+        return 1;
+    }
   }
   else if (ct->getMetatype() == TYPE_PTR && testStructOffset0(ct, vn->getHighTypeReadFacing(op), castStrategy)) {
     // Insert a PTRSUB(vn,#0) instead of a CAST
@@ -5558,6 +5561,7 @@ void ActionDatabase::universalAction(Architecture *conf)
 	actprop2->addRule( new RulePushPtr("typerecovery") );
 	actprop2->addRule( new RuleStructOffset0("typerecovery") );
 	actprop2->addRule( new RulePtrArith("typerecovery") );
+	actprop2->addRule( new RulePropagateEnums("typerecovery") );
 	//	actprop2->addRule( new RuleIndirectConcat("analysis") );
 	actprop2->addRule( new RuleLoadVarnode("stackvars") );
 	actprop2->addRule( new RuleStoreVarnode("stackvars") );
