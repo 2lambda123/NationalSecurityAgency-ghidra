@@ -10450,15 +10450,25 @@ int4 RulePropagateEnums::applyOp(PcodeOp* op, Funcdata& data)
   
   if (!data.hasTypeRecoveryStarted()) return 0;
 
-  Varnode* constant = op->getIn(1);
-  if (!constant->isConstant() || constant->getType()->isEnumType()) {
+  Varnode* constant = nullptr;
+  if (op->code() == CPUI_STORE) {
+    constant = op->getIn(2);
+  } else {
+    constant = op->getIn(1);
+  }
+  if (!constant->isConstant() || constant->getType()->isEnumType() || constant->isSpacebase() || constant->isTypeLock()) {
     return 0;
   }
-  PcodeOp* def = op->getIn(0)->getDef();
-  if (!def) {
-    Varnode* opOut = op->getOut();
-    if (opOut) {
-      def = opOut->loneDescend();
+  PcodeOp* def = nullptr;
+  if (op->code() == CPUI_STORE) {
+    def = op;
+  } else {
+    def = op->getIn(0)->getDef();
+    if (!def) {
+      Varnode* opOut = op->getOut();
+      if (opOut) {
+	def = opOut->loneDescend();
+      }
     }
   }
   if (!def) return 0;

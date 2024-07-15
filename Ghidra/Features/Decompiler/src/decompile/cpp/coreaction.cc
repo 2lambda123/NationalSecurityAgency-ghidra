@@ -5561,7 +5561,6 @@ void ActionDatabase::universalAction(Architecture *conf)
 	actprop2->addRule( new RulePushPtr("typerecovery") );
 	actprop2->addRule( new RuleStructOffset0("typerecovery") );
 	actprop2->addRule( new RulePtrArith("typerecovery") );
-	actprop2->addRule( new RulePropagateEnums("typerecovery") );
 	//	actprop2->addRule( new RuleIndirectConcat("analysis") );
 	actprop2->addRule( new RuleLoadVarnode("stackvars") );
 	actprop2->addRule( new RuleStoreVarnode("stackvars") );
@@ -5602,6 +5601,7 @@ void ActionDatabase::universalAction(Architecture *conf)
     actcleanup->addRule( new RuleSplitLoad("splitpointer") );
     actcleanup->addRule( new RuleSplitStore("splitpointer") );
     actcleanup->addRule( new RuleStringSequence("constsequence"));
+    actcleanup->addRule( new RulePropagateEnums("typerecovery") );
   }
   act->addAction( actcleanup );
 
