@@ -2665,7 +2665,7 @@ int4 ActionSetCasts::castInput(PcodeOp *op,int4 slot,Funcdata &data,CastStrategy
   }
   else if (vn->isConstant()) {
     Datatype* currentType = vn->getTypeReadFacing(op);
-    if (currentType == nullptr || !currentType->isEnumType()) {  // this protects enums set by RulePropagateEnums from getting replaced
+    if (currentType == nullptr || !currentType->isEnumType()) {  // this protects enums set by ActionPropagateEnums from getting replaced
       vn->updateType(ct,false,false);
       if (vn->getType() == ct)
         return 1;
@@ -2691,7 +2691,7 @@ int4 ActionSetCasts::castInput(PcodeOp *op,int4 slot,Funcdata &data,CastStrategy
   data.opSetOpcode(newop,CPUI_CAST);
   data.opSetInput(newop,vnin,0);
   data.opSetInput(op,vnout,slot);
-  data.opInsertBefore(newop,op); // Cast comes AFTER operation
+  data.opInsertBefore(newop,op); // Cast comes BEFORE operation
   if (ct->needsResolution()) {
     data.forceFacingType(ct, -1, newop, -1);
   }
@@ -5601,7 +5601,6 @@ void ActionDatabase::universalAction(Architecture *conf)
     actcleanup->addRule( new RuleSplitLoad("splitpointer") );
     actcleanup->addRule( new RuleSplitStore("splitpointer") );
     actcleanup->addRule( new RuleStringSequence("constsequence"));
-    actcleanup->addRule( new RulePropagateEnums("typerecovery") );
   }
   act->addAction( actcleanup );
 
@@ -5626,6 +5625,7 @@ void ActionDatabase::universalAction(Architecture *conf)
   act->addAction( new ActionMapGlobals("fixateglobals") );
   act->addAction( new ActionDynamicSymbols("dynamic") );
   act->addAction( new ActionNameVars("merge") );
+  act->addAction( new ActionPropagateEnums("typerecovery") );
   act->addAction( new ActionSetCasts("casts") );
   act->addAction( new ActionFinalStructure("blockrecovery") );
   act->addAction( new ActionPrototypeWarnings("protorecovery") );

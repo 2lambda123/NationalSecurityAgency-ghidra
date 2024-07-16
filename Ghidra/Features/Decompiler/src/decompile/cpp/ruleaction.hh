@@ -1643,15 +1643,16 @@ public:
   virtual int4 applyOp(PcodeOp *op,Funcdata &data);
 };
 
-class RulePropagateEnums : public Rule {
+class ActionPropagateEnums : public Action {
 public:
-  RulePropagateEnums(const string& g) : Rule(g, 0, "propagateenums") {}	///< Constructor
-  virtual Rule* clone(const ActionGroupList& grouplist) const {
-    if (!grouplist.contains(getGroup())) return (Rule*)0;
-    return new RulePropagateEnums(getGroup());
+  ActionPropagateEnums(const string& g) : Action(0, "propagateenums", g) {}	///< Constructor
+  virtual Action* clone(const ActionGroupList& grouplist) const {
+    if (!grouplist.contains(getGroup())) return (Action*)0;
+    return new ActionPropagateEnums(getGroup());
   }
-  virtual void getOpList(vector<uint4>& oplist) const;
-  virtual int4 applyOp(PcodeOp* op, Funcdata& data);
+  virtual int4 apply(Funcdata &data);
+  static Datatype *getFinalDisplayedType(Varnode *vn,PcodeOp *op,int4 slot,int4& off); ///< Dig through all structs/enums/unions until a base member pointed to by vn is found
+  static void updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, bool subpieceUpper4Bytes);
 };
 
 } // End namespace ghidra
