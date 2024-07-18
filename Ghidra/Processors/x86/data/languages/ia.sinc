@@ -4073,13 +4073,13 @@ define pcodeop smm_restore_state;
 :SBB  AX,imm16     is vexMode=0 & opsize=0 & byte=0x1d; AX & imm16						{ subCarryFlags( AX, imm16 ); resultflags(AX); }
 :SBB  EAX,imm32    is vexMode=0 & opsize=1 & byte=0x1d; EAX & check_EAX_dest & imm32	{ subCarryFlags( EAX, imm32 ); build check_EAX_dest; resultflags(EAX); }
 @ifdef IA64
-:SBB  RAX,imm32    is $(LONGMODE_ON) & vexMode=0 & opsize=2 & byte=0x1d; RAX & imm32						{ subCarryFlags( RAX, imm32 ); resultflags(RAX); }
+:SBB  RAX,simm32    is $(LONGMODE_ON) & vexMode=0 & opsize=2 & byte=0x1d; RAX & simm32						{ subCarryFlags( RAX, simm32 ); resultflags(RAX); }
 @endif
 :SBB  Rmr8,imm8     is vexMode=0 & $(BYTE_80_82); mod=3 & Rmr8 & reg_opcode=3; imm8								{ subCarryFlags( Rmr8, imm8 ); resultflags(Rmr8); }
 :SBB  Rmr16,imm16       is vexMode=0 & opsize=0 & byte=0x81; mod=3 & Rmr16 & reg_opcode=3; imm16							{ subCarryFlags( Rmr16, imm16 ); resultflags(Rmr16); }
 :SBB  Rmr32,imm32       is vexMode=0 & opsize=1 & byte=0x81; mod=3 & Rmr32 & check_Rmr32_dest & reg_opcode=3; imm32	{ subCarryFlags( Rmr32, imm32 ); build check_Rmr32_dest; resultflags(Rmr32); }
 @ifdef IA64
-:SBB  Rmr64,imm32       is $(LONGMODE_ON) & vexMode=0 & opsize=2 & byte=0x81; mod=3 & Rmr64 & reg_opcode=3; imm32							{ subCarryFlags( Rmr64, imm32 ); resultflags(Rmr64); }
+:SBB  Rmr64,simm32       is $(LONGMODE_ON) & vexMode=0 & opsize=2 & byte=0x81; mod=3 & Rmr64 & reg_opcode=3; simm32							{ subCarryFlags( Rmr64, simm32 ); resultflags(Rmr64); }
 @endif
 
 :SBB  Rmr16,simm8_16       is vexMode=0 & opsize=0 & byte=0x83; mod=3 & Rmr16 & reg_opcode=3; simm8_16						{ subCarryFlags( Rmr16, simm8_16 ); resultflags(Rmr16); }
@@ -5301,7 +5301,7 @@ CMPPS_OPERAND: ", "^imm8 is imm8   { }
 	xmmTmp2_Da = XmmReg2[0,32];
 	xmmTmp2_Db = XmmReg2[32,32];
 	xmmTmp2_Dc = XmmReg2[64,32];
-	xmmTmp2_Dc = XmmReg2[96,32];
+	xmmTmp2_Dd = XmmReg2[96,32];
 	
 	build XmmCondPS;
 	
@@ -8855,7 +8855,7 @@ define pcodeop extractps;
     local low:1 = shift < 64:1;
     local temp:8;
     conditionalAssign(temp,low,XmmReg[0,64] >> shift,XmmReg[64,64] >> (shift - 64));
-    Mem = temp:1;
+    *Mem = temp:1;
 }
 
 :PEXTRD Rmr32, XmmReg, imm8     is vexMode=0 & $(PRE_66) & byte=0x0F; byte=0x3A; byte=0x16; mod=3 & XmmReg & Rmr32 & check_Rmr32_dest; imm8 
@@ -8874,7 +8874,7 @@ define pcodeop extractps;
     local low:1 = shift < 64:1;
     local temp:8;
     conditionalAssign(temp,low,XmmReg[0,64] >> shift,XmmReg[64,64] >> (shift - 64));
-    Mem = temp:4;
+    *Mem = temp:4;
 }
 
 @ifdef IA64
@@ -8887,7 +8887,9 @@ define pcodeop extractps;
 :PEXTRQ Mem, XmmReg, imm8     is $(LONGMODE_ON) & vexMode=0 & bit64=1 & $(PRE_66) & $(REX_W) & byte=0x0F; byte=0x3A; byte=0x16; XmmReg ... & Mem; imm8 
 { 
     local high:1 = imm8 & 0x1;
-    conditionalAssign(Mem,high,XmmReg[64,64],XmmReg[0,64]);
+    local temp:8;
+    conditionalAssign(temp,high,XmmReg[64,64],XmmReg[0,64]);
+    *Mem = temp;
 }
 @endif
 
