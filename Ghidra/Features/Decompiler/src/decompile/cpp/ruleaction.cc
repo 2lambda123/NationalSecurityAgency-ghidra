@@ -10487,6 +10487,9 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
       code = def->code();
 
       if (code == CPUI_LOAD) {
+	if (def->getOut() == (Varnode *)0) {
+	  continue;
+	}
 	varnodes.emplace_back();
 	VarnodeToScan& newVnToScan = varnodes.back();
 	newVnToScan.varnode = def->getIn(1);
@@ -10514,6 +10517,9 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
 	newVnToScan.operationSize = def->getIn(2)->getSize();
 
       } else if (code == CPUI_INT_AND || code == CPUI_INT_OR) {
+	if (def->getOut() == (Varnode *)0) {
+	  continue;
+	}
 	int operationSize = def->getOut()->getSize();
 	for (int i = 0; i < def->numInput(); ++i) {
 	  varnodes.emplace_back();
@@ -10526,6 +10532,9 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
       } else if (code == CPUI_MULTIEQUAL
 	  || code == CPUI_CALL
 	  || code == CPUI_CALLIND) {
+	if (def->getOut() == (Varnode *)0) {
+	  continue;
+	}
 	varnodes.emplace_back();
 	VarnodeToScan& newVnToScan = varnodes.back();
 	newVnToScan.varnode = def->getOut();
