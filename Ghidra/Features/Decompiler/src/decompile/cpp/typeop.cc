@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -144,6 +144,35 @@ void TypeOp::selectJavaOperators(vector<TypeOp *> &inst,bool val)
     inst[CPUI_INT_RIGHT]->setMetatypeOut(TYPE_UINT);
     inst[CPUI_INT_RIGHT]->setSymbol(">>");
   }
+}
+
+/// Return CPUI_FLOAT_NEG if the \e sign bit is flipped, or CPUI_FLOAT_ABS if the \e sign bit is zeroed out.
+/// Otherwise CPUI_MAX is returned.
+/// \param op is the given PcodeOp to test
+/// \return the floating-point operation the PcodeOp is equivalent to, or CPUI_MAX
+OpCode TypeOp::floatSignManipulation(PcodeOp *op)
+
+{
+  OpCode opc = op->code();
+  if (opc == CPUI_INT_AND) {
+    Varnode *cvn = op->getIn(1);
+    if (cvn->isConstant()) {
+      uintb val = calc_mask(cvn->getSize());
+      val >>= 1;
+      if (val == cvn->getOffset())
+	return CPUI_FLOAT_ABS;
+    }
+  }
+  else if (opc == CPUI_INT_XOR) {
+    Varnode *cvn = op->getIn(1);
+    if (cvn->isConstant()) {
+      uintb val = calc_mask(cvn->getSize());
+      val = val ^ (val >> 1);
+      if (val == cvn->getOffset())
+	return CPUI_FLOAT_NEG;
+    }
+  }
+  return CPUI_MAX;
 }
 
 /// \param t is the TypeFactory used to construct data-types
@@ -1333,9 +1362,15 @@ Datatype *TypeOpIntXor::getOutputToken(const PcodeOp *op,CastStrategy *castStrat
 Datatype *TypeOpIntXor::propagateType(Datatype *alttype,PcodeOp *op,Varnode *invn,Varnode *outvn,
 				      int4 inslot,int4 outslot)
 {
-  if (alttype->isEnumType() && invn->isConstant() && !outvn->isConstant())
-    return (Datatype *)0;  // propagating enum types set by ActionPropagateEnums may be bad if their size does not
+  if (!alttype->isEnumType()) {
+    if (alttype->getMetatype() != TYPE_FLOAT)
+      return (Datatype *)0;
+    if (floatSignManipulation(op) == CPUI_MAX)
+      return (Datatype *)0;
+  } else if (invn->isConstant() && !outvn->isConstant()) {
+  	return (Datatype *)0;  // propagating enum types set by ActionPropagateEnums may be bad if their size does not
                            // match the size of the other operand
+  }
   Datatype *newtype;
   if (invn->isSpacebase()) {
     AddrSpace *spc = tlst->getArch()->getDefaultDataSpace();
@@ -1363,9 +1398,15 @@ Datatype *TypeOpIntAnd::getOutputToken(const PcodeOp *op,CastStrategy *castStrat
 Datatype *TypeOpIntAnd::propagateType(Datatype *alttype,PcodeOp *op,Varnode *invn,Varnode *outvn,
 				      int4 inslot,int4 outslot)
 {
-  if (alttype->isEnumType() && invn->isConstant() && !outvn->isConstant())
-    return (Datatype *)0;  // propagating enum types set by ActionPropagateEnums may be bad if their size does not
+  if (!alttype->isEnumType()) {
+    if (alttype->getMetatype() != TYPE_FLOAT)
+      return (Datatype *)0;
+    if (floatSignManipulation(op) == CPUI_MAX)
+      return (Datatype *)0;
+  } else if (invn->isConstant() && !outvn->isConstant()) {
+  	return (Datatype *)0;  // propagating enum types set by ActionPropagateEnums may be bad if their size does not
                            // match the size of the other operand
+  }
   Datatype *newtype;
   if (invn->isSpacebase()) {
     AddrSpace *spc = tlst->getArch()->getDefaultDataSpace();

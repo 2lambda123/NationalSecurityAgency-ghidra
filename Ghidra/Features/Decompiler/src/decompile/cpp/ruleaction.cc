@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -9476,6 +9476,26 @@ bool RuleIgnoreNan::checkBackForCompare(Varnode *floatVar,Varnode *root)
   return false;
 }
 
+/// \brief Test if the given Varnode is produced by a NaN operation.
+///
+/// The Varnode can be the direct or negated output of a NaN.
+/// \param vn is the given Varnode
+/// \return \b true if the Varnode is the output of the NaN
+bool RuleIgnoreNan::isAnotherNan(Varnode *vn)
+
+{
+  if (!vn->isWritten()) return false;
+  PcodeOp *op = vn->getDef();
+  OpCode opc = op->code();
+  if (opc == CPUI_BOOL_NEGATE) {
+    vn = op->getIn(0);
+    if (!vn->isWritten()) return false;
+    op = vn->getDef();
+    opc = op->code();
+  }
+  return (opc == CPUI_FLOAT_NAN);
+}
+
 /// \brief Test if a boolean expression incorporates a floating-point comparison, and remove the NaN data-flow if it does
 ///
 /// The given PcodeOp takes input from a NaN operation through a specific slot. We look for a floating-point comparison
@@ -9497,35 +9517,34 @@ Varnode *RuleIgnoreNan::testForComparison(Varnode *floatVar,PcodeOp *op,int4 slo
 
 {
   if (op->code() == matchCode) {
-    Varnode *vn = op->getIn(1-slot);
+    Varnode *vn = op->getIn(1 - slot);
     if (checkBackForCompare(floatVar,vn)) {
-      data.opSetOpcode(op, CPUI_COPY);
-      data.opRemoveInput(op, 1);
-      data.opSetInput(op, vn, 0);
+      data.opSetOpcode(op,CPUI_COPY);
+      data.opRemoveInput(op,1);
+      data.opSetInput(op,vn,0);
       count += 1;
     }
-    return op->getOut();
-  }
-  if (op->code() != CPUI_CBRANCH)
-    return (Varnode *)0;
-  BlockBasic *parent = op->getParent();
-  bool flowToFromCompare = false;
-  PcodeOp *lastOp;
-  int4 outDir = (matchCode == CPUI_BOOL_OR) ? 0 : 1;
-  if (op->isBooleanFlip())
-    outDir = 1 - outDir;
-  FlowBlock *outBranch = parent->getOut(outDir);
-  lastOp = outBranch->lastOp();
-  if (lastOp != (PcodeOp *)0 && lastOp->code() == CPUI_CBRANCH) {
-    FlowBlock *otherBranch = parent->getOut(1-outDir);
-    if (outBranch->getOut(0) == otherBranch || outBranch->getOut(1) == otherBranch) {
-      if (checkBackForCompare(floatVar, lastOp->getIn(1)))
-	flowToFromCompare = true;
+    else if (isAnotherNan(vn)) {
+      return op->getOut();
     }
   }
-  if (flowToFromCompare) {
-    data.opSetInput(op,data.newConstant(1, 0),1);	// Treat result of NaN as false
-    count += 1;
+  else if (op->code() == CPUI_CBRANCH) {
+    BlockBasic *parent = op->getParent();
+    PcodeOp *lastOp;
+    int4 outDir = (matchCode == CPUI_BOOL_OR) ? 0 : 1;
+    if (op->isBooleanFlip())
+      outDir = 1 - outDir;
+    FlowBlock *outBranch = parent->getOut(outDir);
+    lastOp = outBranch->lastOp();
+    if (lastOp != (PcodeOp*)0 && lastOp->code() == CPUI_CBRANCH) {
+      FlowBlock *otherBranch = parent->getOut(1 - outDir);
+      if (outBranch->getOut(0) == otherBranch || outBranch->getOut(1) == otherBranch) {
+	if (checkBackForCompare(floatVar,lastOp->getIn(1))) {
+	  data.opSetInput(op,data.newConstant(1,(matchCode == CPUI_BOOL_OR) ? 0 : 1),1);
+	  count += 1;
+	}
+      }
+    }
   }
   return (Varnode *)0;
 }
@@ -10432,6 +10451,95 @@ int4 RuleLzcountShiftBool::applyOp(PcodeOp *op,Funcdata &data)
     }
   }
   return 0;
+}
+
+/// \class RuleFloatSign
+/// \brief Convert floating-point \e sign bit manipulation into FLOAT_ABS or FLOAT_NEG
+///
+/// Transform floating-point specific operations
+///   -- `x & 0x7fffffff  =>  ABS(f)`
+///   -- 'x ^ 0x80000000  =>  -f`
+///
+/// A Varnode is determined to be floating-point by participation in other floating-point operations,
+/// not based on the data-type of the Varnode.
+void RuleFloatSign::getOpList(vector<uint4> &oplist) const
+
+{
+  uint4 list[] = { CPUI_FLOAT_EQUAL, CPUI_FLOAT_NOTEQUAL, CPUI_FLOAT_LESS, CPUI_FLOAT_LESSEQUAL, CPUI_FLOAT_NAN,
+      CPUI_FLOAT_ADD, CPUI_FLOAT_DIV, CPUI_FLOAT_MULT, CPUI_FLOAT_SUB, CPUI_FLOAT_NEG, CPUI_FLOAT_ABS,
+      CPUI_FLOAT_SQRT, CPUI_FLOAT_FLOAT2FLOAT, CPUI_FLOAT_CEIL, CPUI_FLOAT_FLOOR, CPUI_FLOAT_ROUND,
+      CPUI_FLOAT_INT2FLOAT, CPUI_FLOAT_TRUNC };
+  oplist.insert(oplist.end(),list,list+18);
+}
+
+int4 RuleFloatSign::applyOp(PcodeOp *op,Funcdata &data)
+
+{
+  int4 res = 0;
+  OpCode opc = op->code();
+  if (opc != CPUI_FLOAT_INT2FLOAT) {
+    Varnode *vn = op->getIn(0);
+    if (vn->isWritten()) {
+      PcodeOp *signOp = vn->getDef();
+      OpCode resCode = TypeOp::floatSignManipulation(signOp);
+      if (resCode != CPUI_MAX) {
+	data.opRemoveInput(signOp, 1);
+	data.opSetOpcode(signOp, resCode);
+	res = 1;
+      }
+    }
+    if (op->numInput() == 2) {
+      vn = op->getIn(1);
+      if (vn->isWritten()) {
+	PcodeOp *signOp = vn->getDef();
+	OpCode resCode = TypeOp::floatSignManipulation(signOp);
+	if (resCode != CPUI_MAX) {
+	  data.opRemoveInput(signOp, 1);
+	  data.opSetOpcode(signOp, resCode);
+	  res = 1;
+	}
+      }
+    }
+  }
+  if (op->isBoolOutput() || opc == CPUI_FLOAT_TRUNC)
+    return res;
+  list<PcodeOp *>::const_iterator iter;
+  Varnode *outvn = op->getOut();
+  for(iter=outvn->beginDescend();iter!=outvn->endDescend();++iter) {
+    PcodeOp *readOp = *iter;
+    OpCode resCode = TypeOp::floatSignManipulation(readOp);
+    if (resCode != CPUI_MAX) {
+      data.opRemoveInput(readOp, 1);
+      data.opSetOpcode(readOp, resCode);
+      res = 1;
+    }
+  }
+  return res;
+}
+
+/// \class RuleFloatSignCleanup
+/// \brief Convert floating-point \e sign bit manipulation into FLOAT_ABS or FLOAT_NEG
+///
+/// A Varnode is determined to be floating-point by examining its data-type.
+void RuleFloatSignCleanup::getOpList(vector<uint4> &oplist) const
+
+{
+  oplist.push_back(CPUI_INT_AND);
+  oplist.push_back(CPUI_INT_XOR);
+}
+
+int4 RuleFloatSignCleanup::applyOp(PcodeOp *op,Funcdata &data)
+
+{
+  if (op->getOut()->getType()->getMetatype() != TYPE_FLOAT) {
+      return 0;
+  }
+  OpCode opc = TypeOp::floatSignManipulation(op);
+  if (opc == CPUI_MAX)
+    return 0;
+  data.opRemoveInput(op, 1);
+  data.opSetOpcode(op, opc);
+  return 1;
 }
 
 int4 ActionPropagateEnums::apply(Funcdata &data)
