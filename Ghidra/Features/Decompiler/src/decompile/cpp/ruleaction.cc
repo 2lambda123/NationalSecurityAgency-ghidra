@@ -6094,13 +6094,12 @@ bool AddTreeState::apply(void)
   if (isDegenerate)
     return buildDegenerate();
   spanAddTree(baseOp,1);
-  if (!valid) return false;		// Were there any show stoppers
-  if (distributeOp != (PcodeOp *)0 && !isDistributeUsed) {
+  if (!preventDistribution && distributeOp != (PcodeOp *)0 && !isDistributeUsed) {
     clear();
     preventDistribution = true;
     spanAddTree(baseOp,1);
-    if (!valid) return false;
   }
+  if (!valid) return false;		// Were there any show stoppers
   calcSubtype();
   if (!valid) {
     if (!preventDistribution && distributeOp != (PcodeOp *)0) {
