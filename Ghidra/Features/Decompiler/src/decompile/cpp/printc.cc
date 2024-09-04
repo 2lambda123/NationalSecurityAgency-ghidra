@@ -1656,19 +1656,19 @@ void PrintC::pushEnumConstant(uintb val,const TypeEnum *ct,tagtype tag,
   vector<string> valnames;
 
   uintb valForMatches = val;
-  bool needBitshift32 = vn && vn->isEnumBitshift32();
-  if (needBitshift32) {
-    valForMatches <<= 32;
+  int enumShiftDistance = vn ? vn->getEnumShiftDistance() : 0;
+  valForMatches <<= enumShiftDistance;
+
+  int sizeInBits = (vn ? vn->getSize() : ct->getSize()) * 8;
+  if (sizeInBits + enumShiftDistance < sizeof(uintb) * 8) {
+    sizeInBits += enumShiftDistance;
+  } else {
+    sizeInBits = sizeof(uintb) * 8;
   }
 
-  int4 sizeOfVal = vn ? vn->getSize() : ct->getSize();
-  if (needBitshift32 && sizeOfVal < sizeof(uintb)) {
-    sizeOfVal += 4;
-  }
-
-  bool complement = ct->getMatches(valForMatches,valnames,sizeOfVal,needBitshift32);
+  bool complement = ct->getMatches(valForMatches,valnames,sizeInBits,enumShiftDistance);
   if (valnames.size() > 0) {
-    if (needBitshift32) {
+    if (enumShiftDistance > 0) {
       pushOp(&shift_right,op);
     }
     if (complement)
@@ -1677,8 +1677,8 @@ void PrintC::pushEnumConstant(uintb val,const TypeEnum *ct,tagtype tag,
       pushOp(&enum_cat,op);
     for(int4 i=0;i<valnames.size();++i)
       pushAtom(Atom(valnames[i],tag,EmitMarkup::const_color,op,vn,val));
-    if (needBitshift32) {
-      push_integer(32,4,false,tag,nullptr,nullptr);
+    if (enumShiftDistance) {
+      push_integer(enumShiftDistance,4,false,tag,nullptr,nullptr);
     }
   }
   else {

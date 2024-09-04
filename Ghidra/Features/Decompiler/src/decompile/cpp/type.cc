@@ -1285,15 +1285,19 @@ void TypeEnum::setNameMap(const map<uintb,string> &nmap)
 /// If no representation is possible, no names will be returned.
 /// \param val is the value to find the representation for
 /// \param valnames will hold the returned list of names
-/// \param valSize is the size of the varnode that was holding \b val or 0 if the size of the enum is implied
-/// \param isShift32 \b true if the \b val was shifted to the right by 32 bits before being passed to this function
+/// \param valSize is the size (in bits) of the varnode that was holding \b val or 0 if the size of the enum is implied
+/// \param shiftDistance \b number of bits by which you shifted \b val to the left prior to passing it to this function
 /// \return true if the representation needs to be complemented
-bool TypeEnum::getMatches(uintb val,vector<string> &valnames,int4 valSize,bool isShift32) const
+bool TypeEnum::getMatches(uintb val,vector<string> &valnames,int4 valSize,int shiftDistance) const
 
 {
   map<uintb,string>::const_iterator iter;
   int4 count;
   vector<string> valnamesAttempt;
+  
+  uintb shiftDistanceMask = (1U << shiftDistance) - 1;
+  int sizeToUse = valSize == 0 ? size * 8 : valSize;
+  uintb sizeMask = sizeToUse >= sizeof(uintb) * 8 ? ~0ULL : (1ULL << sizeToUse) - 1;
 
   map<uintb, string>::const_iterator iterEnd = namemap.end();
 
@@ -1354,21 +1358,20 @@ bool TypeEnum::getMatches(uintb val,vector<string> &valnames,int4 valSize,bool i
       return false;                                             // Representing the non-complement (original) value
     }
     if (allmatch                                           // If we have a complete representation
-      && count == 0 && (valnames.size() >= size * 8 / 2 // But it seems to include most of the enum's elements (if each was a single bit flag)
-	|| isShift32)) {                // Or when the val was <<32 before being passed, because when that happens
+      && count == 0 && (valnames.size() >= size * 8 / 2    // But it seems to include most of the enum's elements (if each was a single bit flag)
+	                || shiftDistance > 0)) {           // Or when the val was <<32 before being passed, because when that happens
       // it could include fewer flags than size * 8 / 2, so a double-check (with the complement of the val) is necessary
       valnamesAttempt = valnames;
       allmatch = false;                                   // Maybe a complement's (~) representation would've been better?
     }
     if (allmatch)                       // If we have a complete representation
       return (count==1);		// Return whether we represented original value or complement
-    uintb sizeMask = calc_mask(valSize ? valSize : size);
     val = val ^ sizeMask;               // Switch value we are trying to represent (to complement)
-    if (isShift32) {                    // If the val was for example 0xfffffffe and was <<32 before being passed to this function
-      val ^= 0xffffffff;                // it would get padded with 0's and end up looking like 0xfffffffe00000000
-      // so when getting its complement we would get 0x00000001ffffffff
-      // and still not find the enum values we're looking for. The ^= 0xffffffff fixes that
-    }
+    val ^= shiftDistanceMask;           // If the val was for example 0xfffffffe and was <<32 before being passed to this function
+                                        // it would get padded with 0's and end up looking like 0xfffffffe00000000
+                                        // so when getting its complement we would get 0x00000001ffffffff
+					// and still not find the enum values we're looking for. The ^= shiftDistanceMask fixes that
+    
     valnames.clear();			// Clear out old attempt
   }
   return false;	// If we reach here, no representation was possible, -valnames- is empty

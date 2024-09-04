@@ -478,7 +478,7 @@ public:
     flags |= enumtype; submeta = (m==TYPE_INT) ? SUB_INT_ENUM : SUB_UINT_ENUM; }
   map<uintb,string>::const_iterator beginEnum(void) const { return namemap.begin(); }	///< Beginning of name map
   map<uintb,string>::const_iterator endEnum(void) const { return namemap.end(); }	///< End of name map
-  bool getMatches(uintb val,vector<string> &matchname,int4 valSize,bool isShift32) const;	///< Recover the named representation
+  bool getMatches(uintb val,vector<string> &matchname,int4 valSize,int shiftDistance) const;	///< Recover the named representation
   virtual int4 compare(const Datatype &op,int4 level) const;
   virtual int4 compareDependency(const Datatype &op) const;
   virtual Datatype *clone(void) const { return new TypeEnum(*this); }

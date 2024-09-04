@@ -485,7 +485,7 @@ void Varnode::copySymbol(const Varnode *vn)
   mapentry = vn->mapentry;	// Copy any symbol
   flags &= ~(Varnode::typelock | Varnode::namelock);
   flags |= (Varnode::typelock | Varnode::namelock) & vn->flags;
-  addlflags |= vn->addlflags & Varnode::enum_bitshift_32;
+  setEnumShiftDistance(vn->getEnumShiftDistance());
   if (high != (HighVariable *)0) {
     high->typeDirty();
     if (mapentry != (SymbolEntry *)0)
@@ -576,6 +576,7 @@ Varnode::Varnode(int4 s,const Address &m,Datatype *dt)
   cover = (Cover *)0;
   mergegroup = 0;
   addlflags = 0;
+  enumShiftLength = 0;
   if (m.getSpace() == (AddrSpace *)0) {
     flags = 0;
     return;

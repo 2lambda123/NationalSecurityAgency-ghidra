@@ -1675,7 +1675,7 @@ public:
   }
   virtual int4 apply(Funcdata &data);
   static Datatype *getFinalDisplayedType(Varnode *vn,PcodeOp *op,int4 slot,int4& off); ///< Dig through all structs/enums/unions until a base member pointed to by vn is found
-  static void updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, bool subpieceUpper4Bytes);
+  static void updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, int shiftLength);
 };
 
 } // End namespace ghidra

@@ -10581,12 +10581,17 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
 	  }
 	}
       }
+      if (def && (def->code() == CPUI_INT_NEGATE || def->code() == CPUI_INT_2COMP))
+      {
+        def = def->getIn(0)->getDef();
+      }
       if (!def) continue;
 
       struct VarnodeToScan {
 	Varnode* varnode = nullptr;
 	int operationSize = 0;
 	bool subpieceUpper4Bytes = false;
+	int shiftLength = 0;
 	int slot = 0;
       };
 
@@ -10637,6 +10642,21 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
 	  newVnToScan.operationSize = operationSize;
 	}
 
+      } else if (code == CPUI_INT_RIGHT) {
+        if (def->getOut() == (Varnode *)0) {
+          continue;
+        }
+        Varnode* constVn = def->getIn(1);
+        Varnode* nonConstVn = def->getIn(0);
+        if (constVn->isConstant() && !nonConstVn->isConstant()) {
+	  varnodes.emplace_back();
+	  VarnodeToScan& newVnToScan = varnodes.back();
+	  newVnToScan.varnode = nonConstVn;
+	  newVnToScan.shiftLength = constVn->getOffset();
+	  newVnToScan.slot = 0;
+	  newVnToScan.operationSize = def->getOut()->getSize();
+	}
+
       } else if (code == CPUI_MULTIEQUAL
 	  || code == CPUI_CALL
 	  || code == CPUI_CALLIND) {
@@ -10652,22 +10672,35 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
       }
 
       for (VarnodeToScan& vn : varnodes) {
+	int shiftLength = vn.shiftLength;
 	Datatype* ct = vn.varnode->getTypeReadFacing(def);
 	bool ctIsPtr = ct->getMetatype() == TYPE_PTR;
+	bool subpieceUpper4Bytes = vn.subpieceUpper4Bytes;
 	if (ctIsPtr) {
 	  ct = ((TypePointer *)ct)->getPtrTo();
-	} else if (!ct->isEnumType()) {
+	}
+	if (!ct->isEnumType()) {
+	  PcodeOp* vnDef = vn.varnode->getDef();
+	  if (vnDef && vnDef->code() == CPUI_CAST) {
+	    Datatype* vnPreCastType = vnDef->getIn(0)->getTypeReadFacing(vnDef);
+	    if (vnPreCastType->isEnumType()) {
+	      ct = vnPreCastType;
+	    }
+	  }
+	}
+	if (!ct->isEnumType()) {
 	  int4 off;
 	  Datatype *newct = getFinalDisplayedType(vn.varnode, def, vn.slot, off);
 	  if (newct && newct->isEnumType() && (off == 0 || off == 4)) {
 	    ct = newct;
 	    if (off == 4) {
-	      vn.subpieceUpper4Bytes = true;
+	      subpieceUpper4Bytes = true;
 	    }
 	  }
 	}
-	if (ct->isEnumType() && vn.operationSize != ct->getSize() && constant->getType() != ct) {
-	  updateTypeWithOptionalCast(data, constant, ct, op, vn.subpieceUpper4Bytes);
+	if (subpieceUpper4Bytes) shiftLength += 32;
+	if (ct->isEnumType() && (vn.operationSize != ct->getSize() || shiftLength > 0) && constant->getType() != ct) {
+	  updateTypeWithOptionalCast(data, constant, ct, op, shiftLength);
 	  ++count;
 	  break;
 	}
@@ -10682,7 +10715,7 @@ int4 ActionPropagateEnums::apply(Funcdata &data)
 		Datatype* leftOperandPointedToType = ((TypePointer*)leftOperandType)->getPtrTo();
 		if (leftOperandPointedToType->isEnumType()
 		    && leftOperandPointedToType->getSize() == 8) {
-		  updateTypeWithOptionalCast(data, constant, leftOperandPointedToType, op, true);
+		  updateTypeWithOptionalCast(data, constant, leftOperandPointedToType, op, 32 + shiftLength);
 		  ++count;
 		  break;
 		}
@@ -10766,15 +10799,14 @@ Datatype *ActionPropagateEnums::getFinalDisplayedType(Varnode *vn,PcodeOp *op,in
   return ct;
 }
 
-void ActionPropagateEnums::updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, bool subpieceUpper4Bytes) {
+void ActionPropagateEnums::updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, int shiftLength) {
+  if (shiftLength >= newType->getSize() * 8) return;
   int4 oldSize = constant->getSize();
   int4 slot = op->getSlot(constant);
   Datatype *oldType = constant->getType();
 
   constant->updateType(newType, false, false);
-  if (subpieceUpper4Bytes) {
-    constant->setEnumBitshift32();
-  }
+  constant->setEnumShiftDistance(shiftLength);
 
   if (oldSize == newType->getSize()) {
     return;
