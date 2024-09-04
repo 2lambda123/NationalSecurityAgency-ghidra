@@ -4,9 +4,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,12 +30,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.table.*;
 import javax.swing.text.JTextComponent;
 
+import org.apache.commons.lang3.StringUtils;
+
 import docking.DockingWindowManager;
 import docking.actions.KeyBindingUtils;
 import docking.dnd.DropTgtAdapter;
 import docking.dnd.Droppable;
 import docking.widgets.DropDownSelectionTextField;
-import docking.widgets.OptionDialog;
 import docking.widgets.fieldpanel.support.FieldRange;
 import docking.widgets.fieldpanel.support.FieldSelection;
 import docking.widgets.label.GDLabel;
@@ -50,8 +51,6 @@ import ghidra.framework.plugintool.Plugin;
 import ghidra.framework.plugintool.PluginTool;
 import ghidra.program.model.data.*;
 import ghidra.program.model.data.Composite;
-import ghidra.program.model.listing.DataTypeArchive;
-import ghidra.program.model.listing.Program;
 import ghidra.util.*;
 import ghidra.util.data.DataTypeParser.AllowedDataTypes;
 import ghidra.util.exception.UsrException;
@@ -121,6 +120,12 @@ public abstract class CompositeEditorPanel extends JPanel
 		setFocusTraversalPolicyProvider(true);
 	}
 
+	abstract protected boolean hasUncomittedEntry();
+
+	abstract protected boolean hasInvalidEntry();
+
+	abstract protected void comitEntryChanges();
+
 	/**
 	 * Returns a list of focus traversal components.  This list will be used to navigate forward
 	 * and backward when the Tab and Shift-Tab keys are pressed.  The components will be traversed
@@ -167,17 +172,21 @@ public abstract class CompositeEditorPanel extends JPanel
 			DataTypeComponent dtComponent = model.getComponent(modelRow);
 			if (dtComponent.isBitFieldComponent()) {
 				table.getCellEditor().cancelCellEditing();
-
+				CompEditorModel editorModel = (CompEditorModel) model;
 				BitFieldEditorDialog dlg = new BitFieldEditorDialog(model.viewComposite,
-					provider.dtmService, modelRow, model.showHexNumbers, ordinal -> {
-						model.notifyCompositeChanged();
-					});
+					provider.dtmService, modelRow, model.showHexNumbers,
+					ordinal -> refreshTableAndSelection(editorModel, ordinal));
 				Component c = provider.getComponent();
 				DockingWindowManager.showDialog(c, dlg);
 				return true;
 			}
 		}
 		return false;
+	}
+
+	private void refreshTableAndSelection(CompEditorModel editorModel, int ordinal) {
+		editorModel.notifyCompositeChanged();
+		editorModel.setSelection(new int[] { ordinal, ordinal });
 	}
 
 	private void setupTableCellEditor() {
@@ -281,6 +290,7 @@ public abstract class CompositeEditorPanel extends JPanel
 		if (cellEditor != null) {
 			cellEditor.cancelCellEditing();
 		}
+		provider.closeDependentEditors();
 	}
 
 	protected void stopCellEditing() {
@@ -545,63 +555,6 @@ public abstract class CompositeEditorPanel extends JPanel
 		}
 	}
 
-	public void dataTypeManagerRestored() {
-		DataTypeManager originalDTM = model.getOriginalDataTypeManager();
-		if (originalDTM == null) {
-			// editor unloaded
-			return;
-		}
-		boolean reload = true;
-		String objectType;
-		if (originalDTM instanceof ProgramBasedDataTypeManager) {
-			objectType = "Program";
-		}
-		else {
-			objectType = "Archive";
-		}
-		String archiveName = originalDTM.getName();
-		DataType dt = originalDTM.getDataType(model.getCompositeID());
-		if (dt instanceof Composite) {
-			Composite composite = (Composite) dt;
-			String origDtPath = composite.getPathName();
-			if (!origDtPath.equals(model.getOriginalDataTypePath().getPath())) {
-				model.fixupOriginalPath(composite);
-			}
-		}
-		Composite originalDt = model.getOriginalComposite();
-		if (originalDt == null) {
-			provider.show();
-			String info = "The " + objectType + " \"" + archiveName + "\" has been restored.\n" +
-				"\"" + model.getCompositeName() + "\" may no longer exist outside the editor.";
-			Msg.showWarn(this, this, objectType + " Restored", info);
-			return;
-		}
-		else if (originalDt.isDeleted()) {
-			cancelCellEditing(); // Make sure a field isn't being edited.
-			provider.dispose(); // Close the editor.
-			return;
-		}
-		else if (model.hasChanges()) {
-			provider.show();
-			// The user has modified the structure so prompt for whether or
-			// not to reload the structure.
-			String question =
-				"The " + objectType + " \"" + archiveName + "\" has been restored.\n" + "\"" +
-					model.getCompositeName() + "\" may have changed outside the editor.\n" +
-					"Discard edits & reload the " + model.getTypeName() + "?";
-			String title = "Reload " + model.getTypeName() + " Editor?";
-			int response = OptionDialog.showYesNoDialogWithNoAsDefaultButton(this, title, question);
-			if (response != 1) {
-				reload = false;
-			}
-		}
-		if (reload) {
-			cancelCellEditing(); // Make sure a field isn't being edited.
-			model.load(originalDt); // reload the structure
-			model.updateAndCheckChangeState();
-		}
-	}
-
 	public void dispose() {
 		if (isVisible()) {
 			setVisible(false);
@@ -736,7 +689,7 @@ public abstract class CompositeEditorPanel extends JPanel
 	 */
 	public void setStatus(String status) {
 
-		if (status == null) {
+		if (StringUtils.isEmpty(status)) {
 			// Setting the text to null causes the label's preferred height to drop to 0, causing 
 			// the UI to change size, depending on whether there was an existing status or not.  
 			// Using the empty string prevents the UI layout from changing as the status changes.
@@ -905,6 +858,7 @@ public abstract class CompositeEditorPanel extends JPanel
 		catch (UsrException e) {
 			model.setStatus(e.getMessage(), true);
 		}
+		provider.contextChanged();
 	}
 
 	/**
@@ -963,9 +917,11 @@ public abstract class CompositeEditorPanel extends JPanel
 		switch (type) {
 			case COMPOSITE_LOADED:
 				cancelCellEditing(); // Make sure a field isn't being edited.
+				provider.updateTitle();
 				break;
 			case NO_COMPOSITE_LOADED:
 				cancelCellEditing(); // Make sure a field isn't being edited.
+				provider.updateTitle();
 				break;
 			case COMPOSITE_MODIFIED:
 			case COMPOSITE_UNMODIFIED:
@@ -1334,7 +1290,7 @@ public abstract class CompositeEditorPanel extends JPanel
 					fireEditingCanceled(); // user picked the same datatype
 				}
 				else {
-					dt = model.resolve(dataType);
+					dt = dataType;
 					fireEditingStopped();
 				}
 			}
@@ -1621,4 +1577,5 @@ public abstract class CompositeEditorPanel extends JPanel
 		}
 
 	}
+
 }
