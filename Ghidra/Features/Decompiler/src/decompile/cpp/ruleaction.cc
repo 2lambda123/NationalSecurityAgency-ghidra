@@ -10690,7 +10690,7 @@ int4 RuleFloatSignCleanup::applyOp(PcodeOp *op,Funcdata &data)
   return 1;
 }
 
-  /// \class RuleOrCompare
+/// \class RuleOrCompare
 /// \brief Simplify INT_OR in comparisons with 0.
 ///
 /// `(V | W) == 0` => '(V == 0) && (W == 0)'
