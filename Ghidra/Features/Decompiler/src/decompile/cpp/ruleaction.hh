@@ -71,6 +71,7 @@ class AddTreeState {
   bool checkTerm(Varnode *vn,uint8 treeCoeff);			///< Accumulate details of given term and continue tree traversal
   bool spanAddTree(PcodeOp *op,uint8 treeCoeff);		///< Walk the given sub-tree accumulating details
   void calcSubtype(void);		///< Calculate final sub-type offset
+  void assignPropagatedType(PcodeOp *op);	///< Assign a data-type propagated through the given PcodeOp
   Varnode *buildMultiples(void);	///< Build part of tree that is multiple of base size
   Varnode *buildExtra(void);		///< Build part of tree not accounted for by multiples or \e offset
   bool buildDegenerate(void);		///< Transform ADD into degenerate PTRADD
@@ -1079,6 +1080,11 @@ public:
   virtual int4 applyOp(PcodeOp *op,Funcdata &data);
 };
 class RulePtrsubUndo : public Rule {
+  static const int4 DEPTH_LIMIT;	///< The maximum depth of the additive expression to check
+  static int8 getConstOffsetBack(Varnode *vn,int8 &multiplier,int4 maxLevel);
+  static int8 getExtraOffset(PcodeOp *op,int8 &multiplier);
+  static int8 removeLocalAdds(Varnode *vn,Funcdata &data);
+  static int8 removeLocalAddRecurse(PcodeOp *op,int4 slot,int4 maxLevel,Funcdata &data);
 public:
   RulePtrsubUndo(const string &g) : Rule(g, 0, "ptrsubundo") {}	///< Constructor
   virtual Rule *clone(const ActionGroupList &grouplist) const {
@@ -1598,17 +1604,6 @@ public:
   static Varnode *getBooleanResult(Varnode *vn,int4 bitPos,int4 &constRes);
 };
 
-class RuleOrMultiBool : public Rule {
-public:
-  RuleOrMultiBool(const string &g) : Rule( g, 0, "ormultibool") {}	///< Constructor
-  virtual Rule *clone(const ActionGroupList &grouplist) const {
-    if (!grouplist.contains(getGroup())) return (Rule *)0;
-    return new RuleOrMultiBool(getGroup());
-  }
-  virtual void getOpList(vector<uint4> &oplist) const;
-  virtual int4 applyOp(PcodeOp *op,Funcdata &data);
-};
-
 class RulePiecePathology : public Rule {
   static bool isPathology(Varnode *vn,Funcdata &data);
   static int4 tracePathologyForward(PcodeOp *op,Funcdata &data);
@@ -1666,6 +1661,17 @@ public:
   virtual int4 applyOp(PcodeOp *op,Funcdata &data);
 };
 
+class RuleOrCompare : public Rule {
+public:
+  RuleOrCompare(const string &g) : Rule( g, 0, "orcompare") {}	///< Constructor
+  virtual Rule *clone(const ActionGroupList &grouplist) const {
+    if (!grouplist.contains(getGroup())) return (Rule *)0;
+    return new RuleOrCompare(getGroup());
+  }
+  virtual void getOpList(vector<uint4> &oplist) const;
+  virtual int4 applyOp(PcodeOp *op,Funcdata &data);
+};
+
 class ActionPropagateEnums : public Action {
 public:
   ActionPropagateEnums(const string& g) : Action(0, "propagateenums", g) {}	///< Constructor
@@ -1676,7 +1682,7 @@ public:
   virtual int4 apply(Funcdata &data);
   static Datatype *getFinalDisplayedType(Varnode *vn,PcodeOp *op,int4 slot,int4& off); ///< Dig through all structs/enums/unions until a base member pointed to by vn is found
   static void updateTypeWithOptionalCast(Funcdata &data, Varnode *constant, Datatype *newType, PcodeOp *op, int shiftLength);
-};
+}
 
 } // End namespace ghidra
 #endif
